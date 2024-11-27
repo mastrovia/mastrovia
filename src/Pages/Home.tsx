@@ -1,58 +1,38 @@
 // import starAiIcon from "../assets/Star-ai-icon.png";
+import { motion } from "motion/react";
+import Button from "../Components/Button";
 
 export default function HomePage() {
   return (
-    <div className="overflow-hidden flex flex-col gap-5">
-      <nav className="z-20 fixed w-[100%] dark-glassy border border-[var(--bg)] border-b-[var(--border)] border-t-[var(--border)]">
-        <div className="container mx-auto flex flex-row items-center justify-between">
-          <h1 className="px-4">Mastrovia</h1>
-          <ul className="flex flex-row items-center cursor-pointer">
-            <li className="transition-all p-4 border border-[#00000000] border-l-[var(--border)] hover:text-[var(--bg)] hover:bg-[var(--primary)]">
-              Blog
-            </li>
-            <li className="transition-all p-4 border border-[#00000000] border-l-[var(--border)] hover:text-[var(--bg)] hover:bg-[var(--primary)]">
-              Email
-            </li>
-            <li className="transition-all p-4 border border-[#00000000] border-l-[var(--border)] hover:text-[var(--bg)] hover:bg-[var(--primary)]">
-              Contact
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* <img
-        src="/banners/black-wireframe-grid-room-small.jpg"
-        className="absolute -z-10 w-[100%] object-scale-down opacity-20"
-      /> */}
-
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="overflow-hidden flex flex-col gap-5">
       <div className="absolute -z-10 w-[100%] h-[100vh] bg-banner-grid"></div>
       <div className="absolute -z-10 w-[100%] h-[100vh] bg-banner-grid-filter"></div>
       <div className="absolute -z-10 w-[100%] h-[100vh] bg-banner-grid-filter-attached"></div>
 
-      <section className="container mx-auto p-4 text-center  flex flex-col justify-center gap-7 h-[100vh] max-h-[700px] max-w-7xl relative">
+      <section className="container mx-auto p-4 text-center  flex flex-col justify-center gap-7 h-[100vh] max-h-[600px] max-w-7xl relative">
         {/* <img src={starAiIcon} className="w-[50px] h-[50px] object-scale-down" alt="" /> */}
         <h1 className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] title-aurora relative">
           Let's get your website ready
-          <div className="aurora">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="aurora">
             <div className="aurora__item"></div>
             <div className="aurora__item"></div>
             <div className="aurora__item"></div>
             <div className="aurora__item"></div>
-          </div>
+          </motion.div>
         </h1>
         <p className="opacity-85">A web development company</p>
         <div>
-          <button className="p-2 px-4 bg-[var(--primary)] text-[var(--bg)] font-bold relative  sm:w-auto transition-all">
+          <Button className="relative  sm:w-auto transition-all">
             {/* <div className="absolute w-[300%] h-[1px] left-[-100%] top-0 bg-[var(--border)]" />
             <div className="absolute w-[300%] h-[1px] right-[-100%] bottom-0 bg-[var(--border)]" />
             <div className="absolute h-[300%] w-[1px] top-[-100%] left-0 bg-[var(--border)]" />
             <div className="absolute h-[300%] w-[1px] bottom-[-100%] right-0 bg-[var(--border)]" /> */}
             Let's connect
-          </button>
+          </Button>
         </div>
       </section>
 
-      <section className=" px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
+      <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
         <h1 className="text-xl font-bold text-center">Our services</h1>
         <div className=" container mx-auto flex flex-col md:flex-row">
           <div className="p-4">
@@ -104,6 +84,6 @@ export default function HomePage() {
       <section className="container mx-auto p-4 bg-[var(--primary)] text-[var(--bg)]">
         <h1 className="font-bold">Mastrovia</h1>
       </section>
-    </div>
+    </motion.div>
   );
 }
