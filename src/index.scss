@@ -5,7 +5,7 @@
 :root {
   --bg-hash: #0f0f0f;
   --bg-rgb: 15, 15, 15;
-  --bg-rgb: 0, 0, 0;
+  // --bg-rgb: 0, 0, 0;
   // --bg-rgb: 253, 255, 239;
   --bg: rgb(var(--bg-rgb));
 
@@ -43,13 +43,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--primary-rgb), .1); /* Color of the scrollbar thumb */
+  background: rgb(var(--primary-rgb), 0.1); /* Color of the scrollbar thumb */
   border-radius: 2.5px; /* Rounded corners for better aesthetics */
 }
 
 /* Optional: Add hover effect for better UX */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--primary-rgb), .1);
+  background: rgb(var(--primary-rgb), 0.1);
 }
 
 .dark-glassy {
@@ -253,6 +253,16 @@
 }
 
 .img-grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  columns: 175px;
+  gap: 10px;
+
+  div {
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+      filter: grayscale(1);
+    }
+  }
 }

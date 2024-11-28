@@ -22,7 +22,7 @@ export default function HomePage() {
         </h1>
         <p className="opacity-85">A web development company</p>
         <div>
-          <Button className="relative  sm:w-auto transition-all">
+          <Button className="relative sm:w-auto bg-[var(--primary)] text-[var(--bg)] transition-colors hover:bg-transparent border hover:border-[var(--primary)] hover:text-[var(--primary)]">
             {/* <div className="absolute w-[300%] h-[1px] left-[-100%] top-0 bg-[var(--border)]" />
             <div className="absolute w-[300%] h-[1px] right-[-100%] bottom-0 bg-[var(--border)]" />
             <div className="absolute h-[300%] w-[1px] top-[-100%] left-0 bg-[var(--border)]" />
@@ -61,28 +61,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container mx-auto  flex flex-col gap-10 py-10">
+      <section className="container mx-auto flex flex-col gap-10 py-10">
         <h1 className="text-xl font-bold text-center">Our works</h1>
-        <div className="">
-          <div className="img-grid-container">
-            <div className="items">
-              <img src="https://picsum.photos/200/300?img1" alt="" />
-            </div>
-            <div className="items">
-              <img src="https://picsum.photos/200/300?img2" alt="" />
-            </div>
-            <div className="items">
-              <img src="https://picsum.photos/200/300?img3" alt="" />
-            </div>
-            <div className="items">
-              <img src="https://picsum.photos/200/300?img4" alt="" />
-            </div>
-          </div>
+        <div className="img-grid-container">
+          {Array(12)
+            ?.fill("")
+            ?.map((_, i) => {
+              return (
+                <div className="overflow-hidden w-[100%]">
+                  <motion.img
+                    whileHover={{ scale: 1.1, filter: "grayscale(0)" }}
+                    src={`https://picsum.photos/200/300?img${i}`}
+                  />
+                </div>
+              );
+            })}
         </div>
       </section>
 
-      <section className="container mx-auto p-4 bg-[var(--primary)] text-[var(--bg)]">
-        <h1 className="font-bold">Mastrovia</h1>
+      <section className="bg-[var(--primary)] text-[var(--bg)] pb-20">
+        <div className="container mx-auto p-4">
+          <h1 className="font-bold">Mastrovia</h1>
+        </div>
       </section>
     </motion.div>
   );

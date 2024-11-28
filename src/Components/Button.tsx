@@ -1,22 +1,23 @@
+import { motion, MotionProps } from "motion/react";
 import { ButtonHTMLAttributes, FC } from "react";
-// import { motion } from "motion/react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type ButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: FC<ButtonProps> = ({ children, ...props }) => {
   return (
-    <button
+    <motion.button
+      {...props}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
       style={{
-        padding: "8px 16px 8px 16px",
-        backgroundColor: "var(--primary)",
-        color: "var(--bg)",
+        padding: "8px 16px",
         fontWeight: "bold",
+        userSelect: "none",
         ...props?.style,
       }}
-      {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 
