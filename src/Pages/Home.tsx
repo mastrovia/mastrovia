@@ -36,8 +36,8 @@ export default function HomePage() {
 
       <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
         {/* <h1 className="text-xl font-bold text-center">Our services</h1> */}
-        <div className="container max-w-6xl mx-auto gap-3 flex flex-col md:flex-row">
-          <div className="py-4 flex flex-col gap-5 relative">
+        <div className="container max-w-6xl py-4 px-4 lg:px-0 mx-auto gap-5 flex flex-col md:flex-row">
+          <div className="flex flex-col gap-5 relative">
             <h3 className="font-bold">We Design</h3>
             {/* <img
               src="/banners/design-illustration.jpg"
@@ -53,7 +53,7 @@ export default function HomePage() {
               <Button invertMode>Know more</Button>
             </div> */}
           </div>
-          <div className="p-4 flex flex-col gap-5 relative">
+          <div className="flex flex-col gap-5 relative">
             <h3 className="font-bold">We Development</h3>
             {/* <img src="/banners/development-illustration.jpg" alt="" className="mix-blend-darken" /> */}
             <p>
@@ -62,7 +62,7 @@ export default function HomePage() {
               digital experience.
             </p>
           </div>
-          <div className="p-4 flex flex-col gap-5 relative">
+          <div className="flex flex-col gap-5 relative">
             <h3 className="font-bold">We Deployment & Manage</h3>
             {/* <img src="/banners/development-illustration.jpg" alt="" className="mix-blend-darken" /> */}
             <p>
