@@ -33,6 +33,10 @@
   color: var(--primary);
 }
 
+p {
+  filter: opacity(0.8);
+}
+
 /* For webkit-based browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 5px; /* Width of the scrollbar */

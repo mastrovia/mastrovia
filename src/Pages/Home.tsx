@@ -36,8 +36,8 @@ export default function HomePage() {
 
       <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
         {/* <h1 className="text-xl font-bold text-center">Our services</h1> */}
-        <div className=" container mx-auto flex flex-col md:flex-row">
-          <div className="p-4 flex flex-col gap-5 relative">
+        <div className="container max-w-6xl mx-auto gap-3 flex flex-col md:flex-row">
+          <div className="py-4 flex flex-col gap-5 relative">
             <h3 className="font-bold">We Design</h3>
             {/* <img
               src="/banners/design-illustration.jpg"
@@ -49,9 +49,9 @@ export default function HomePage() {
               experiences. Our creative approach ensures your website reflects your brand’s identity while staying
               modern and intuitive.
             </p>
-            <div>
+            {/* <div>
               <Button invertMode>Know more</Button>
-            </div>
+            </div> */}
           </div>
           <div className="p-4 flex flex-col gap-5 relative">
             <h3 className="font-bold">We Development</h3>
@@ -73,7 +73,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container mx-auto flex flex-col gap-10 py-10">
+      <section className="container max-w-6xl mx-auto flex flex-col gap-10 py-10">
         <h1 className="text-xl font-bold text-center">Our works</h1>
         <div className="img-grid-container">
           {Array(12)
