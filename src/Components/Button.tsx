@@ -25,8 +25,10 @@ const Button: FC<ButtonProps> = ({ children, disabled, invertMode, ...props }) =
         userSelect: "none",
         backgroundColor: disabled ? "rgb(var(--primary-rgb),.6)" : invertMode ? "var(--bg)" : "var(--primary)",
         color: !invertMode ? "var(--bg)" : "var(--primary)",
-        border: `1px solid ${disabled ? "rgb(var(--primary-rgb),.6)" : invertMode ? "var(--bg)" : "var(--primary)"}`,
+        border: `1px solid ${disabled ? "rgb(var(--primary-rgb),.2)" : invertMode ? "var(--bg)" : "var(--primary)"}`,
         ...props?.style,
+
+        // borderRadius: 5,
       }}
     >
       {children}

@@ -5,12 +5,17 @@ export default function Navbar() {
   const currentPage = window.location.pathname?.split("/")?.filter((e) => e)?.[0];
 
   return (
-    <nav className="z-20 fixed w-[100%] dark-glassy border border-[var(--bg)] border-b-[var(--border)] border-t-[var(--border)]">
-      <div className="container mx-auto flex flex-row items-center justify-between">
-        <h1 className="px-4 cursor-pointer select-none" onClick={() => navigate("/")}>
+    <nav className="z-20 w-[100%] fixed dark-glassy border border-[var(--bg)] border-b-[var(--border)]">
+      <div className="container mx-auto max-w-6xl flex flex-row items-center justify-between">
+        <h1 className="px-4 py-4 cursor-pointer select-none" onClick={() => navigate("/")}>
           Mastrovia
         </h1>
-        <ul className="flex flex-row items-center cursor-pointer">
+
+        <div className="transition-all p-4 border border-[#00000000] border-l-[var(--border)]">
+          Home
+        </div>
+        {/* <p className="p-4">Let's connect</p> */}
+        {/* <ul className="flex flex-row items-center cursor-pointer">
           <li className="transition-all p-4 border border-[#00000000] border-l-[var(--border)] hover:text-[var(--bg)] hover:bg-[var(--primary)]">
             Blog
           </li>
@@ -27,7 +32,7 @@ export default function Navbar() {
           >
             Contact
           </li>
-        </ul>
+        </ul> */}
       </div>
     </nav>
   );

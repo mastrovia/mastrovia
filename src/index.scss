@@ -14,7 +14,7 @@
   // --primary-rgb: 15, 15, 15;
   --primary: rgb(var(--primary-rgb));
 
-  --border: #fdffef20;
+  --border: rgb(var(--primary-rgb), 0.2);
   // --border: transparent;
 
   --clr-1: var(--primary);
@@ -23,26 +23,54 @@
   --clr-4: #e54cff;
 
   --blur-aurora: 1rem;
+  --aurora-blend-mode: darken;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
+  color-scheme: dark light;
   background-color: var(--bg);
   color: var(--primary);
 }
 
-p {
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-hash: #fdffef;
+    --bg-rgb: 253, 255, 239;
+    --bg: rgb(var(--bg-rgb));
+
+    --primary-hash: #0f0f0f;
+    --primary-rgb: 15, 15, 15;
+    --primary: rgb(var(--primary-rgb));
+
+    --border: rgb(var(--primary-rgb), 0.2);
+
+    --clr-1: purple;
+    --clr-2: #2fd979;
+    --clr-3: #c29734;
+    --clr-4: #ba44cf;
+
+    --blur-aurora: 1rem;
+    --aurora-blend-mode: lighten;
+
+    color-scheme: dark light;
+    background-color: var(--bg);
+    color: var(--primary);
+  }
+}
+
+.dim {
   filter: opacity(0.8);
 }
 
-input, textarea {
+input,
+textarea {
   outline: none;
+  background-color: rgb(var(--bg-rgb));
 }
 
-
-.bg-paint-canvas-texture{
+.bg-paint-canvas-texture {
   background-image: url("/textures/watercolor-background.jpg");
   background-size: cover;
   background-blend-mode: color;
@@ -116,7 +144,7 @@ input, textarea {
   width: 100%;
   height: 100%;
   z-index: 2;
-  mix-blend-mode: darken;
+  mix-blend-mode: var(--aurora-blend-mode);
   pointer-events: none;
 }
 

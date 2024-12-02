@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Button from "../Components/Button";
 import PricingCard from "../Components/PricingCard";
+import ContactPage from "./Contact";
 
 export default function HomePage() {
   return (
@@ -102,10 +103,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border border-transparent border-t-[var(--border)] bg-gray-800 text-[var(--primary)]">
-        <div className="container mx-auto p-4 flex flex-row gap-5 justify-between">
-          <h1 className="font-bold">Mastrovia</h1>
-          <a href="mailto:contact@mastrovia.com">contact@mastrovia.com</a>
+      <ContactPage />
+
+      <section className=" border-transparent border-t-[var(--border)]">
+        <div className="container border border-transparent border-t-[var(--border)] max-w-6xl mx-auto p-4 py-10 flex flex-col gap-2">
+          <h1 className="font-bold text-xl">Mastrovia</h1>
+          <div className="dim text-sm">© 2024 Mastrovia • contact@mastrovia.com</div>
         </div>
       </section>
     </motion.div>
