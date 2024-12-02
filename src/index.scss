@@ -37,6 +37,17 @@ p {
   filter: opacity(0.8);
 }
 
+input, textarea {
+  outline: none;
+}
+
+
+.bg-paint-canvas-texture{
+  background-image: url("/textures/watercolor-background.jpg");
+  background-size: cover;
+  background-blend-mode: color;
+}
+
 /* For webkit-based browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 5px; /* Width of the scrollbar */

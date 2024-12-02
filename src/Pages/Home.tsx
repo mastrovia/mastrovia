@@ -2,6 +2,7 @@
 // import arrow from "../assets/arrow.png";
 import { motion } from "motion/react";
 import Button from "../Components/Button";
+import PricingCard from "../Components/PricingCard";
 
 export default function HomePage() {
   return (
@@ -34,10 +35,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
+      <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10 bg-paint-canvas-texture">
         {/* <h1 className="text-xl font-bold text-center">Our services</h1> */}
         <div className="container max-w-6xl py-4 px-4 lg:px-0 mx-auto gap-5 flex flex-col md:flex-row">
-          <div className="flex flex-col gap-5 relative">
+          <div className="flex flex-col gap-5 relative ">
             <h3 className="font-bold">We Design</h3>
             {/* <img
               src="/banners/design-illustration.jpg"
@@ -92,9 +93,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[var(--primary)] text-[var(--bg)] pb-20">
-        <div className="container mx-auto p-4">
+      <section className="container mx-auto max-w-6xl p-4">
+        <h1 className="text-center text-xl font-bold mb-10">Pricing plans</h1>
+        <div className="flex flex-col sm:flex-row gap-5">
+          <PricingCard />
+          <PricingCard />
+          <PricingCard />
+        </div>
+      </section>
+
+      <section className="border border-transparent border-t-[var(--border)] bg-gray-800 text-[var(--primary)]">
+        <div className="container mx-auto p-4 flex flex-row gap-5 justify-between">
           <h1 className="font-bold">Mastrovia</h1>
+          <a href="mailto:contact@mastrovia.com">contact@mastrovia.com</a>
         </div>
       </section>
     </motion.div>
