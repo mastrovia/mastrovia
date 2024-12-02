@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const currentPage = window.location.pathname?.split("/")?.filter((e) => e)?.[0];
+  // const currentPage = window.location.pathname?.split("/")?.filter((e) => e)?.[0];
 
   return (
     <nav className="z-20 w-[100%] fixed dark-glassy border border-[var(--bg)] border-b-[var(--border)]">
