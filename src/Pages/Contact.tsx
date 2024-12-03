@@ -31,7 +31,7 @@ export default function ContactPage() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto max-w-xl px-4 py-8 flex flex-row items-center gap-10 h-[88vh] min-h-max"
+      className="container mx-auto max-w-xl px-4 py-8 flex flex-row items-center gap-10 h-[70vh] min-h-max"
     >
       <div className="w-[100%] flex flex-col gap-5">
         <h1 className="text-2xl font-bold text-center">Get in touch</h1>

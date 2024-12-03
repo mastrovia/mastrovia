@@ -36,28 +36,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10 bg-paint-canvas-texture">
-        {/* <h1 className="text-xl font-bold text-center">Our services</h1> */}
+      <section className="container mx-auto max-w-6xl flex flex-col sm:flex-row border border-transparent border-t-[var(--border)]">
+        <div className="flex flex-col gap-4 p-8 ">
+          <h1 className="text-xl font-bold text-nowrap text-center md:text-start">Our services</h1>
+          {/* <p>
+            Crafting visually stunning and user-friendly designs that captivate audiences and enhance user experiences.
+            Our creative approach ensures your website reflects your brand’s identity while staying modern and
+            intuitive.
+          </p> */}
+        </div>
+        <div className="border border-transparent border-l-[var(--border)] flex flex-col w-full">
+          <div className="flex flex-col md:flex-row">
+            <div className="flex gap-4 flex-col p-8 w-full border border-transparent border-t-[var(--border)] sm:border-t-transparent hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+              <h3 className="font-bold">We Design</h3>
+              <p>
+                Crafting visually stunning and user-friendly designs that captivate audiences and enhance user
+                experiences. Our creative approach ensures your website reflects your brand’s identity while staying
+                modern and intuitive.
+              </p>
+            </div>
+            <div className="p-8 w-full border border-transparent border-t-[var(--border)] md:border-t-transparent md:border-l-[var(--border)] flex gap-4 flex-col hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+              <h3 className="font-bold">We Development</h3>
+              <p>
+                Transforming innovative designs into fully functional websites using the latest technologies. Our
+                development process focuses on performance, scalability, and user satisfaction to deliver a seamless
+                digital experience.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-4 flex-col p-8 border border-transparent border-t-[var(--border)] w-full hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+            <h3 className="font-bold">We Deployment & Manage</h3>
+            <p>
+              Bringing your website to life with reliable and efficient deployment solutions. We ensure your site is
+              securely launched, optimized for all devices, and ready to engage your audience instantly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* <motion.section className="px-4 bg-[var(--primary)] text-[var(--bg)] flex flex-col gap-5 py-10">
+        <h1 className="text-xl font-bold text-center">Our services</h1>
         <div className="container max-w-6xl py-4 px-4 lg:px-0 mx-auto gap-5 flex flex-col md:flex-row">
           <div className="flex flex-col gap-5 relative ">
             <h3 className="font-bold">We Design</h3>
-            {/* <img
+            <img
               src="/banners/design-illustration.jpg"
               alt=""
               className="z-0 mix-blend-darken grayscale hover:grayscale-0 opacity-20 absolute transition-all"
-            /> */}
+            />
             <p>
               Crafting visually stunning and user-friendly designs that captivate audiences and enhance user
               experiences. Our creative approach ensures your website reflects your brand’s identity while staying
               modern and intuitive.
             </p>
-            {/* <div>
+            <div>
               <Button invertMode>Know more</Button>
-            </div> */}
+            </div>
           </div>
           <div className="flex flex-col gap-5 relative">
             <h3 className="font-bold">We Development</h3>
-            {/* <img src="/banners/development-illustration.jpg" alt="" className="mix-blend-darken" /> */}
             <p>
               Transforming innovative designs into fully functional websites using the latest technologies. Our
               development process focuses on performance, scalability, and user satisfaction to deliver a seamless
@@ -66,14 +103,13 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col gap-5 relative">
             <h3 className="font-bold">We Deployment & Manage</h3>
-            {/* <img src="/banners/development-illustration.jpg" alt="" className="mix-blend-darken" /> */}
             <p>
               Bringing your website to life with reliable and efficient deployment solutions. We ensure your site is
               securely launched, optimized for all devices, and ready to engage your audience instantly.
             </p>
           </div>
         </div>
-      </section>
+      </motion.section> */}
 
       <section className="container max-w-6xl mx-auto flex flex-col gap-10 py-10">
         <h1 className="text-xl font-bold text-center">Our works</h1>
