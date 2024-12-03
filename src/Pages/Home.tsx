@@ -26,13 +26,15 @@ export default function HomePage() {
         </h1>
         <p className="opacity-85">A web development company</p>
         <div>
-          <Button className="relative sm:w-auto">
-            {/* <div className="absolute w-[300%] h-[1px] left-[-100%] top-0 bg-[var(--border)]" />
+          <a href="#contact">
+            <Button className="relative sm:w-auto">
+              {/* <div className="absolute w-[300%] h-[1px] left-[-100%] top-0 bg-[var(--border)]" />
             <div className="absolute w-[300%] h-[1px] right-[-100%] bottom-0 bg-[var(--border)]" />
             <div className="absolute h-[300%] w-[1px] top-[-100%] left-0 bg-[var(--border)]" />
             <div className="absolute h-[300%] w-[1px] bottom-[-100%] right-0 bg-[var(--border)]" /> */}
-            Let's connect
-          </Button>
+              Let's connect
+            </Button>
+          </a>
         </div>
       </section>
 
@@ -45,9 +47,9 @@ export default function HomePage() {
             intuitive.
           </p> */}
         </div>
-        <div className="border border-transparent border-l-[var(--border)] flex flex-col w-full">
+        <div className="border border-transparent sm:border-l-[var(--border)] flex flex-col w-full">
           <div className="flex flex-col md:flex-row">
-            <div className="flex gap-4 flex-col p-8 w-full border border-transparent border-t-[var(--border)] sm:border-t-transparent hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+            <div className="flex gap-4 flex-col p-8 w-full border border-transparent border-t-[var(--border)] sm:border-t-transparent sm:hover:bg-[var(--primary)] sm:hover:text-[var(--bg)] transition-colors">
               <h3 className="font-bold">We Design</h3>
               <p>
                 Crafting visually stunning and user-friendly designs that captivate audiences and enhance user
@@ -55,7 +57,7 @@ export default function HomePage() {
                 modern and intuitive.
               </p>
             </div>
-            <div className="p-8 w-full border border-transparent border-t-[var(--border)] md:border-t-transparent md:border-l-[var(--border)] flex gap-4 flex-col hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+            <div className="p-8 w-full border border-transparent border-t-[var(--border)] md:border-t-transparent md:border-l-[var(--border)] flex gap-4 flex-col sm:hover:bg-[var(--primary)] sm:hover:text-[var(--bg)] transition-colors">
               <h3 className="font-bold">We Development</h3>
               <p>
                 Transforming innovative designs into fully functional websites using the latest technologies. Our
@@ -64,7 +66,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex gap-4 flex-col p-8 border border-transparent border-t-[var(--border)] w-full hover:bg-[var(--primary)] hover:text-[var(--bg)] transition-colors">
+          <div className="flex gap-4 flex-col p-8 border border-transparent border-t-[var(--border)] w-full sm:hover:bg-[var(--primary)] sm:hover:text-[var(--bg)] transition-colors">
             <h3 className="font-bold">We Deployment & Manage</h3>
             <p>
               Bringing your website to life with reliable and efficient deployment solutions. We ensure your site is
@@ -130,14 +132,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container mx-auto max-w-6xl p-4">
+      {/* <section className="container mx-auto max-w-6xl p-4">
         <h1 className="text-center text-xl font-bold mb-10">Pricing plans</h1>
         <div className="flex flex-col sm:flex-row gap-5">
           <PricingCard />
           <PricingCard />
           <PricingCard />
         </div>
-      </section>
+      </section> */}
 
       <ContactPage />
 

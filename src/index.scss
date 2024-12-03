@@ -39,6 +39,7 @@
   color-scheme: dark light;
   background-color: var(--bg);
   color: var(--primary);
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: light) {
