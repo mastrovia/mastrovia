@@ -12,7 +12,7 @@ export default function Navbar() {
         </h1>
 
         <div className="transition-all p-4 border border-[#00000000] border-l-[var(--border)]">
-          Home
+          
         </div>
         {/* <p className="p-4">Let's connect</p> */}
         {/* <ul className="flex flex-row items-center cursor-pointer">

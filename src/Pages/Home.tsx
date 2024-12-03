@@ -2,7 +2,7 @@
 // import arrow from "../assets/arrow.png";
 import { motion } from "motion/react";
 import Button from "../Components/Button";
-import PricingCard from "../Components/PricingCard";
+// import PricingCard from "../Components/PricingCard";
 import ContactPage from "./Contact";
 
 export default function HomePage() {
