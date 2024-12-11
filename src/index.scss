@@ -66,6 +66,10 @@
     background-color: var(--bg);
     color: var(--primary);
   }
+
+  .inverted-theme {
+    filter: invert(1);
+  }
 }
 
 .londrina-outline-regular {

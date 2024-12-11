@@ -7,13 +7,11 @@ export default function Navbar() {
   return (
     <nav className="z-20 w-[100%] fixed dark-glassy border border-[var(--bg)] border-b-[var(--border)]">
       <div className="container mx-auto max-w-6xl flex flex-row items-center justify-between">
-        <h1 className="px-4 py-4 cursor-pointer select-none" onClick={() => navigate("/")}>
-          Mastrovia
+        <h1 className="px-4 py-4 cursor-pointer select-none flex flex-row items-center gap-3" onClick={() => navigate("/")}>
+          <img src="/logo.png" alt="" className="w-10 inverted-theme" /> Mastrovia
         </h1>
 
-        <div className="transition-all p-4 border border-[#00000000] border-l-[var(--border)]">
-          
-        </div>
+        <div className="transition-all p-4 border border-[#00000000] border-l-[var(--border)]"></div>
         {/* <p className="p-4">Let's connect</p> */}
         {/* <ul className="flex flex-row items-center cursor-pointer">
           <li className="transition-all p-4 border border-[#00000000] border-l-[var(--border)] hover:text-[var(--bg)] hover:bg-[var(--primary)]">
