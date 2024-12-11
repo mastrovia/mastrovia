@@ -32,11 +32,14 @@ export default function ContactPage() {
       id="contact"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto max-w-xl px-4 py-10 flex flex-row items-center gap-10 h-[78vh] min-h-max"
+      className="container mx-auto max-w-xl px-4 py-10 flex flex-row items-center gap-10 h-[80vh] min-h-max max-h-[600px]"
     >
       <div className="w-[100%] flex flex-col gap-5">
-        <h1 className="text-2xl font-bold text-center">Get in touch</h1>
-        <p className="text-center">Please provide correct details. This details is used to connect you back</p>
+        <h1 className="text-center font-bold text-5xl uppercase alumni-sans">Let’s talk</h1>
+        <p className="text-center dim">
+          Have an inquiry or some feedback for us? <br />
+          Fill out form below to contact our team
+        </p>
         <div className="flex flex-col gap-2">
           <input
             disabled={submitDataLoading}
@@ -83,7 +86,7 @@ export default function ContactPage() {
             className="w-full border border-[var(--border)] py-3 px-4"
             value={data?.query}
             onChange={(e) => setData((pre) => ({ ...pre, query: e?.target.value }))}
-            placeholder="Explain how you want your website *"
+            placeholder="How can we help you ? *"
           />
         </div>
         <Button

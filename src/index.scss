@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Londrina+Outline&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+CZ:wght@100..400&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,12 +29,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  // font-family: "Noto Sans", sans-serif;
-  // font-family: "Londrina Outline", sans-serif;
-  // font-family: "Fredericka the Great", serif;
-  // font-family: "Red Hat Display", sans-serif;
-  // font-family: "Playwrite CZ", cursive;
 
   color-scheme: dark light;
   background-color: var(--bg);
@@ -72,45 +66,15 @@
   }
 }
 
-.londrina-outline-regular {
-  font-family: "Londrina Outline", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.fredericka-the-great-regular {
-  font-family: "Fredericka the Great", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-// <weight>: Use a value from 300 to 900
-.red-hat-display-regular {
-  font-family: "Red Hat Display", sans-serif;
+.alumni-sans {
+  font-family: "Alumni Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-// <weight>: Use a value from 100 to 900
-.noto-sans-regular {
-  font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-
-// <weight>: Use a value from 100 to 400
-.playwrite-cz-regular {
-  font-family: "Playwrite CZ", cursive;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+  // font-weight: normal;
+  // font-style: normal;
 }
 
 .dim {
-  filter: opacity(0.8);
+  filter: opacity(0.6);
 }
 
 input,
@@ -153,19 +117,19 @@ textarea {
   opacity: 0.6;
   background-image: linear-gradient(rgb(var(--primary-rgb), var(--opacity)) 1px, transparent 1px),
     linear-gradient(to right, rgb(var(--primary-rgb), var(--opacity)) 1px, var(--bg) 1px);
-  background-size: 20px 20px;
+  background-size: 60px 60px;
   background-attachment: fixed;
 }
 
 .bg-banner-grid-filter {
   background: var(--bg);
-  background: linear-gradient(0deg, var(--bg) 0%, #00000000 60%, var(--bg) 100%);
+  background: linear-gradient(0deg, var(--bg) 0%, #00000000 70%, var(--bg) 100%);
   background-attachment: fixed;
 }
 
 .bg-banner-grid-filter-attached {
   background: var(--bg);
-  background: linear-gradient(0deg, var(--bg) 0%, #00000000 50%, var(--bg) 150%);
+  background: linear-gradient(0deg, var(--bg) 0%, #00000000 70%, var(--bg) 150%);
   /* background-attachment: fixed; */
 }
 

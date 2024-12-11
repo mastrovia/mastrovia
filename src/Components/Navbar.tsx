@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className="z-20 w-[100%] fixed dark-glassy border border-[var(--bg)] border-b-[var(--border)]">
       <div className="container mx-auto max-w-6xl flex flex-row items-center justify-between">
-        <h1 className="px-4 py-4 cursor-pointer select-none flex flex-row items-center gap-3" onClick={() => navigate("/")}>
+        <h1 className="px-4 py-4 cursor-pointer select-none flex flex-row items-center gap-3 alumni-sans text-3xl font-bold" onClick={() => navigate("/")}>
           <img src="/logo.png" alt="" className="w-10 inverted-theme" /> Mastrovia
         </h1>
 

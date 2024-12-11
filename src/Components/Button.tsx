@@ -26,6 +26,8 @@ const Button: FC<ButtonProps> = ({ children, disabled, invertMode, ...props }) =
         backgroundColor: disabled ? "rgb(var(--primary-rgb),.6)" : invertMode ? "var(--bg)" : "var(--primary)",
         color: !invertMode ? "var(--bg)" : "var(--primary)",
         border: `1px solid ${disabled ? "rgb(var(--primary-rgb),.2)" : invertMode ? "var(--bg)" : "var(--primary)"}`,
+        // textTransform: "uppercase",
+        // fontFamily: '"Alumni Sans", sans-serif',
         ...props?.style,
 
         // borderRadius: 5,
