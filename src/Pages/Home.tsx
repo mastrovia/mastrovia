@@ -104,7 +104,12 @@ export default function HomePage() {
       <section className=" border-transparent border-t-[var(--border)]">
         <div className="container border border-transparent border-t-[var(--border)] max-w-6xl mx-auto p-4 py-10 flex flex-col gap-2">
           <h1 className="font-bold text-3xl alumni-sans">Mastrovia</h1>
-          <div className="dim text-sm ">© 2024 Mastrovia • contact@mastrovia.com</div>
+          <div className="dim text-sm">
+            © 2024 Mastrovia • <a href="mailto:contact@mastrovia.com">contact@mastrovia.com</a>
+          </div>
+          <div className="dim text-sm select-none">
+            &#128506; 504, Sector 3, HSR Layout, Bengaluru, Karnataka 560102
+          </div>
         </div>
       </section>
     </motion.div>
