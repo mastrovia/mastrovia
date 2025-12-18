@@ -9,8 +9,8 @@ import {
   // MapPin,
   // Phone,
   Github,
-  Twitter,
-  Linkedin,
+  // Twitter,
+  // Linkedin,
   Instagram,
 } from "lucide-react";
 
@@ -42,8 +42,8 @@ export default function ContactPage() {
   ];
 
   const socials = [
-    { icon: Twitter, href: "#" },
-    { icon: Linkedin, href: "#" },
+    // { icon: Twitter, href: "#" },
+    // { icon: Linkedin, href: "#" },
     { icon: Github, href: "https://github.com/mastrovia" },
     { icon: Instagram, href: "https://instagram.com/mastrovia.dev" },
   ];
