@@ -65,7 +65,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-[11vw] sm:text-7xl lg:text-[10rem] font-extrabold tracking-[-0.04em] leading-[0.8] alumni-sans mb-8">
+            <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] font-extrabold tracking-[-0.04em] leading-[0.8] alumni-sans mb-8">
               DIGITAL <br />
               <span className="text-primary italic">ARCHITECTS</span>
             </h1>
