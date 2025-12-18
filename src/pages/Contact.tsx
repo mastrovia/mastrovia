@@ -28,24 +28,24 @@ export default function ContactPage() {
       value: "hello@mastrovia.com",
       href: "mailto:hello@mastrovia.com",
     },
-    {
-      icon: MapPin,
-      label: "Visit Us",
-      value: "HSR Layout, Bengaluru, India",
-    },
-    {
-      icon: Phone,
-      label: "Call Us",
-      value: "+91 (800) 123-4567",
-      href: "tel:+918001234567",
-    },
+    // {
+    //   icon: MapPin,
+    //   label: "Visit Us",
+    //   value: "HSR Layout, Bengaluru, India",
+    // },
+    // {
+    //   icon: Phone,
+    //   label: "Call Us",
+    //   value: "+91 (800) 123-4567",
+    //   href: "tel:+918001234567",
+    // },
   ];
 
   const socials = [
     { icon: Twitter, href: "#" },
     { icon: Linkedin, href: "#" },
-    { icon: Github, href: "#" },
-    { icon: Instagram, href: "#" },
+    { icon: Github, href: "https://github.com/mastrovia" },
+    { icon: Instagram, href: "https://instagram.com/mastrovia.dev" },
   ];
 
   const submitData = async () => {
