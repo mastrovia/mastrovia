@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, FC } from "react";
 
 type CustomProps = {
   invertMode?: boolean;
+  variant?: "default" | "outline";
 };
 
 type ButtonProps = MotionProps &
@@ -13,8 +14,11 @@ const Button: FC<ButtonProps> = ({
   children,
   disabled,
   invertMode,
+  variant = "default",
   ...props
 }) => {
+  const isOutline = variant === "outline";
+
   return (
     <motion.button
       {...props}
@@ -23,14 +27,18 @@ const Button: FC<ButtonProps> = ({
         ...(disabled
           ? {}
           : {
-              backgroundColor: invertMode
+              backgroundColor: isOutline
+                ? "hsl(var(--foreground) / 0.1)"
+                : invertMode
                 ? "hsl(var(--background) / 0.7)"
                 : "hsl(var(--foreground) / 0.3)",
             }),
         ...(disabled
           ? {}
           : {
-              color: invertMode
+              color: isOutline
+                ? "hsl(var(--foreground))"
+                : invertMode
                 ? "hsl(var(--background))"
                 : "hsl(var(--foreground))",
             }),
@@ -44,24 +52,26 @@ const Button: FC<ButtonProps> = ({
         userSelect: "none",
         backgroundColor: disabled
           ? "hsl(var(--foreground) / 0.6)"
+          : isOutline
+          ? "transparent"
           : invertMode
           ? "hsl(var(--background))"
           : "hsl(var(--foreground))",
-        color: !invertMode
+        color: isOutline
+          ? "hsl(var(--foreground))"
+          : !invertMode
           ? "hsl(var(--background))"
           : "hsl(var(--foreground))",
         border: `1px solid ${
           disabled
             ? "hsl(var(--foreground) / 0.2)"
+            : isOutline
+            ? "hsl(var(--foreground))"
             : invertMode
             ? "hsl(var(--background))"
             : "hsl(var(--foreground))"
         }`,
-        // textTransform: "uppercase",
-        // fontFamily: '"Alumni Sans", sans-serif',
         ...props?.style,
-
-        // borderRadius: 5,
       }}
     >
       {children}

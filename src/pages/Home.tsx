@@ -3,6 +3,8 @@ import AnimatedButton from "../components/animated-button";
 import PricingCard from "../components/PricingCard";
 import ContactPage from "./Contact";
 import { ArrowRight, Code2, Rocket, Palette } from "lucide-react";
+import { Works } from "../components/Works";
+import { Testimonials } from "../components/Testimonials";
 
 const services = [
   {
@@ -36,24 +38,24 @@ export default function HomePage() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col w-full"
+      className="flex flex-col w-full overflow-x-hidden"
     >
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-banner-grid opacity-20 pointer-events-none" />
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
+        <div className="absolute inset-0 bg-banner-grid opacity-25 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
 
-        <div className="container relative z-10 mx-auto px-4 text-center max-w-5xl">
+        <div className="container relative z-10 mx-auto text-center max-w-5xl">
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.9] alumni-sans mb-8">
+            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.85] alumni-sans mb-8 sm:mb-12">
               Let's get your <br />
-              <span className="text-primary relative inline-block">
+              <span className="text-primary inline-block">
                 website ready
-                <div className="aurora -z-10 absolute inset-0 opacity-30">
+                <div className="aurora -z-10 absolute inset-0 opacity-40">
                   <div className="aurora__item" />
                   <div className="aurora__item" />
                   <div className="aurora__item" />
@@ -66,22 +68,23 @@ export default function HomePage() {
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-sans"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-sans leading-relaxed"
           >
             Premium web development agency specialized in crafting
-            high-performance digital experiences for modern brands.
+            high-performance digital experiences for modern brands that want to
+            stand out globally.
           </motion.p>
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            <a href="#contact">
-              <AnimatedButton className="px-10 py-6 text-lg group">
-                Let's Connect
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#contact" className="inline-block w-full sm:w-auto">
+              <AnimatedButton className="px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg group w-full">
+                Start a Project
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </AnimatedButton>
             </a>
           </motion.div>
@@ -89,45 +92,46 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-muted/30">
+      <section id="services" className="py-20 sm:py-32 bg-muted/20">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-            <h2 className="text-5xl md:text-7xl font-bold alumni-sans uppercase leading-none">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans uppercase leading-none italic">
               Our Professional <br /> Services
             </h2>
-            <p className="text-muted-foreground max-w-xs text-sm font-sans">
-              We provide end-to-end digital solutions from initial concept to
-              deployment and beyond.
+            <p className="text-muted-foreground max-w-xs text-sm sm:text-base font-sans leading-relaxed">
+              We provide end-to-end digital solutions from strategy and design
+              to deployment and long-term scaling.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border overflow-hidden rounded-2xl bg-background">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border overflow-hidden rounded-3xl bg-background shadow-2xl shadow-primary/5">
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                className="p-8 md:p-10 flex flex-col gap-6 border-b md:border-b-0 md:border-r last:border-0 border-border group"
+                className="p-8 sm:p-12 flex flex-col gap-8 border-b md:border-b-0 md:border-r last:border-0 border-border group"
               >
                 <div className="flex justify-between items-start">
-                  <span className="text-sm font-bold text-primary/30 font-sans tracking-widest">
+                  <span className="text-sm font-bold text-primary/30 font-sans tracking-widest leading-none">
                     ({service.id})
                   </span>
-                  <service.icon className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors" />
+                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary/40 group-hover:text-primary transition-all duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-4 font-sans">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-sans tracking-tight leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-8 font-sans">
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8 font-sans">
                     {service.description}
                   </p>
                 </div>
-                <div className="mt-auto overflow-hidden rounded-xl border border-border/50">
+                <div className="mt-auto overflow-hidden rounded-2xl border border-border/50">
                   <motion.img
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6 }}
                     src={service.image}
                     alt={service.title}
-                    className="w-full aspect-[4/3] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    className="w-full aspect-[4/3] object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
               </motion.div>
@@ -136,54 +140,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        {/* Pricing Section */}
-        <section id="pricing" className="py-24">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-7xl font-bold alumni-sans uppercase mb-4">
-                Transparent Pricing
-              </h2>
-              <p className="text-muted-foreground max-w-lg mx-auto font-sans">
-                Choose the perfect plan for your project. No hidden fees, just
-                pure quality.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <PricingCard />
-            </div>
-          </div>
-        </section>
+      <Works />
+      <Testimonials />
 
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 sm:py-32 relative">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16 sm:mb-24 space-y-4">
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans uppercase italic">
+              Transparent <span className="text-primary">Pricing</span>
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto font-sans text-sm sm:text-base px-4">
+              Premium quality shouldn't have hidden layers. We believe in direct
+              pricing for direct results and architectural excellence.
+            </p>
+          </div>
+          <div className="flex justify-center px-4">
+            <PricingCard />
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 sm:py-32 relative overflow-hidden bg-muted/10">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <ContactPage />
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-border bg-muted/20">
+      <footer className="py-16 border-t border-border bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div className="flex flex-col gap-4">
-              <h2 className="text-4xl font-bold alumni-sans tracking-tight">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-4xl sm:text-5xl font-bold alumni-sans tracking-tight">
                 MASTROVIA
               </h2>
-              <p className="text-sm text-muted-foreground max-w-sm">
-                Empowering brands with exceptional digital architecture. Built
-                for performance, designed for impact.
+              <p className="text-sm sm:text-base text-muted-foreground max-w-sm leading-relaxed">
+                Empowering visionary brands with exceptional digital
+                architecture. Built for performance, designed for meaningful
+                impact.
               </p>
             </div>
-            <div className="flex flex-col gap-2 md:items-end text-sm text-muted-foreground">
-              <p className="">
-                © 2024 Mastrovia •{" "}
+            <div className="flex flex-col gap-3 md:items-end text-sm sm:text-base text-muted-foreground font-sans">
+              <p className="font-medium">
+                © {new Date().getFullYear()} Mastrovia •{" "}
                 <a
                   href="mailto:contact@mastrovia.com"
-                  className="hover:text-primary underline-offset-4 hover:underline"
+                  className="text-foreground hover:text-primary underline-offset-4 hover:underline transition-all"
                 >
                   contact@mastrovia.com
                 </a>
               </p>
-              <p className="max-w-xs md:text-right italic">
+              <p className="max-w-xs md:text-right italic opacity-70 text-xs sm:text-sm">
                 504, Sector 3, HSR Layout, Bengaluru, Karnataka 560102
               </p>
             </div>
