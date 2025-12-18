@@ -6,8 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Send,
   Mail,
-  MapPin,
-  Phone,
+  // MapPin,
+  // Phone,
   Github,
   Twitter,
   Linkedin,
