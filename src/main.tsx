@@ -1,10 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.scss";
-import HomePage from "./Pages/Home";
+import "./index.css";
+import HomePage from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Layout/Layout";
-import ContactPage from "./Pages/Contact";
+import Layout from "./layouts/Layout";
+import ContactPage from "./pages/Contact";
+import { ThemeProvider } from "./components/theme-provider";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <HelmetProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="mastrovia-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </HelmetProvider>
+  );
 }
 
 createRoot(document.getElementById("root")!).render(
