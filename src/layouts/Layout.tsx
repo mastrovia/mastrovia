@@ -12,7 +12,7 @@ export default function Layout() {
       </main>
 
       {/* Grain Overlay */}
-      <div className="fixed pointer-events-none inset-0 z-[100] opacity-[0.03] mix-blend-overlay">
+      <div className="fixed pointer-events-none inset-0 z-[100] opacity-[0.06] mix-blend-overlay">
         <div
           className="w-full h-full"
           style={{

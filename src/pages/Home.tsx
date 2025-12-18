@@ -40,7 +40,7 @@ export default function HomePage() {
       className="flex flex-col w-full overflow-x-hidden"
     >
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 textured-surface">
         {/* Refined Background Elements */}
         <div className="absolute inset-0 bg-banner-grid opacity-[0.15] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background pointer-events-none" />
@@ -55,7 +55,7 @@ export default function HomePage() {
           >
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-              Available for Q1 2024
+              Available for Q1 2026
             </span>
           </motion.div>
 
@@ -118,7 +118,10 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 sm:py-32 bg-muted/20">
+      <section
+        id="services"
+        className="py-20 sm:py-32 bg-muted/20 textured-surface"
+      >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans uppercase leading-none italic">

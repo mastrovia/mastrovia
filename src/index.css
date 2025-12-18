@@ -82,7 +82,7 @@
 
 .alumni-sans {
   font-family: "Alumni Sans", sans-serif;
-  letter-spacing: .001rem;
+  letter-spacing: 0.001rem;
 }
 
 .bg-banner-grid {
@@ -92,6 +92,20 @@
     transparent 0
   );
   background-size: 40px 40px;
+}
+
+.textured-surface {
+  position: relative;
+}
+
+.textured-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/textures/grains.png");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .aurora {
