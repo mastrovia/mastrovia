@@ -42,8 +42,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 textured-surface">
         {/* Refined Background Elements */}
-        <div className="absolute inset-0 bg-banner-grid opacity-[0.15] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background pointer-events-none" />
+        {/* <div className="absolute inset-0 bg-banner-grid opacity-[0.15] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background pointer-events-none" /> */}
 
         <div className="container relative z-10 mx-auto text-center max-w-5xl">
           {/* Availability Badge */}

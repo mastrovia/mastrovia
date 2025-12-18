@@ -103,7 +103,7 @@
   position: absolute;
   inset: 0;
   background-image: url("/textures/grains.png");
-  opacity: 0.04;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 1;
 }
