@@ -16,7 +16,6 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Works", href: "#works" },
   { name: "Testimonials", href: "#testimonials" },
-  { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -34,7 +33,7 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="Mastrovia Logo"
-            className="w-10 sm:w-12 transition-transform duration-300 group-hover:scale-110 invert dark:invert-0"
+            className="w-10 sm:w-12 transition-transform duration-300 invert dark:invert-0"
           />
           <span className="hidden sm:inline alumni-sans text-4xl sm:text-5xl font-extrabold tracking-tighter">
             Mastrovia

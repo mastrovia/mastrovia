@@ -1,8 +1,7 @@
 import { motion } from "motion/react";
 import AnimatedButton from "../components/animated-button";
-import PricingCard from "../components/PricingCard";
 import ContactPage from "./Contact";
-import { ArrowRight, Code2, Rocket, Palette } from "lucide-react";
+import { Code2, Rocket, Palette } from "lucide-react";
 import { Works } from "../components/Works";
 import { Testimonials } from "../components/Testimonials";
 
@@ -42,53 +41,80 @@ export default function HomePage() {
     >
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
-        <div className="absolute inset-0 bg-banner-grid opacity-25 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+        {/* Refined Background Elements */}
+        <div className="absolute inset-0 bg-banner-grid opacity-[0.15] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background pointer-events-none" />
 
         <div className="container relative z-10 mx-auto text-center max-w-5xl">
+          {/* Availability Badge */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/10 bg-primary/5 mb-10"
           >
-            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.85] alumni-sans mb-8 sm:mb-12">
-              Let's get your <br />
-              <span className="text-primary inline-block">
-                website ready
-                <div className="aurora -z-10 absolute inset-0 opacity-40">
-                  <div className="aurora__item" />
-                  <div className="aurora__item" />
-                  <div className="aurora__item" />
-                  <div className="aurora__item" />
-                </div>
-              </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              Available for Q1 2024
+            </span>
+          </motion.div>
+
+          {/* Minimal Professional Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h1 className="text-[11vw] sm:text-7xl lg:text-[10rem] font-extrabold tracking-[-0.04em] leading-[0.8] alumni-sans mb-8">
+              DIGITAL <br />
+              <span className="text-primary italic">ARCHITECTS</span>
             </h1>
           </motion.div>
 
+          {/* Concise Sub-headline */}
           <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-sans leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base sm:text-lg text-muted-foreground mb-12 max-w-md mx-auto font-sans leading-relaxed tracking-tight"
           >
-            Premium web development agency specialized in crafting
-            high-performance digital experiences for modern brands that want to
-            stand out globally.
+            We build high-performance digital infrastructure for brands that
+            refuse to be silent.
           </motion.p>
 
+          {/* Minimal Action Item */}
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <a href="#contact" className="inline-block w-full sm:w-auto">
-              <AnimatedButton className="px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg group w-full">
-                Start a Project
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#contact" className="w-full sm:w-auto">
+              <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-[0.2em] rounded-2xl w-full">
+                Get Started
               </AnimatedButton>
+            </a>
+            <a
+              href="#works"
+              className="text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors py-4 border-b border-transparent hover:border-primary/20"
+            >
+              View Portfolio
             </a>
           </motion.div>
         </div>
+
+        {/* Minimal Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+            Scroll
+          </span>
+          <div className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent" />
+        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -144,7 +170,7 @@ export default function HomePage() {
       <Testimonials />
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 sm:py-32 relative">
+      {/* <section id="pricing" className="py-24 sm:py-32 relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 sm:mb-24 space-y-4">
@@ -160,10 +186,10 @@ export default function HomePage() {
             <PricingCard />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
-      <section className="py-20 sm:py-32 relative overflow-hidden bg-muted/10">
+      <section className="relative overflow-hidden bg-muted/10">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <ContactPage />
       </section>
