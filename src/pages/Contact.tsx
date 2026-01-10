@@ -13,6 +13,7 @@ import {
   // Linkedin,
   Instagram,
 } from "lucide-react";
+import { toast } from "sonner";
 
 const URL =
   "https://script.google.com/macros/s/AKfycbyKmZGV2PTPI_1NhkvAYDhnN9sdmdR4suMYuMwbTCCK_4pkjKuUkXrtAe0_MzjM85pX/exec";
@@ -61,10 +62,10 @@ export default function ContactPage() {
       await response.json();
 
       setData({});
-      alert("Message sent successfully!");
+      toast.success("Message sent successfully!")
     } catch (error) {
       console.error(error);
-      alert("Failed to send message.");
+      toast.error("Failed to send message.")
     } finally {
       setSubmitDataLoading(false);
     }

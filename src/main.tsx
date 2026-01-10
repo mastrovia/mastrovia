@@ -7,6 +7,8 @@ import Layout from "./layouts/Layout";
 import ContactPage from "./pages/Contact";
 import { ThemeProvider } from "./components/theme-provider";
 import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "sonner"
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,7 @@ function App() {
     <HelmetProvider>
       <ThemeProvider defaultTheme="dark" storageKey="mastrovia-theme">
         <RouterProvider router={router} />
+        <Toaster position="top-center" richColors/>
       </ThemeProvider>
     </HelmetProvider>
   );
