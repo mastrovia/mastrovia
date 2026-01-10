@@ -9,8 +9,27 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import AnimatedButton from "./animated-button";
+import { Link } from "react-router-dom";
 
 const works = [
+  {
+    title: "Letsellr",
+    category: "Accommodation",
+    description:
+      "Choose your next home. Discover quality PGs, apartments, and hostels tailored for your work or study needs. Your ideal accommodation is just a search away.",
+    image: "/banners/letseller.png",
+    tags: ["Next.js", "MongoDB", "Tailwind"],
+    link: "https://letsellr.in/",
+  },
+  {
+    title: "Co-Work Kerala",
+    category: "Coworking & Virtual Offices",
+    description:
+      "We help you find your ideal workspace in Kerala. Discover premium coworking spaces and virtual offices across God's Own Country. Professional workspaces in Kochi, Trivandrum, Calicut, Thrissur and more.",
+    image: "/banners/Cowork-Homepage.png",
+    tags: ["Next.js", "MongoDB", "Tailwind"],
+    link: "https://www.coworkkerala.com/",
+  },
   {
     title: "Project Aurora",
     category: "Web Experiment",
@@ -71,46 +90,53 @@ export function Works() {
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="group overflow-hidden border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 rounded-3xl">
-                <CardHeader className="p-0">
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={work.image}
-                      alt={work.title}
-                      className="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out opacity-80 group-hover:opacity-100"
-                    />
-                    <div className="absolute top-4 right-4 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="bg-background/90 p-2 rounded-full backdrop-blur-md border border-border">
-                        <ArrowUpRight className="w-5 h-5" />
+              <Link
+                to={work.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <Card className="group overflow-hidden border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 rounded-3xl">
+                  <CardHeader className="p-0">
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img
+                        src={work.image}
+                        alt={work.title}
+                        className="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out opacity-80 group-hover:opacity-100"
+                      />
+                      <div className="absolute top-4 right-4 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <div className="bg-background/90 p-2 rounded-full backdrop-blur-md border border-border">
+                          <ArrowUpRight className="w-5 h-5" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex justify-between items-start">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary/60">
-                      {work.category}
-                    </span>
-                  </div>
-                  <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">
-                    {work.title}
-                  </CardTitle>
-                  <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                    {work.description}
-                  </p>
-                </CardContent>
-                <CardFooter className="px-6 pb-6 pt-0 flex flex-wrap gap-2">
-                  {work.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="bg-muted/50 text-[10px] font-bold tracking-wider uppercase border-none"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </CardFooter>
-              </Card>
+                  </CardHeader>
+                  <CardContent className="p-6 space-y-4">
+                    <div className="flex justify-between items-start">
+                      <span className="text-xs font-bold uppercase tracking-widest text-primary/60">
+                        {work.category}
+                      </span>
+                    </div>
+                    <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">
+                      {work.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
+                      {work.description}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="px-6 pb-6 pt-0 flex flex-wrap gap-2">
+                    {work.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="bg-muted/50 text-[10px] font-bold tracking-wider uppercase border-none"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </CardFooter>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
