@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import ContactPage from "./pages/Contact";
 import CaseStudyPage from "./pages/CaseStudy";
+import CostEstimatePage from "./pages/CostEstimate";
 import { ThemeProvider } from "./components/theme-provider";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "sonner";
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "case-study/:id",
         element: <CaseStudyPage />,
+      },
+      {
+        path: "cost-estimate",
+        element: <CostEstimatePage />,
       },
     ],
   },

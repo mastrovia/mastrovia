@@ -94,11 +94,13 @@ export default function HomePage() {
                 Get Started
               </AnimatedButton>
             </a>
-            <a
-              href="#works"
-              className="text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors py-4 border-b border-transparent hover:border-primary/20"
-            >
-              View Portfolio
+            <a href="/cost-estimate" className="w-full sm:w-auto">
+              <AnimatedButton
+                variant="outline"
+                className="px-12 py-7 text-sm font-bold uppercase tracking-[0.2em] rounded-2xl w-full"
+              >
+                Estimate Cost
+              </AnimatedButton>
             </a>
           </motion.div>
         </div>
