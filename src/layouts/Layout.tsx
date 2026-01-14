@@ -1,8 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SEO from "../components/seo";
+import { useEffect } from "react";
 
 export default function Layout() {
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <SEO />

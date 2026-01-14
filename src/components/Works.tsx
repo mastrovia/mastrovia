@@ -10,54 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import AnimatedButton from "./animated-button";
 import { Link } from "react-router-dom";
-
-const works = [
-  {
-    title: "Letsellr",
-    category: "Accommodation",
-    description:
-      "Choose your next home. Discover quality PGs, apartments, and hostels tailored for your work or study needs. Your ideal accommodation is just a search away.",
-    image: "/banners/letseller.png",
-    tags: ["Next.js", "MongoDB", "Tailwind"],
-    link: "https://letsellr.in/",
-  },
-  {
-    title: "Co-Work Kerala",
-    category: "Coworking & Virtual Offices",
-    description:
-      "We help you find your ideal workspace in Kerala. Discover premium coworking spaces and virtual offices across God's Own Country. Professional workspaces in Kochi, Trivandrum, Calicut, Thrissur and more.",
-    image: "/banners/Cowork-Homepage.png",
-    tags: ["Next.js", "MongoDB", "Tailwind"],
-    link: "https://www.coworkkerala.com/",
-  },
-  {
-    title: "Project Aurora",
-    category: "Web Experiment",
-    description:
-      "Interactive landing page with custom GLSL shaders and fluid simulations.",
-    image: "/banners/design-image.png", // Reusing existing assets
-    tags: ["WebGL", "Three.js", "React"],
-    link: "#",
-  },
-  {
-    title: "Mastroia SaaS",
-    category: "Software",
-    description:
-      "Enterprise-grade dashboard system with real-time analytics and user management.",
-    image: "/banners/develop-image.png",
-    tags: ["Next.js", "PostgreSQL", "Tailwind"],
-    link: "#",
-  },
-  {
-    title: "Lumina Engine",
-    category: "Architecture",
-    description:
-      "High-performance rendering engine for modern architectural visualizations.",
-    image: "/banners/deploy-image-4.jpeg",
-    tags: ["C++", "Vulkan", "Rust"],
-    link: "#",
-  },
-];
+import { caseStudies } from "@/data/caseStudies";
 
 export function Works() {
   return (
@@ -82,7 +35,7 @@ export function Works() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {works.map((work, idx) => (
+          {caseStudies.map((work, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -90,12 +43,7 @@ export function Works() {
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <Link
-                to={work.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
+              <Link to={`/case-study/${work.id}`} className="block">
                 <Card className="group overflow-hidden border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 rounded-3xl">
                   <CardHeader className="p-0">
                     <div className="relative aspect-[16/10] overflow-hidden">
