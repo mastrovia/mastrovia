@@ -42,9 +42,27 @@ export default function HomePage() {
     >
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 textured-surface">
-        {/* Refined Background Elements */}
-        {/* <div className="absolute inset-0 bg-banner-grid opacity-[0.15] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background pointer-events-none" /> */}
+        {/* Animated Gradient Glow Backgrounds */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* Left Middle Glow */}
+          <div className="absolute -left-[20%] top-[30%] w-[60vw] h-[60vw] sm:w-[50vw] sm:h-[50vw] opacity-40 dark:opacity-[0.08]">
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(200px)", scale: 0.8 }}
+              animate={{ opacity: 1, filter: "blur(140px)", scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen"
+            />
+          </div>
+          {/* Top Right Glow */}
+          <div className="absolute -right-[10%] -top-[20%] w-[55vw] h-[55vw] sm:w-[45vw] sm:h-[45vw] opacity-30 dark:opacity-[0.06]">
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(200px)", scale: 0.8 }}
+              animate={{ opacity: 1, filter: "blur(140px)", scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen"
+            />
+          </div>
+        </div>
 
         <div className="container relative z-10 mx-auto text-center max-w-5xl">
           {/* Availability Badge */}
