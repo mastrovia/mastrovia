@@ -69,7 +69,7 @@ export default function HomePage() {
             animate={{ filter: "blur(0px)", opacity: 1 }}
             transition={{ duration: .7, ease: "easeOut" }}
           >
-            <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] tracking-[-0.04em] leading-[0.8] mb-8 capitalize">
+            <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] tracking-[-0.04em] leading-[1.1] mb-8 capitalize">
               digital <br />
               <span className="text-primary italic">architects</span>
             </h1>
@@ -130,7 +130,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans leading-none italic">
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none">
               Our Professional <br /> Services
             </h2>
             <p className="text-muted-foreground max-w-xs text-sm sm:text-base font-sans leading-relaxed">
