@@ -392,7 +392,7 @@ export default function CaseStudyPage() {
             </motion.h2>
 
             <div className="space-y-12">
-              {caseStudy.screenshots.map((screenshot, idx) => (
+              {caseStudy.screenshots.slice(0, 1).map((screenshot, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 40 }}
@@ -418,7 +418,7 @@ export default function CaseStudyPage() {
         </section>
 
         {/* Testimonial Section */}
-        {caseStudy.testimonial && (
+        {/* {caseStudy.testimonial && (
           <section className="px-4 py-20">
             <div className="container mx-auto max-w-4xl">
               <motion.div
@@ -449,7 +449,7 @@ export default function CaseStudyPage() {
               </motion.div>
             </div>
           </section>
-        )}
+        )} */}
 
         {/* CTA Section */}
         <section className="px-4 py-20 bg-muted/20">
