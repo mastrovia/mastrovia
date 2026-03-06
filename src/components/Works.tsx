@@ -15,7 +15,10 @@ export function Works() {
           <div className="space-y-4">
             <h2 className="text-5xl md:text-6xl leading-none">
               People we <br />
-              <span className="text-primary italic"><span className="text-[30px]">❤️</span> loved</span> <br />
+              <span className="text-primary italic flex items-end">
+                <img src="/icons/love-arrow.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 dark:invert" />
+                loved
+              </span>
               working with
             </h2>
             <p className="text-muted-foreground max-w-md font-sans text-lg">
