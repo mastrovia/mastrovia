@@ -16,7 +16,8 @@ export function Works() {
             <h2 className="text-5xl md:text-6xl leading-none">
               People we <br />
               <span className="text-primary italic flex items-end">
-                <img src="/icons/love-arrow.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 dark:invert" />
+                <img src="/icons/love.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 block dark:hidden" />
+                <img src="/icons/love-arrow.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 dark:invert hidden dark:block" />
                 loved
               </span>
               working with
