@@ -13,9 +13,9 @@ export function Works() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
-            <h2 className="text-5xl md:text-6xl leading-none md:flex gap-4 md:font-light">
+            <h2 className="text-5xl md:text-6xl leading-none md:flex gap-4">
               People we
-              <span className="text-primary font-inter serif italic flex items-end">
+              <span className="text-primary italic flex items-end">
                 <img src="/icons/love.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 block dark:hidden" />
                 <img src="/icons/love-arrow.png" alt="heart" className="w-10 h-10 md:w-12 md:h-12 dark:invert hidden dark:block" />
                 loved
