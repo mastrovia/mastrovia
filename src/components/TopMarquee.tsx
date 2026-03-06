@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { useState, useRef } from "react";
 
 const niches = [
     "Real Estate",
@@ -20,11 +21,28 @@ const niches = [
 ];
 
 export default function TopMarquee() {
-    // Duplicate items enough to fill the screen seamlessly
     const items = [...niches, ...niches];
+    const [hidden, setHidden] = useState(false);
+    const lastScrollY = useRef(0);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const direction = latest > lastScrollY.current ? "down" : "up";
+        lastScrollY.current = latest;
+
+        if (direction === "down" && latest > 50) {
+            setHidden(true);
+        } else if (direction === "up") {
+            setHidden(false);
+        }
+    });
 
     return (
-        <div className="fixed top-0 left-0 w-full z-[60] bg-foreground text-background overflow-hidden select-none">
+        <motion.div
+            animate={{ y: hidden ? -32 : 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed top-0 left-0 w-full z-[60] bg-foreground text-background overflow-hidden select-none"
+        >
             <div className="relative flex items-center h-8">
                 <motion.div
                     className="flex items-center gap-0 whitespace-nowrap"
@@ -47,6 +65,7 @@ export default function TopMarquee() {
                     ))}
                 </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModeToggle } from "./mode-toggle";
 import { Menu } from "lucide-react";
@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -22,9 +23,26 @@ const navLinks = [
 export default function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [marqueeHidden, setMarqueeHidden] = useState(false);
+  const lastScrollY = useRef(0);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const direction = latest > lastScrollY.current ? "down" : "up";
+    lastScrollY.current = latest;
+
+    if (direction === "down" && latest > 50) {
+      setMarqueeHidden(true);
+    } else if (direction === "up") {
+      setMarqueeHidden(false);
+    }
+  });
 
   return (
-    <nav className="z-50 w-full fixed top-8 bg-background/80 backdrop-blur-xl border-b border-border">
+    <motion.nav
+      animate={{ top: marqueeHidden ? 0 : 32 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="z-50 w-full fixed bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto max-w-7xl flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
@@ -128,6 +146,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
