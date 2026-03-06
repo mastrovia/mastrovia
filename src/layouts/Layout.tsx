@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import TopMarquee from "../components/TopMarquee";
 import SEO from "../components/seo";
 import { useEffect } from "react";
 
@@ -14,8 +15,9 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <SEO />
+      <TopMarquee />
       <Navbar />
-      <main className="pt-16">
+      <main className="pt-24">
         <Outlet />
       </main>
 

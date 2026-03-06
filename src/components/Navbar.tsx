@@ -24,7 +24,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="z-50 w-full fixed top-0 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav className="z-50 w-full fixed top-8 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto max-w-7xl flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
