@@ -85,14 +85,6 @@ export const caseStudies: CaseStudy[] = [
         url: "/banners/letseller.png",
         caption: "Homepage with featured listings and search functionality",
       },
-      {
-        url: "/banners/design-image.png",
-        caption: "Property detail page with image gallery and amenities",
-      },
-      {
-        url: "/banners/develop-image.png",
-        caption: "Advanced search filters and results page",
-      },
     ],
     testimonial: {
       quote:
@@ -150,20 +142,61 @@ export const caseStudies: CaseStudy[] = [
         url: "/banners/Cowork-Homepage.png",
         caption: "Homepage with featured coworking spaces",
       },
-      {
-        url: "/banners/design-image.png",
-        caption: "Workspace detail page with amenities and pricing",
-      },
-      {
-        url: "/banners/develop-image.png",
-        caption: "Interactive map view for location-based search",
-      },
     ],
     testimonial: {
       quote:
         "The platform has revolutionized how we connect with clients. The booking system is intuitive and the technical infrastructure is rock-solid.",
       author: "Priya Menon",
       role: "Operations Manager, Co-Work Kerala",
+    },
+  },
+  {
+    id: "microconnect",
+    title: "MicroConnect",
+    category: "Nano-Distribution Ecosystem",
+    description:
+      "Empowering local entrepreneurs to build sustainable businesses through a structured nano-distribution model. MicroConnect transforms last-mile commerce through community leadership and systematic growth.",
+    image: "/banners/microconnect-homepage.png",
+    tags: ["Entrepreneurship", "Distribution", "Sustainability"],
+    link: "#",
+    year: "2024",
+    client: "MicroConnect",
+    overview:
+      "MicroConnect is a hyper-local micro distribution ecosystem connecting brands directly to households through trained local entrepreneurs. It is a structured, system-driven door-to-door distribution model that empowers community leaders to become market builders.",
+    challenge:
+      "Traditional distribution models often struggle with last-mile fragmentation and a lack of transparency. Local entrepreneurs need structured systems, professional training, and access to diverse product portfolios to build sustainable, scalable businesses.",
+    solution:
+      "We implemented a territory-based 'Nano Distribution' model where every panchayat has a dedicated certified distributor. The ecosystem is supported by professional training programs (YCMD & YCSA), centralized governance, and a multi-category product portfolio ranging from FMCG to home essentials.",
+    results: [
+      "1000+ Active Micro Distributors",
+      "5000+ Trained Sales Associates",
+      "100% Territory coverage across active regions",
+      "₹0 Franchise fee model for accessible entrepreneurship",
+    ],
+    features: [
+      "Exclusive Territory Rights (Zero internal competition)",
+      "Multi-Category Access (FMCG, Food, Kitchen, Furniture)",
+      "Professional Certification (YCMD & YCSA)",
+      "Structure Support (Territory mapping, planning, execution)",
+      "Digital Enablement (Inventory and performance tracking)",
+      "Transparent Operational Systems & SOPs",
+    ],
+    technologies: {
+      frontend: ["React", "Tailwind CSS", "Lucide Icons"],
+      backend: ["Node.js", "Centralized Governance System"],
+      infrastructure: ["Cloud Architecture", "Digital SCM"],
+    },
+    screenshots: [
+      {
+        url: "/banners/microconnect-homepage.png",
+        caption: "MicroConnect Ecosystem Overview",
+      },
+    ],
+    testimonial: {
+      quote:
+        "Markets grow when local people lead them. MicroConnect is not just a business platform; it's a movement that turns local trust into sustainable growth.",
+      author: "Leadership Team",
+      role: "MicroConnect",
     },
   },
 ];
