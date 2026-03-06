@@ -47,7 +47,7 @@ const Button: FC<ButtonProps> = ({
       whileTap={{ ...(disabled ? {} : { scale: 0.95 }) }}
       transition={{ duration: 0.15 }}
       style={{
-        padding: "8px 16px",
+        padding: "12px 24px",
         fontWeight: "bold",
         userSelect: "none",
         backgroundColor: disabled

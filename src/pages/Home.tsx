@@ -54,20 +54,24 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/10 bg-primary/5 mb-10"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-              Available for Q1 2026
+            <span className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground">
+              Available for Q1 {new Date().getFullYear()}
             </span>
           </motion.div>
 
           {/* Minimal Professional Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            // initial={{ opacity: 0, y: 20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+
+            initial={{ filter: "blur(10px)", opacity: 0 }}
+            animate={{ filter: "blur(0px)", opacity: 1 }}
+            transition={{ duration: .7, ease: "easeOut" }}
           >
-            <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] font-extrabold tracking-[-0.04em] leading-[0.8] alumni-sans mb-8">
-              DIGITAL <br />
-              <span className="text-primary italic">ARCHITECTS</span>
+            <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] tracking-[-0.04em] leading-[0.8] mb-8 capitalize">
+              digital <br />
+              <span className="text-primary italic">architects</span>
             </h1>
           </motion.div>
 
@@ -90,14 +94,14 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-[0.2em] rounded-2xl w-full">
+              <AnimatedButton className="px-12 py-7 text-sm font-bold rounded-2xl w-full">
                 Get Started
               </AnimatedButton>
             </a>
             <a href="/cost-estimate" className="w-full sm:w-auto">
               <AnimatedButton
                 variant="outline"
-                className="px-12 py-7 text-sm font-bold uppercase tracking-[0.2em] rounded-2xl w-full"
+                className="px-12 py-7 text-sm font-bold rounded-2xl w-full"
               >
                 Estimate Cost
               </AnimatedButton>

@@ -1,5 +1,94 @@
 @import url("https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* Everyday Sans Web — Light 300 */
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-Light-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-Light-Web.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-LightItalic-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-LightItalic-Web.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Everyday Sans Web — Regular 400 */
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-Regular-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-Regular-Web.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-RegularItalic-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-RegularItalic-Web.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Everyday Sans Web — Medium 500 */
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-Medium-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-MediumItalic-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-MediumItalic-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Everyday Sans Web — Bold 700 */
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-Bold-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-Bold-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-BoldItalic-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-BoldItalic-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Everyday Sans Web — Black 900 */
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-Black-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-Black-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Everyday Sans';
+  src: url('/fonts/EverydaySans WebFonts/EverydaySans-BlackItalic-Web.woff2') format('woff2'),
+       url('/fonts/EverydaySans WebFonts/EverydaySans-BlackItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
