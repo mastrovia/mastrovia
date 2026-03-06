@@ -49,16 +49,23 @@ export function Works() {
                     to={`/case-study/${work.id}`}
                     className="flex justify-between items-center py-6 md:py-8 lg:py-10 group/item"
                   >
-                    <div className="flex items-center gap-4 flex-1">
-                      <motion.h3
-                        className={`text-xl sm:text-2xl md:text-3xl transition-all duration-300 text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
-                          } text-left md:pl-8`}
-                      >
-                        {work.title}
-                      </motion.h3>
-                      <ArrowUpRight
-                        className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isActive ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
-                      />
+                    <div className="flex flex-col gap-2 flex-1 md:pl-8">
+                      <div className="flex items-center gap-4">
+                        <motion.h3
+                          className={`text-xl sm:text-2xl md:text-3xl transition-all duration-100 text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
+                            } text-left`}
+                        >
+                          {work.title}
+                        </motion.h3>
+                        <ArrowUpRight
+                          className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isActive ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
+                        />
+                      </div>
+                      <p className={`text-[10px] sm:text-xs font-sans capitalize tracking-wide transition-colors duration-100 
+                        text-primary/80 md:text-muted-foreground/40 
+                        ${isActive ? "md:text-primary/80" : ""}`}>
+                        {work.category}
+                      </p>
                     </div>
 
                     {/* Mobile Image (Always visible on mobile) */}
