@@ -1,25 +1,20 @@
-import { motion } from "motion/react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight } from "lucide-react";
-import AnimatedButton from "./animated-button";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
+import AnimatedButton from "./animated-button";
 
 export function Works() {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
   return (
-    <section id="works" className="py-24 bg-background">
+    <section id="works" className="py-24 bg-background relative">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
-            <h2 className="text-5xl md:text-7xl font-bold leading-none">
-              Selected <span className="text-primary italic">Works</span>
+            <h2 className="text-5xl md:text-7xl leading-none">
+              People we loved <br />
+              <span className="text-primary italic">working with</span>
             </h2>
             <p className="text-muted-foreground max-w-md font-sans text-lg">
               A curated collection of our most challenging and impactful digital
@@ -34,59 +29,66 @@ export function Works() {
           </AnimatedButton>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((work, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Link to={`/case-study/${work.id}`} className="block">
-                <Card className="group overflow-hidden border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 rounded-3xl">
-                  <CardHeader className="p-0">
-                    <div className="relative aspect-[16/10] overflow-hidden">
-                      <img
-                        src={work.image}
-                        alt={work.title}
-                        className="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out opacity-80 group-hover:opacity-100"
-                      />
-                      <div className="absolute top-4 right-4 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <div className="bg-background/90 p-2 rounded-full backdrop-blur-md border border-border">
-                          <ArrowUpRight className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary/60">
-                        {work.category}
-                      </span>
-                    </div>
-                    <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">
+        <div className="relative w-full flex flex-col gap-0 border-t border-border/50 group/list">
+          {/* List of works */}
+          <div className="w-full flex flex-col">
+            {caseStudies.map((work, idx) => {
+              const isActive = hoveredIdx === idx;
+              return (
+                <div
+                  key={work.id}
+                  className="border-b border-border/50 relative transition-colors"
+                  style={{ zIndex: isActive ? 50 : 10 }}
+                  // onMouseEnter={() => setHoveredIdx(idx)}
+                  // onMouseLeave={() => setHoveredIdx(null)}
+                  onMouseOver={() => setHoveredIdx(idx)}
+                  onMouseOut={() => setHoveredIdx(null)}
+                >
+                  <Link
+                    to={`/case-study/${work.id}`}
+                    className="flex justify-between items-center py-6 md:py-8 lg:py-10 group/item"
+                  >
+                    <motion.h3
+                      className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${isActive ? "text-primary" : "text-muted-foreground/40"
+                        } text-left md:pl-8 pr-4 flex-1`}
+                    >
                       {work.title}
-                    </CardTitle>
-                    <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                      {work.description}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="px-6 pb-6 pt-0 flex flex-wrap gap-2">
-                    {work.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="secondary"
-                        className="bg-muted/50 text-[10px] font-bold tracking-wider uppercase border-none"
+                    </motion.h3>
+
+                    {/* Mobile Image (Always visible on mobile) */}
+                    <div className="md:hidden w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50">
+                      <img
+                        src={work.screenshots[0].url}
+                        alt={work.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
+
+                  {/* Desktop Hover Image (Curtain Reveal) */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 250 }}
+                        exit={{ opacity: 0, height: 0, transition: { duration: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+                        transition={{ duration: .7, ease: [0.16, 1, 0.3, 1] }}
+                        className="hidden md:flex absolute top-0 right-0 pr-8 lg:pr-16 pointer-events-none origin-top overflow-hidden z-[100]"
                       >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </CardFooter>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
+                        <div className="w-[250px] h-[250px] overflow-hidden relative">
+                          <img
+                            src={work.screenshots[0].url}
+                            alt={work.screenshots[0].caption}
+                            className="absolute top-0 left-0 w-full h-full object-cover bg-background border border-border/50 pointer-events-none"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-12 flex md:hidden justify-center">
