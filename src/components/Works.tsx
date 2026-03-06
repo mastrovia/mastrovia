@@ -47,12 +47,12 @@ export function Works() {
                 >
                   <Link
                     to={`/case-study/${work.id}`}
-                    className="flex justify-between items-center py-6 md:py-8 lg:py-10 group/item"
+                    className="flex justify-between items-center py-3 md:py-4 lg:py-6 group/item"
                   >
                     <div className="flex flex-col gap-2 flex-1 md:pl-8">
                       <div className="flex items-center gap-4">
                         <motion.h3
-                          className={`text-xl sm:text-2xl md:text-3xl transition-all duration-100 text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
+                          className={`text-xl sm:text-2xl md:text-3xl transition-all text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
                             } text-left`}
                         >
                           {work.title}
@@ -61,7 +61,7 @@ export function Works() {
                           className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isActive ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
                         />
                       </div>
-                      <p className={`text-[10px] sm:text-xs font-sans capitalize tracking-wide transition-colors duration-100 
+                      <p className={`text-[10px] sm:text-xs font-sans capitalize tracking-wide transition-colors 
                         text-primary/80 md:text-muted-foreground/40 
                         ${isActive ? "md:text-primary/80" : ""}`}>
                         {work.category}
@@ -83,12 +83,12 @@ export function Works() {
                     {isActive && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 250 }}
+                        animate={{ opacity: 1, height: 200 }}
                         exit={{ opacity: 0, height: 0, transition: { duration: 0.1, ease: [0.16, 1, 0.3, 1] } }}
-                        transition={{ duration: .2, ease: "easeInOut" }}
+                        transition={{ duration: .7, ease: [0.26, 1, 0.3, 1] }}
                         className="hidden md:flex absolute top-0 right-0 pr-8 lg:pr-16 pointer-events-none origin-top overflow-hidden z-[100]"
                       >
-                        <div className="w-[350px] h-[250px] overflow-hidden relative">
+                        <div className="w-[350px] h-[200px] overflow-hidden relative">
                           <img
                             src={work.screenshots[0].url}
                             alt={work.screenshots[0].caption}
