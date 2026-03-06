@@ -45,21 +45,21 @@ export default function HomePage() {
         {/* Animated Gradient Glow Backgrounds */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           {/* Left Middle Glow */}
-          <div className="absolute -left-[20%] top-[30%] w-[60vw] h-[60vw] sm:w-[50vw] sm:h-[50vw] opacity-40 dark:opacity-[0.08]">
+          <div className="absolute -left-[30%] top-[20%] w-[80vw] h-[80vw] min-w-[350px] min-h-[350px] sm:-left-[20%] sm:top-[30%] sm:w-[50vw] sm:h-[50vw] opacity-20 dark:opacity-[0.15]">
             <motion.div
-              initial={{ opacity: 0, filter: "blur(200px)", scale: 0.8 }}
-              animate={{ opacity: 1, filter: "blur(140px)", scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen"
+              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen blur-[80px] sm:blur-[120px] md:blur-[140px]"
             />
           </div>
           {/* Top Right Glow */}
-          <div className="absolute -right-[10%] -top-[20%] w-[55vw] h-[55vw] sm:w-[45vw] sm:h-[45vw] opacity-30 dark:opacity-[0.06]">
+          <div className="absolute -right-[20%] -top-[10%] w-[70vw] h-[70vw] min-w-[300px] min-h-[300px] sm:-right-[10%] sm:-top-[20%] sm:w-[45vw] sm:h-[45vw] opacity-20 dark:opacity-[0.12]">
             <motion.div
-              initial={{ opacity: 0, filter: "blur(200px)", scale: 0.8 }}
-              animate={{ opacity: 1, filter: "blur(140px)", scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen"
+              className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen blur-[80px] sm:blur-[120px] md:blur-[140px]"
             />
           </div>
         </div>
