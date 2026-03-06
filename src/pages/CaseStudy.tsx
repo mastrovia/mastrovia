@@ -118,7 +118,7 @@ export default function CaseStudyPage() {
                 >
                   <AnimatedButton
                     variant="outline"
-                    className="gap-2 rounded-full"
+                    className="gap-2 rounded-full flex items-center"
                   >
                     Visit Live Site
                     <ExternalLink className="w-4 h-4" />
