@@ -38,7 +38,7 @@ export function Testimonials() {
                     <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
                         Client <span className="text-primary italic">Voices</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-xl mx-auto font-sans">
+                    <p className="text-muted-foreground max-w-xl mx-auto text-lg">
                         Don't just take our word for it. Here is what leading industry experts have
                         to say about working with Mastrovia.
                     </p>
@@ -53,13 +53,13 @@ export function Testimonials() {
                             transition={{ delay: idx * 0.15 }}
                             viewport={{ once: true }}
                         >
-                            <Card className="h-full border-border/40 bg-background/50 backdrop-blur-md p-8 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between">
+                            <Card className="h-full border-border/40 bg-background/50 backdrop-blur-md p-8 rounded-[2rem] hover:shadow-lg hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between">
                                 <CardContent className="p-0 space-y-8">
                                     <div className="bg-primary/10 w-12 h-12 rounded-2xl flex items-center justify-center">
                                         <Quote className="w-6 h-6 text-primary fill-primary/20" />
                                     </div>
 
-                                    <p className="text-lg font-medium leading-[1.6] italic opacity-90 font-sans">
+                                    <p className="text-lg leading-[1.6] italic opacity-90 font-sans">
                                         "{testimonial.content}"
                                     </p>
 

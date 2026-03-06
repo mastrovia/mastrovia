@@ -4,6 +4,7 @@ import ContactPage from "./Contact";
 import { Code2, Rocket, Palette } from "lucide-react";
 import { Works } from "../components/Works";
 import { Testimonials } from "../components/Testimonials";
+import { FAQ } from "../components/FAQ";
 
 const services = [
   {
@@ -177,6 +178,7 @@ export default function HomePage() {
 
       <Works />
       <Testimonials />
+      <FAQ />
 
       {/* Pricing Section */}
       {/* <section id="pricing" className="py-24 sm:py-32 relative">

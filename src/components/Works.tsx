@@ -21,7 +21,7 @@ export function Works() {
             <h2 className="text-5xl md:text-7xl font-bold leading-none">
               Selected <span className="text-primary italic">Works</span>
             </h2>
-            <p className="text-muted-foreground max-w-md font-sans">
+            <p className="text-muted-foreground max-w-md font-sans text-lg">
               A curated collection of our most challenging and impactful digital
               projects.
             </p>
