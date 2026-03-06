@@ -42,7 +42,7 @@ export default function Navbar() {
     <motion.nav
       animate={{ top: marqueeHidden ? 0 : 32 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="z-50 w-full fixed bg-background/80 backdrop-blur-xl border-b border-border">
+      className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto max-w-7xl flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
