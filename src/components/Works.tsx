@@ -27,12 +27,12 @@ export function Works() {
               projects.
             </p>
           </div>
-          <AnimatedButton
+          {/* <AnimatedButton
             variant="outline"
             className="rounded-full hidden md:flex"
           >
             View All Projects
-          </AnimatedButton>
+          </AnimatedButton> */}
         </div>
 
         <div className="relative w-full flex flex-col gap-0 border-t border-border/50 group/list">
@@ -109,11 +109,11 @@ export function Works() {
           </div>
         </div>
 
-        <div className="mt-12 flex md:hidden justify-center">
+        {/* <div className="mt-12 flex md:hidden justify-center">
           <AnimatedButton variant="outline" className="w-full py-6">
             View All Projects
           </AnimatedButton>
-        </div>
+        </div> */}
       </div>
     </section>
   );
