@@ -469,14 +469,14 @@ export default function CaseStudyPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link to="/#contact">
-                  <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-wider rounded-2xl">
+                  <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-wider">
                     Start a Project
                   </AnimatedButton>
                 </Link>
                 <Link to="/#works">
                   <AnimatedButton
                     variant="outline"
-                    className="px-12 py-7 text-sm font-bold uppercase tracking-wider rounded-2xl"
+                    className="px-12 py-7 text-sm font-bold uppercase tracking-wider"
                   >
                     View More Work
                   </AnimatedButton>

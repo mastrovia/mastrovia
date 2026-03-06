@@ -94,14 +94,14 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <AnimatedButton className="px-12 py-7 text-sm font-bold rounded-2xl w-full">
+              <AnimatedButton className="font-bold w-full">
                 Get Started
               </AnimatedButton>
             </a>
             <a href="/cost-estimate" className="w-full sm:w-auto">
               <AnimatedButton
                 variant="outline"
-                className="px-12 py-7 text-sm font-bold rounded-2xl w-full"
+                className="font-bold w-full"
               >
                 Estimate Cost
               </AnimatedButton>

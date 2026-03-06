@@ -1,6 +1,7 @@
 import { motion, MotionProps } from "motion/react";
 import { ButtonHTMLAttributes, FC, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type CustomProps = {
   invertMode?: boolean;
@@ -18,6 +19,7 @@ const Button: FC<ButtonProps> = ({
   invertMode,
   variant = "default",
   noArrow,
+  className,
   ...props
 }) => {
   const isOutline = variant === "outline";
@@ -37,38 +39,17 @@ const Button: FC<ButtonProps> = ({
       }}
       whileTap={{ ...(disabled ? {} : { scale: 0.95 }) }}
       transition={{ duration: 0.15 }}
-      style={{
-        padding: noArrow ? "12px 24px" : "12px 32px 12px 24px",
-        fontWeight: "bold",
-        userSelect: "none",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "0px",
-        overflow: "hidden",
-        position: "relative",
-        backgroundColor: disabled
-          ? "hsl(var(--foreground) / 0.6)"
-          : isOutline
-            ? "transparent"
-            : invertMode
-              ? "hsl(var(--background))"
-              : "hsl(var(--foreground))",
-        color: isOutline
-          ? "hsl(var(--foreground))"
-          : !invertMode
-            ? "hsl(var(--background))"
-            : "hsl(var(--foreground))",
-        border: `1px solid ${disabled
-          ? "hsl(var(--foreground) / 0.2)"
-          : isOutline
-            ? "hsl(var(--foreground))"
-            : invertMode
-              ? "hsl(var(--background))"
-              : "hsl(var(--foreground))"
-          }`,
-        ...props?.style,
-      }}
+      className={cn(
+        "inline-flex items-center justify-center relative overflow-hidden rounded-full font-bold select-none border",
+        noArrow ? "px-6 py-3" : "pl-6 pr-8 py-3",
+        isOutline
+          ? "bg-transparent text-foreground border-foreground"
+          : invertMode
+            ? "bg-background text-foreground border-background"
+            : "bg-foreground text-background border-foreground",
+        disabled && "opacity-60 cursor-not-allowed",
+        className
+      )}
     >
       {noArrow ? (
         children
@@ -77,7 +58,7 @@ const Button: FC<ButtonProps> = ({
           <motion.span
             animate={{ x: isHovered && !disabled ? -6 : 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            style={{ display: "inline-flex", alignItems: "center" }}
+            className="inline-flex items-center"
           >
             {children}
           </motion.span>
@@ -88,12 +69,7 @@ const Button: FC<ButtonProps> = ({
               x: isHovered && !disabled ? 0 : -6,
             }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              position: "absolute",
-              right: "10px",
-            }}
+            className="inline-flex items-center absolute right-2.5"
           >
             <ArrowRight size={16} strokeWidth={2.5} />
           </motion.span>
@@ -104,4 +80,5 @@ const Button: FC<ButtonProps> = ({
 };
 
 export default Button;
+
 
