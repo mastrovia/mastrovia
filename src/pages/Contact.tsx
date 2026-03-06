@@ -86,9 +86,9 @@ export default function ContactPage() {
           className="space-y-12"
         >
           <div className="space-y-6">
-            <h2 className="text-5xl sm:text-7xl font-bold alumni-sans uppercase italic leading-none tracking-tight">
+            <h2 className="text-5xl sm:text-7xl font-bold tracking-tight">
               Ready to create <br />
-              <span className="text-primary">something great?</span>
+              <span className="text-primary italic">something great?</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-md font-sans leading-relaxed">
               Whether you have a specific project in mind or just want to

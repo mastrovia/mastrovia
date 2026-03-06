@@ -48,7 +48,7 @@ export default function HomePage() {
 
         <div className="container relative z-10 mx-auto text-center max-w-5xl">
           {/* Availability Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -58,7 +58,7 @@ export default function HomePage() {
             <span className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground">
               Available for Q1 {new Date().getFullYear()}
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Minimal Professional Heading */}
           <motion.div
@@ -185,8 +185,8 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 sm:mb-24 space-y-4">
-            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans uppercase italic">
-              Transparent <span className="text-primary">Pricing</span>
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight">
+              Transparent <span className="text-primary italic">Pricing</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto font-sans text-sm sm:text-base px-4">
               Premium quality shouldn't have hidden layers. We believe in direct
@@ -210,8 +210,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className="flex flex-col gap-6">
-              <h2 className="text-4xl sm:text-5xl font-bold alumni-sans tracking-tight">
-                MASTROVIA
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                Mastrovia
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground max-w-sm leading-relaxed">
                 Empowering visionary brands with exceptional digital

@@ -53,7 +53,7 @@ export default function Navbar() {
             alt="Mastrovia Logo"
             className="w-10 sm:w-12 transition-transform duration-300 invert dark:invert-0"
           />
-          <span className="hidden sm:inline alumni-sans text-4xl sm:text-5xl font-extrabold tracking-tighter">
+          <span className="hidden sm:inline text-2xl sm:text-3xl font-bold tracking-tight">
             Mastrovia
           </span>
         </div>
@@ -99,7 +99,7 @@ export default function Navbar() {
                 >
                   <div className="flex flex-col h-full">
                     <SheetHeader className="p-8 border-b border-border">
-                      <SheetTitle className="text-left alumni-sans text-4xl font-extrabold tracking-tighter uppercase italic">
+                      <SheetTitle className="text-left text-2xl font-bold tracking-tight">
                         Navigation
                       </SheetTitle>
                     </SheetHeader>
@@ -108,7 +108,7 @@ export default function Navbar() {
                         <a
                           key={link.name}
                           href={link.href}
-                          className="text-4xl font-extrabold alumni-sans uppercase hover:text-primary transition-all duration-300 translate-x-0 hover:translate-x-2"
+                          className="text-3xl font-bold tracking-tight hover:text-primary transition-all duration-300 translate-x-0 hover:translate-x-2"
                           style={{ transitionDelay: `${idx * 50}ms` }}
                           onClick={() => setIsOpen(false)}
                         >
@@ -117,7 +117,7 @@ export default function Navbar() {
                       ))}
                       <a
                         href="/cost-estimate"
-                        className="text-4xl font-extrabold alumni-sans uppercase text-primary hover:translate-x-2 transition-all duration-300"
+                        className="text-3xl font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
                         style={{ transitionDelay: `${navLinks.length * 50}ms` }}
                         onClick={() => setIsOpen(false)}
                       >

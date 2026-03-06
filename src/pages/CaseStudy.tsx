@@ -77,7 +77,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold alumni-sans uppercase mb-6 leading-none"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-none"
             >
               {caseStudy.title}
             </motion.h1>
@@ -157,7 +157,7 @@ export default function CaseStudyPage() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold alumni-sans uppercase">
+                <h2 className="text-3xl font-bold tracking-tight">
                   Overview
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -172,7 +172,7 @@ export default function CaseStudyPage() {
                 transition={{ delay: 0.1 }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold alumni-sans uppercase">
+                <h2 className="text-3xl font-bold tracking-tight">
                   Challenge
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -187,7 +187,7 @@ export default function CaseStudyPage() {
                 transition={{ delay: 0.2 }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold alumni-sans uppercase">
+                <h2 className="text-3xl font-bold tracking-tight">
                   Solution
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -205,7 +205,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold alumni-sans uppercase mb-12"
+              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
             >
               Key Results
             </motion.h2>
@@ -238,7 +238,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold alumni-sans uppercase mb-12"
+              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
             >
               Features & Capabilities
             </motion.h2>
@@ -267,7 +267,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold alumni-sans uppercase mb-12"
+              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
             >
               Technology Stack
             </motion.h2>
@@ -386,7 +386,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold alumni-sans uppercase mb-12"
+              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
             >
               Project Screenshots
             </motion.h2>
@@ -460,7 +460,7 @@ export default function CaseStudyPage() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold alumni-sans uppercase">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                 Ready to Start Your Project?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
