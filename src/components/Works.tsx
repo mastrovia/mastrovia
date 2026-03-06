@@ -51,13 +51,13 @@ export function Works() {
                   >
                     <div className="flex items-center gap-4 flex-1">
                       <motion.h3
-                        className={`text-xl sm:text-2xl md:text-3xl transition-colors duration-300 ${isActive ? "text-primary underline underline-offset-8" : "text-muted-foreground/40"
+                        className={`text-xl sm:text-2xl md:text-3xl transition-all duration-300 text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
                           } text-left md:pl-8`}
                       >
                         {work.title}
                       </motion.h3>
                       <ArrowUpRight
-                        className={`w-6 h-6 transition-all duration-300 ${isActive ? "text-primary opacity-100 translate-x-0" : "text-muted-foreground/20 opacity-0 -translate-x-2"}`}
+                        className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isActive ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
                       />
                     </div>
 
