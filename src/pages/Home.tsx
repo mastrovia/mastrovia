@@ -129,11 +129,11 @@ export default function HomePage() {
         className="py-20 sm:py-32 bg-muted/20 border-t textured-surface"
       >
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none">
-              Our Professional <br /> Services
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
+              Our Professional <br /> <span className="text-primary italic">Services</span>
             </h2>
-            <p className="text-muted-foreground max-w-xs text-sm sm:text-base font-sans leading-relaxed">
+            <p className="text-muted-foreground max-w-xl mx-auto font-sans">
               We provide end-to-end digital solutions from strategy and design
               to deployment and long-term scaling.
             </p>

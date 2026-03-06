@@ -35,7 +35,7 @@ export function Testimonials() {
 
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-5xl md:text-7xl font-bold alumni-sans uppercase tracking-tight">
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
                         Client <span className="text-primary italic">Voices</span>
                     </h2>
                     <p className="text-muted-foreground max-w-xl mx-auto font-sans">

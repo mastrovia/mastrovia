@@ -18,8 +18,8 @@ export function Works() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
-            <h2 className="text-5xl md:text-7xl font-bold alumni-sans uppercase leading-none">
-              Selected <br /> Works
+            <h2 className="text-5xl md:text-7xl font-bold leading-none">
+              Selected <span className="text-primary italic">Works</span>
             </h2>
             <p className="text-muted-foreground max-w-md font-sans">
               A curated collection of our most challenging and impactful digital
