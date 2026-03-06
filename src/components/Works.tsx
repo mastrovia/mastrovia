@@ -87,7 +87,7 @@ export function Works() {
                         animate={{ opacity: 1, height: 200 }}
                         exit={{ opacity: 0, height: 0, transition: { duration: 0.1, ease: [0.16, 1, 0.3, 1] } }}
                         transition={{ duration: .7, ease: [0.26, 1, 0.3, 1] }}
-                        className="hidden md:flex absolute top-0 right-0 pr-8 lg:pr-16 pointer-events-none origin-top overflow-hidden z-[100]"
+                        className="hidden md:flex absolute top-0 right-8 lg:right-16 w-[350px] pointer-events-none origin-top overflow-hidden z-[100] border-b dark:border-none dark:shadow-none shadow-sm"
                       >
                         <div className="w-[350px] h-[200px] overflow-hidden relative">
                           <img
