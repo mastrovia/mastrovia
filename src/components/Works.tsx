@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
 import AnimatedButton from "./animated-button";
@@ -48,15 +49,20 @@ export function Works() {
                     to={`/case-study/${work.id}`}
                     className="flex justify-between items-center py-6 md:py-8 lg:py-10 group/item"
                   >
-                    <motion.h3
-                      className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${isActive ? "text-primary" : "text-muted-foreground/40"
-                        } text-left md:pl-8 pr-4 flex-1`}
-                    >
-                      {work.title}
-                    </motion.h3>
+                    <div className="flex items-center gap-4 flex-1">
+                      <motion.h3
+                        className={`text-xl sm:text-2xl md:text-3xl transition-colors duration-300 ${isActive ? "text-primary underline underline-offset-8" : "text-muted-foreground/40"
+                          } text-left md:pl-8`}
+                      >
+                        {work.title}
+                      </motion.h3>
+                      <ArrowUpRight
+                        className={`w-6 h-6 transition-all duration-300 ${isActive ? "text-primary opacity-100 translate-x-0" : "text-muted-foreground/20 opacity-0 -translate-x-2"}`}
+                      />
+                    </div>
 
                     {/* Mobile Image (Always visible on mobile) */}
-                    <div className="md:hidden w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50">
+                    <div className="md:hidden w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50 ml-4">
                       <img
                         src={work.screenshots[0].url}
                         alt={work.title}
@@ -72,10 +78,10 @@ export function Works() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 250 }}
                         exit={{ opacity: 0, height: 0, transition: { duration: 0.1, ease: [0.16, 1, 0.3, 1] } }}
-                        transition={{ duration: .7, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: .2, ease: "easeInOut" }}
                         className="hidden md:flex absolute top-0 right-0 pr-8 lg:pr-16 pointer-events-none origin-top overflow-hidden z-[100]"
                       >
-                        <div className="w-[250px] h-[250px] overflow-hidden relative">
+                        <div className="w-[350px] h-[250px] overflow-hidden relative">
                           <img
                             src={work.screenshots[0].url}
                             alt={work.screenshots[0].caption}
