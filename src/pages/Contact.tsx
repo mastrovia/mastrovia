@@ -256,6 +256,7 @@ export default function ContactPage() {
               </div>
 
               <AnimatedButton
+                noArrow
                 disabled={submitDataLoading}
                 className="w-full h-16 text-base font-bold uppercase tracking-[0.2em] rounded-2xl group flex items-center justify-center gap-3 overflow-hidden"
               >

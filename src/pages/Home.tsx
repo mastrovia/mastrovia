@@ -126,11 +126,11 @@ export default function HomePage() {
       {/* Services Section */}
       <section
         id="services"
-        className="py-20 sm:py-32 bg-muted/20 textured-surface"
+        className="py-20 sm:py-32 bg-muted/20 border-t textured-surface"
       >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans uppercase leading-none italic">
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold alumni-sans leading-none italic">
               Our Professional <br /> Services
             </h2>
             <p className="text-muted-foreground max-w-xs text-sm sm:text-base font-sans leading-relaxed">
