@@ -39,7 +39,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <HelmetProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="mastrovia-theme">
+      <ThemeProvider defaultTheme="light" storageKey="mastrovia-theme">
         <RouterProvider router={router} />
         <Toaster position="top-center" richColors />
       </ThemeProvider>
