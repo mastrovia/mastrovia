@@ -95,6 +95,7 @@ export default function Navbar() {
                 <SheetContent
                   side="right"
                   className="w-[85%] sm:w-[350px] bg-background border-l border-border p-0"
+                  style={{ top: marqueeHidden ? 0 : 32, transition: "top 0.3s ease-out" }}
                 >
                   <div className="flex flex-col h-full">
                     <SheetHeader className="p-8 border-b border-border">

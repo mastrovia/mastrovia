@@ -17,7 +17,7 @@ export default function Layout() {
       <SEO />
       <TopMarquee />
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-20 sm:pt-24">
         <Outlet />
       </main>
 
