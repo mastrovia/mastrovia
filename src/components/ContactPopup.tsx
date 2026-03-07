@@ -61,7 +61,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-20 md:pt-0">
+            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-auto md:max-h-[calc(100vh-8rem)] md:my-12 lg:mt-24 md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col pt-20 md:pt-0">
 
 
 
@@ -149,7 +149,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                             }}
                             className="space-y-5 md:space-y-6"
                         >
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
                                 <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Your Name
@@ -184,7 +184,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-3 sm:gap-4">
                                 <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Phone (Optional)
