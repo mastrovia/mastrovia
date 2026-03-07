@@ -7,6 +7,7 @@ import { caseStudies } from "@/data/caseStudies";
 
 export function Works() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [isSectionHovered, setIsSectionHovered] = useState(false);
 
   return (
     <section id="works" className="py-24 bg-background relative">
@@ -35,20 +36,26 @@ export function Works() {
           </AnimatedButton> */}
         </div>
 
-        <div className="relative w-full flex flex-col gap-0 border-t border-border/50 group/list">
+        <div
+          className="relative w-full flex flex-col gap-0 border-t border-border/50 group/list"
+          onMouseEnter={() => setIsSectionHovered(true)}
+          onMouseLeave={() => {
+            setIsSectionHovered(false);
+            setHoveredIdx(null);
+          }}
+        >
           {/* List of works */}
           <div className="w-full flex flex-col">
             {caseStudies.map((work, idx) => {
-              const isActive = hoveredIdx === idx;
+              const isHovered = hoveredIdx === idx;
+              const isActive = !isSectionHovered || isHovered;
               return (
                 <div
                   key={work.id}
                   className="border-b border-border/50 relative transition-colors"
-                  style={{ zIndex: isActive ? 50 : 10 }}
-                  // onMouseEnter={() => setHoveredIdx(idx)}
-                  // onMouseLeave={() => setHoveredIdx(null)}
-                  onMouseOver={() => setHoveredIdx(idx)}
-                  onMouseOut={() => setHoveredIdx(null)}
+                  style={{ zIndex: isHovered ? 50 : 10 }}
+                  onMouseEnter={() => setHoveredIdx(idx)}
+                  onMouseLeave={() => setHoveredIdx(null)}
                 >
                   <Link
                     to={`/case-study/${work.id}`}
@@ -57,16 +64,16 @@ export function Works() {
                     <div className="flex flex-col gap-2 flex-1 md:pl-8">
                       <div className="flex items-center gap-4">
                         <motion.h3
-                          className={`text-xl sm:text-2xl md:text-3xl transition-all text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
+                          className={`text-xl sm:text-2xl md:text-3xl transition-all text-foreground font-light underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
                             } text-left`}
                         >
                           {work.title}
                         </motion.h3>
                         <ArrowUpRight
-                          className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isActive ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
+                          className={`w-6 h-6 transition-all duration-300 text-foreground opacity-100 translate-x-0 md:opacity-0 md:-translate-x-2 md:text-muted-foreground/20 ${isHovered ? "md:text-primary md:opacity-100 md:translate-x-0" : ""}`}
                         />
                       </div>
-                      <p className={`text-[10px] sm:text-xs font-sans capitalize tracking-wide transition-colors 
+                      <p className={`text-[10px] sm:text-xs capitalize tracking-wide transition-colors 
                         text-primary/80 md:text-muted-foreground/40 
                         ${isActive ? "md:text-primary/80" : ""}`}>
                         {work.category}
@@ -85,7 +92,7 @@ export function Works() {
 
                   {/* Desktop Hover Image (Curtain Reveal) */}
                   <AnimatePresence>
-                    {isActive && (
+                    {isHovered && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 200 }}
