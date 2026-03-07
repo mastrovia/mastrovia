@@ -61,15 +61,15 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-auto md:max-h-[calc(100vh-8rem)] md:my-12 xl:mt-24 md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto md:overflow-hidden overflow-x-hidden flex flex-col pt-20 md:pt-0">
+            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-auto md:max-h-[calc(100vh-8rem)] md:my-12 md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto md:overflow-hidden overflow-x-hidden flex flex-col pt-20 md:pt-0">
 
 
 
                 {/* <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/5 rotate-45 translate-x-8 -translate-y-8 md:translate-x-16 md:-translate-y-16 pointer-events-none" /> */}
 
-                <div className="grid grid-cols-1 md:grid-cols-5 flex-1 md:h-full">
+                <div className="grid grid-cols-1 md:grid-cols-5 flex-1 md:h-full md:min-h-0">
                     {/* Left Column: Info */}
-                    <div className="p-6 sm:p-8 md:p-12 md:col-span-2 bg-muted/20 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between h-full relative z-10">
+                    <div className="p-6 sm:p-8 md:p-12 md:col-span-2 bg-muted/20 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between h-full md:h-full relative z-10 md:overflow-y-auto">
                         <div>
                             <div className="flex justify-between items-start gap-4">
                                 <DialogHeader className="mb-6">
@@ -91,19 +91,19 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 </button>
                             </div>
 
-                            <div className="space-y-6 mt-8 md:mt-10 hidden md:block">
+                            <div className="space-y-4 mt-8 md:mt-10 hidden md:block">
                                 {contactInfo.map((item, idx) => (
-                                    <div key={idx} className="flex items-start gap-5 group">
-                                        <div className="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                                            <item.icon className="w-6 h-6" />
+                                    <div key={idx} className="flex items-start gap-4 group">
+                                        <div className="bg-primary/5 p-3 rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                                            <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
                                         </div>
                                         <div>
-                                            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-muted-foreground mb-1">
+                                            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
                                                 {item.label}
                                             </p>
                                             <a
                                                 href={item.href}
-                                                className="text-lg font-sans tracking-tight hover:text-primary transition-colors"
+                                                className="text-base font-sans tracking-tight hover:text-primary transition-colors"
                                             >
                                                 {item.value}
                                             </a>
