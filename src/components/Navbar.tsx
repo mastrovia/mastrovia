@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModeToggle } from "./mode-toggle";
-import { Menu } from "lucide-react";
+import { Menu, Github, Instagram, Mail } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -132,15 +132,21 @@ export default function Navbar() {
                         Socials
                       </p>
                       <div className="flex gap-4">
-                        <span className="text-sm">
-                          Twitter
-                        </span>
-                        <span className="text-sm">
-                          Linkedln
-                        </span>
-                        <span className="text-sm">
-                          Behance
-                        </span>
+                        {[
+                          { icon: Github, href: "https://github.com/mastrovia" },
+                          { icon: Instagram, href: "https://instagram.com/mastrovia.dev" },
+                          { icon: Mail, href: "mailto:hello@mastrovia.com" },
+                        ].map((social, idx) => (
+                          <a
+                            key={idx}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300"
+                          >
+                            <social.icon className="w-5 h-5" />
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
