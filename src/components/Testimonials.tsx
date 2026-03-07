@@ -30,12 +30,12 @@ const testimonials = [
 const repeatedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-    <div className="flex-none w-[350px] sm:w-[450px] bg-card/40 backdrop-blur-sm border border-border/50 p-8 rounded-[2rem] flex flex-col gap-6 group hover:border-primary/30 transition-all duration-300">
+    <div className="flex-none w-[300px] sm:w-[450px] bg-card/40 backdrop-blur-sm border border-border/50 p-6 sm:p-8 rounded-[2rem] flex flex-col gap-6 group hover:border-primary/30 transition-all duration-300">
         <div className="bg-primary/10 w-12 h-12 rounded-2xl flex items-center justify-center">
             <Quote className="w-6 h-6 text-primary fill-primary/20" />
         </div>
 
-        <p className="text-lg leading-relaxed text-foreground/90 font-sans tracking-tight italic">
+        <p className="text-base sm:text-lg leading-relaxed text-foreground/90 font-sans tracking-tight italic">
             "{testimonial.content}"
         </p>
 
@@ -84,8 +84,8 @@ export function Testimonials() {
             {/* <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" /> */}
 
             <div className="container mx-auto px-8 max-w-7xl relative z-10 mb-16">
-                <div className="text-center">
-                    <h2 className="text-5xl md:text-6xl tracking-tight mb-4 leading-tight">
+                <div className="md:text-center">
+                    <h2 className="text-4xl md:text-6xl tracking-tight mb-4 leading-tight">
                         Words of praise from others <br />
                         <span className="text-foreground/60 italic">about our presence.</span>
                     </h2>
