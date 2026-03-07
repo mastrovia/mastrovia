@@ -41,6 +41,28 @@ export default function CaseStudyPage() {
         <section className="relative pt-32 pb-20 px-4 overflow-hidden textured-surface">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
+          {/* Animated Gradient Glow Backgrounds */}
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            {/* Left Middle Glow */}
+            <div className="absolute -left-[30%] top-[20%] w-[80vw] h-[80vw] min-w-[350px] min-h-[350px] sm:-left-[20%] sm:top-[30%] sm:w-[50vw] sm:h-[50vw] opacity-20 dark:opacity-[0.15]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen blur-[80px] sm:blur-[120px] md:blur-[140px]"
+              />
+            </div>
+            {/* Top Right Glow */}
+            <div className="absolute -right-[20%] -top-[10%] w-[70vw] h-[70vw] min-w-[300px] min-h-[300px] sm:-right-[10%] sm:-top-[20%] sm:w-[45vw] sm:h-[45vw] opacity-20 dark:opacity-[0.12]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                className="w-full h-full rounded-full bg-[#E1FF00] mix-blend-multiply dark:mix-blend-screen blur-[80px] sm:blur-[120px] md:blur-[140px]"
+              />
+            </div>
+          </div>
+
           <div className="container mx-auto max-w-6xl relative z-10">
             {/* Back Button */}
             <Link to="/#works">
@@ -130,14 +152,14 @@ export default function CaseStudyPage() {
         </section>
 
         {/* Hero Image */}
-        <section className="px-4 pb-20">
+        <section className="px-4 pt-12 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
             className="container mx-auto max-w-6xl"
           >
-            <div className="relative aspect-video rounded-3xl overflow-hidden border border-border shadow-2xl shadow-primary/10">
+            <div className="relative aspect-video rounded-none overflow-hidden border border-border shadow-2xl shadow-primary/10">
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
