@@ -61,7 +61,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-auto md:max-h-[calc(100vh-8rem)] md:my-12 lg:mt-24 md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col pt-20 md:pt-0">
+            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-auto md:max-h-[calc(100vh-8rem)] md:my-12 xl:mt-24 md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto md:overflow-hidden overflow-x-hidden flex flex-col pt-20 md:pt-0">
 
 
 
@@ -131,7 +131,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                         </div>
                     </div>
 
-                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 flex flex-col justify-center">
+                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 flex flex-col justify-center md:h-full md:overflow-y-auto">
                         {/* Desktop Close Button Wrapper */}
                         <div className="hidden md:flex justify-end w-full mb-8">
                             <button
