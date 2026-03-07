@@ -38,7 +38,7 @@ export default function CaseStudyPage() {
         className="min-h-screen bg-background"
       >
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 overflow-hidden textured-surface">
+        <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 px-4 overflow-hidden textured-surface">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
           {/* Animated Gradient Glow Backgrounds */}
@@ -99,7 +99,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] mb-6 leading-none"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] mb-6 leading-none"
             >
               {caseStudy.title}
             </motion.h1>
