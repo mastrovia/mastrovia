@@ -63,7 +63,7 @@ export default function CaseStudyPage() {
             </div>
           </div>
 
-          <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="container mx-auto max-w-6xl relative z-20">
             {/* Back Button */}
             <Link to="/#works">
               <motion.div

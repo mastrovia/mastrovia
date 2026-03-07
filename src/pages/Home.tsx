@@ -70,7 +70,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="container relative z-10 mx-auto text-center max-w-5xl">
+        <div className="container relative z-20 mx-auto text-center max-w-5xl">
           {/* Availability Badge */}
           {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -134,18 +134,7 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        {/* Minimal Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
-            Scroll
-          </span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent" />
-        </motion.div>
+        {/* Minimal Scroll Indicator removed based on user request */}
 
         {/* Bottom Fade Gradient for smooth transition */}
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
