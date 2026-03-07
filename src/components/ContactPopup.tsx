@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Mail, Github, Instagram } from "lucide-react";
+import { Send, Mail, Github, Instagram, X } from "lucide-react";
 import { toast } from "sonner";
 import AnimatedButton from "./animated-button";
 import {
@@ -62,13 +62,22 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
             <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-12 md:pt-0">
+
+                <button
+                    onClick={() => setOpen(false)}
+                    className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-2 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
+                    aria-label="Close"
+                >
+                    <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                </button>
+
                 {/* <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/5 rotate-45 translate-x-8 -translate-y-8 md:translate-x-16 md:-translate-y-16 pointer-events-none" /> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-5 flex-1 md:h-full">
                     {/* Left Column: Info */}
                     <div className="p-6 sm:p-8 md:p-12 md:col-span-2 bg-muted/20 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between h-full relative z-10">
                         <div>
-                            <DialogHeader className="mb-8">
+                            <DialogHeader className="mb-6">
                                 <DialogTitle className="text-3xl sm:text-4xl tracking-tight text-left font-normal">
                                     Let's Build something <span className="text-primary italic">amazing</span>
                                 </DialogTitle>
@@ -77,7 +86,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 </DialogDescription>
                             </DialogHeader>
 
-                            <div className="space-y-8 mt-8 md:mt-12 hidden md:block">
+                            <div className="space-y-6 mt-8 md:mt-10 hidden md:block">
                                 {contactInfo.map((item, idx) => (
                                     <div key={idx} className="flex items-start gap-5 group">
                                         <div className="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
@@ -124,30 +133,30 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 e.preventDefault();
                                 submitData();
                             }}
-                            className="space-y-6 md:space-y-8"
+                            className="space-y-5 md:space-y-6"
                         >
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="space-y-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Your Name
                                     </label>
                                     <Input
                                         disabled={submitDataLoading}
-                                        className="h-12 sm:h-14 font-sans tracking-tight bg-muted/30 border-secondary rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm sm:text-base px-5"
+                                        className="h-11 sm:h-12 font-sans tracking-tight bg-muted/30 border-secondary rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-4"
                                         value={data?.name || ""}
                                         onChange={(e) => setData((pre) => ({ ...pre, name: e.target.value }))}
                                         placeholder="John Wick"
                                         required
                                     />
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Email Address
                                     </label>
                                     <Input
                                         disabled={submitDataLoading}
                                         type="email"
-                                        className="h-12 sm:h-14 font-sans tracking-tight bg-muted/30 border-secondary rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm sm:text-base px-5"
+                                        className="h-11 sm:h-12 font-sans tracking-tight bg-muted/30 border-secondary rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-4"
                                         value={data?.email || ""}
                                         onChange={(e) =>
                                             setData((pre) => ({
@@ -161,26 +170,26 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="space-y-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Phone (Optional)
                                     </label>
                                     <Input
                                         disabled={submitDataLoading}
-                                        className="h-12 sm:h-14 font-sans tracking-tight bg-muted/30 border-secondary rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm sm:text-base px-5"
+                                        className="h-11 sm:h-12 font-sans tracking-tight bg-muted/30 border-secondary rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-4"
                                         value={data?.phone || ""}
                                         onChange={(e) => setData((pre) => ({ ...pre, phone: e.target.value }))}
                                         placeholder="+91 00000 00000"
                                     />
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1.5">
                                     <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                         Subject
                                     </label>
                                     <Input
                                         disabled={submitDataLoading}
-                                        className="h-12 sm:h-14 font-sans tracking-tight bg-muted/30 border-secondary rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm sm:text-base px-5"
+                                        className="h-11 sm:h-12 font-sans tracking-tight bg-muted/30 border-secondary rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-4"
                                         value={data?.websiteType || ""}
                                         onChange={(e) => setData((pre) => ({ ...pre, websiteType: e.target.value }))}
                                         placeholder="Web Development"
@@ -189,14 +198,14 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-1.5">
                                 <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                                     Tell us about your project
                                 </label>
                                 <Textarea
                                     disabled={submitDataLoading}
-                                    rows={4}
-                                    className="bg-muted/30 font-sans tracking-tight border-secondary rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm sm:text-base p-5 resize-none"
+                                    rows={3}
+                                    className="bg-muted/30 font-sans tracking-tight border-secondary rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm p-4 resize-none"
                                     value={data?.query || ""}
                                     onChange={(e) => setData((pre) => ({ ...pre, query: e.target.value }))}
                                     placeholder="I have a vision for..."
@@ -204,13 +213,13 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                                 />
                             </div>
 
-                            <div className="pt-2">
+                            <div className="pt-1 select-none">
                                 <AnimatedButton
                                     noArrow
                                     disabled={submitDataLoading}
-                                    className="w-full h-14 font-sans text-sm font-bold rounded-2xl group flex items-center justify-center gap-3 overflow-hidden"
+                                    className="w-full h-12 font-sans text-sm font-bold rounded-xl group flex items-center justify-center gap-2 overflow-hidden"
                                 >
-                                    <span>{submitDataLoading ? "Sending Proposal..." : "Send Message"}</span>
+                                    <span>{submitDataLoading ? "Sending..." : "Send Message"}</span>
                                     <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </AnimatedButton>
                             </div>
