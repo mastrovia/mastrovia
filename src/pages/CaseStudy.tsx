@@ -83,13 +83,13 @@ export default function CaseStudyPage() {
               transition={{ delay: 0.1 }}
               className="flex flex-wrap items-center gap-4 mb-6"
             >
-              <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-bold uppercase tracking-wider px-4 py-1.5">
+              <Badge className="bg-primary/10 text-primary border-primary/20 text-xs tracking-wider px-4 py-1.5">
                 {caseStudy.category}
               </Badge>
               <span className="text-sm text-muted-foreground font-mono">
                 {caseStudy.year}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-muted-foreground italic">
                 Client: {caseStudy.client}
               </span>
             </motion.div>
@@ -126,7 +126,7 @@ export default function CaseStudyPage() {
                   <Badge
                     key={tag}
                     variant="secondary"
-                    className="bg-muted/50 text-[10px] font-bold tracking-wider uppercase"
+                    className="bg-muted/50 border border-foreground/40 text-[10px] font-bold tracking-wider"
                   >
                     {tag}
                   </Badge>
@@ -140,10 +140,11 @@ export default function CaseStudyPage() {
                 >
                   <AnimatedButton
                     variant="outline"
-                    className="gap-2 rounded-full flex items-center"
+                    className="gap-2 rounded-full flex items-center group"
+                    noArrow
                   >
-                    Visit Live Site
-                    <ExternalLink className="w-4 h-4" />
+                    <span>Visit Live Site</span>
+                    <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </AnimatedButton>
                 </a>
               )}
@@ -157,13 +158,13 @@ export default function CaseStudyPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="container mx-auto max-w-6xl"
+            className="container mx-auto max-w-6xl group overflow-hidden"
           >
-            <div className="relative aspect-video rounded-none overflow-hidden border border-border shadow-2xl shadow-primary/10">
+            <div className="relative aspect-video rounded-none overflow-hidden border border-border bg-muted/20">
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
               />
             </div>
           </motion.div>
