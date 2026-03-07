@@ -146,7 +146,7 @@ export default function HomePage() {
         id="services"
         className="pb-20 sm:pb-32"
       >
-        <div className="container mx-auto px-8 max-w-7xl">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-20 space-y-4">
             <h2 className="text-5xl md:text-7xl tracking-tight">
               Our Professional <br /> <span className="text-primary italic">Services</span>
@@ -228,7 +228,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="py-16 border-t border-border bg-background">
-        <div className="container mx-auto px-8 max-w-7xl">
+        <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className="flex flex-col gap-6">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">

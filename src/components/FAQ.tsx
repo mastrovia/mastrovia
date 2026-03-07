@@ -33,7 +33,7 @@ export function FAQ() {
 
     return (
         <section className="py-24 sm:py-32 bg-background border-t border-border/40">
-            <div className="container mx-auto px-8 max-w-7xl">
+            <div className="container mx-auto px-8">
                 <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
 
                     {/* Left Column */}
