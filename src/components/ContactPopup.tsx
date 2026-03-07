@@ -61,7 +61,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-20 md:pt-0">
+            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] md:w-[calc(100%-4rem)] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-20 md:pt-0">
 
 
 
@@ -131,17 +131,17 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                         </div>
                     </div>
 
-                    {/* Right Column: Form */}
                     <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 flex flex-col justify-center">
-                        {/* Desktop Close Button */}
-                        <button
-                            onClick={() => setOpen(false)}
-                            className="hidden md:block absolute top-8 right-8 z-50 p-3 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
-                            aria-label="Close"
-                        >
-                            <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                        </button>
-
+                        {/* Desktop Close Button Wrapper */}
+                        <div className="hidden md:flex justify-end w-full mb-8">
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="p-3 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
+                                aria-label="Close"
+                            >
+                                <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                            </button>
+                        </div>
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
