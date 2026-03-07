@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { ContactPopup } from "@/components/ContactPopup";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -69,12 +70,13 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a
-              href="/cost-estimate"
-              className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-sm font-bold uppercase tracking-tight hover:bg-primary/90 transition-all"
-            >
-              Estimate Cost
-            </a>
+            <ContactPopup>
+              <button
+                className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-sm font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
+              >
+                Estimate Cost
+              </button>
+            </ContactPopup>
           </div>
 
           <div className="flex items-center gap-2">
@@ -115,14 +117,15 @@ export default function Navbar() {
                           {link.name}
                         </a>
                       ))}
-                      <a
-                        href="/cost-estimate"
-                        className="text-3xl font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
-                        style={{ transitionDelay: `${navLinks.length * 50}ms` }}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Estimate Cost →
-                      </a>
+                      <ContactPopup>
+                        <button
+                          className="text-3xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
+                          style={{ transitionDelay: `${navLinks.length * 50}ms` }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          Estimate Cost →
+                        </button>
+                      </ContactPopup>
                     </div>
                     <div className="mt-auto p-8 border-t border-border bg-muted/30">
                       <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">

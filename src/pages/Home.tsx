@@ -7,6 +7,7 @@ import { Testimonials } from "../components/Testimonials";
 import { FAQ } from "../components/FAQ";
 import { LottiePlayer } from "@/components/LottiePlayer";
 import { TechMarquee } from "@/components/TechMarquee";
+import { ContactPopup } from "@/components/ContactPopup";
 
 
 const services = [
@@ -118,11 +119,11 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <a href="#contact" className="w-full sm:w-auto">
-              <AnimatedButton className="font-bold w-full">
+            <ContactPopup>
+              <AnimatedButton className="font-bold w-full sm:w-auto">
                 Get Started
               </AnimatedButton>
-            </a>
+            </ContactPopup>
             <a href="/cost-estimate" className="w-full sm:w-auto">
               <AnimatedButton
                 variant="outline"

@@ -12,6 +12,7 @@ import {
   Cloud,
 } from "lucide-react";
 import AnimatedButton from "@/components/animated-button";
+import { ContactPopup } from "@/components/ContactPopup";
 import SEO from "@/components/seo";
 
 export default function CaseStudyPage() {
@@ -504,11 +505,11 @@ export default function CaseStudyPage() {
                 discuss your next digital project.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 font-sans">
-                <Link to="/#contact">
+                <ContactPopup>
                   <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-wider">
                     Start a Project
                   </AnimatedButton>
-                </Link>
+                </ContactPopup>
                 <Link to="/#works">
                   <AnimatedButton
                     variant="outline"
