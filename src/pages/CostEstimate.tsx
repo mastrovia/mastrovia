@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
-import AnimatedButton from "@/components/animated-button";
+import AnimatedButton from "@/components/common/animated-button";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import SEO from "@/components/seo";
+import SEO from "@/components/common/seo";
 import { toast } from "sonner";
 
 const URL =
   "https://script.google.com/macros/s/AKfycbyKmZGV2PTPI_1NhkvAYDhnN9sdmdR4suMYuMwbTCCK_4pkjKuUkXrtAe0_MzjM85pX/exec";
+
+import { industries, services, projectTypes, currentStages, timelines } from "@/data/calculatorData";
 
 interface FormData {
   industry: string;
@@ -21,45 +23,6 @@ interface FormData {
   phone: string;
   details: string;
 }
-
-const industries = [
-  { value: "ecommerce", label: "E-Commerce & Retail" },
-  { value: "saas", label: "SaaS & Software" },
-  { value: "healthcare", label: "Healthcare & Medical" },
-  { value: "education", label: "Education & E-Learning" },
-  { value: "finance", label: "Finance & Fintech" },
-  { value: "realestate", label: "Real Estate & Property" },
-  { value: "hospitality", label: "Hospitality & Travel" },
-  { value: "other", label: "Other" },
-];
-
-const services = [
-  { value: "web-app", label: "Web Application" },
-  { value: "mobile-app", label: "Mobile Application" },
-  { value: "website", label: "Website" },
-  { value: "ecommerce", label: "E-Commerce Platform" },
-  { value: "dashboard", label: "Dashboard & Analytics" },
-  { value: "api", label: "API & Backend" },
-];
-
-const projectTypes = [
-  { value: "full-product", label: "Build Full Product" },
-  { value: "mvp", label: "Start With MVP" },
-  { value: "update", label: "Update Existing Product" },
-];
-
-const currentStages = [
-  { value: "idea", label: "I Have an Idea" },
-  { value: "design", label: "I Have Brand Design" },
-  { value: "mvp", label: "I Have MVP" },
-  { value: "complete", label: "I Have Everything Ready" },
-];
-
-const timelines = [
-  { value: "urgent", label: "Urgent (1-2 months)" },
-  { value: "standard", label: "Standard (2-4 months)" },
-  { value: "flexible", label: "Flexible (4+ months)" },
-];
 
 export default function CostEstimatePage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -130,12 +93,10 @@ export default function CostEstimatePage() {
 Cost Estimate Request:
 Industry: ${industries.find((i) => i.value === formData.industry)?.label}
 Service: ${services.find((s) => s.value === formData.service)?.label}
-Project Type: ${
-        projectTypes.find((p) => p.value === formData.projectType)?.label
-      }
-Current Stage: ${
-        currentStages.find((s) => s.value === formData.currentStage)?.label
-      }
+Project Type: ${projectTypes.find((p) => p.value === formData.projectType)?.label
+        }
+Current Stage: ${currentStages.find((s) => s.value === formData.currentStage)?.label
+        }
 Timeline: ${timelines.find((t) => t.value === formData.timeline)?.label}
 ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
       `.trim();
@@ -363,11 +324,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                                       industry: industry.value,
                                     })
                                   }
-                                  className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${
-                                    formData.industry === industry.value
-                                      ? "border-primary bg-primary/5"
-                                      : "border-border hover:border-primary/50"
-                                  }`}
+                                  className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${formData.industry === industry.value
+                                    ? "border-primary bg-primary/5"
+                                    : "border-border hover:border-primary/50"
+                                    }`}
                                 >
                                   {industry.label}
                                 </button>
@@ -393,11 +353,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                                       service: service.value,
                                     })
                                   }
-                                  className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${
-                                    formData.service === service.value
-                                      ? "border-primary bg-primary/5"
-                                      : "border-border hover:border-primary/50"
-                                  }`}
+                                  className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${formData.service === service.value
+                                    ? "border-primary bg-primary/5"
+                                    : "border-border hover:border-primary/50"
+                                    }`}
                                 >
                                   {service.label}
                                 </button>
@@ -429,11 +388,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                                     projectType: type.value,
                                   })
                                 }
-                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${
-                                  formData.projectType === type.value
-                                    ? "border-primary bg-primary/5"
-                                    : "border-border hover:border-primary/50"
-                                }`}
+                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.projectType === type.value
+                                  ? "border-primary bg-primary/5"
+                                  : "border-border hover:border-primary/50"
+                                  }`}
                               >
                                 {type.label}
                               </button>
@@ -464,11 +422,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                                     currentStage: stage.value,
                                   })
                                 }
-                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${
-                                  formData.currentStage === stage.value
-                                    ? "border-primary bg-primary/5"
-                                    : "border-border hover:border-primary/50"
-                                }`}
+                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.currentStage === stage.value
+                                  ? "border-primary bg-primary/5"
+                                  : "border-border hover:border-primary/50"
+                                  }`}
                               >
                                 {stage.label}
                               </button>
@@ -499,11 +456,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                                     timeline: timeline.value,
                                   })
                                 }
-                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${
-                                  formData.timeline === timeline.value
-                                    ? "border-primary bg-primary/5"
-                                    : "border-border hover:border-primary/50"
-                                }`}
+                                className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.timeline === timeline.value
+                                  ? "border-primary bg-primary/5"
+                                  : "border-border hover:border-primary/50"
+                                  }`}
                               >
                                 {timeline.label}
                               </button>
@@ -621,11 +577,10 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
                       <button
                         onClick={handleBack}
                         disabled={currentStep === 1}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-                          currentStep === 1
-                            ? "opacity-50 cursor-not-allowed"
-                            : "hover:bg-muted"
-                        }`}
+                        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${currentStep === 1
+                          ? "opacity-50 cursor-not-allowed"
+                          : "hover:bg-muted"
+                          }`}
                       >
                         <ArrowLeft className="w-4 h-4" />
                         Back

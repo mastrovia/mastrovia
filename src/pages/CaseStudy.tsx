@@ -11,9 +11,9 @@ import {
   Server,
   Cloud,
 } from "lucide-react";
-import AnimatedButton from "@/components/animated-button";
-import { ContactPopup } from "@/components/ContactPopup";
-import SEO from "@/components/seo";
+import AnimatedButton from "@/components/common/animated-button";
+import { ContactPopup } from "@/components/common/ContactPopup";
+import SEO from "@/components/common/seo";
 
 export default function CaseStudyPage() {
   const { id } = useParams<{ id: string }>();

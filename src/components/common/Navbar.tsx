@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
+import {
+  Menu, Github, Instagram, Mail
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { ModeToggle } from "./mode-toggle";
-import { Menu, Github, Instagram, Mail } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -10,8 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import { ContactPopup } from "@/components/ContactPopup";
+import { ContactPopup } from "@/components/common/ContactPopup";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -43,7 +45,8 @@ export default function Navbar() {
     <motion.nav
       animate={{ top: marqueeHidden ? 0 : 32 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border">
+      className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border"
+    >
       <div className="container mx-auto max-w-7xl flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
@@ -65,7 +68,8 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" ? "md:hidden xl:block" : ""}`}
+                className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" ? "md:hidden xl:block" : ""
+                  }`}
               >
                 {link.name}
               </a>
@@ -96,7 +100,8 @@ export default function Navbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className={`w-[85%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[85px] sm:top-[93px]"}`}
+                  className={`w-[85%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[85px] sm:top-[93px]"
+                    }`}
                   style={{ transition: "top 0.3s ease-out" }}
                 >
                   <div className="flex flex-col h-full overflow-y-auto">

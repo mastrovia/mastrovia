@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
-// import AnimatedButton from "./animated-button";
+import { Link } from "react-router-dom";
 
 export function Works() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);

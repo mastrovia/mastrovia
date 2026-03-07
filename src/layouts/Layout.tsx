@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import TopMarquee from "../components/TopMarquee";
-import SEO from "../components/seo";
+import Navbar from "@/components/common/Navbar";
+import TopMarquee from "@/components/sections/TopMarquee";
+import SEO from "@/components/common/seo";
 import { useEffect } from "react";
 
 export default function Layout() {
