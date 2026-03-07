@@ -85,7 +85,7 @@ export function Testimonials() {
 
             <div className="container mx-auto px-8 max-w-7xl relative z-10 mb-16">
                 <div className="md:text-center">
-                    <h2 className="text-4xl md:text-6xl tracking-tight mb-4 leading-tight">
+                    <h2 className="text-3xl md:text-5xl tracking-tight mb-4 leading-tight">
                         Words of praise from others <br />
                         <span className="text-foreground/60 italic">about our presence.</span>
                     </h2>

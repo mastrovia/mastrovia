@@ -148,7 +148,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-8">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-5xl md:text-7xl tracking-tight">
+            <h2 className="text-4xl md:text-6xl tracking-tight">
               Our Professional <br /> <span className="text-primary italic">Services</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto font-sans">

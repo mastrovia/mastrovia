@@ -40,7 +40,7 @@ export function FAQ() {
                     <div className="w-full lg:w-1/3 lg:sticky lg:top-40">
                         <div className="inline-flex items-center gap-3 mb-6">
                             {/* <div className="w-2 h-2 rounded-full bg-[#A3E635]" /> Lime greenish dot matching the image */}
-                            <span className="text-4xl tracking-wide">
+                            <span className="text-3xl md:text-5xl tracking-wide">
                                 Frequently asked questions
                             </span>
                         </div>
