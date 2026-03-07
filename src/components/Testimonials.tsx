@@ -33,7 +33,7 @@ export function Testimonials() {
             {/* Dynamic background element */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
-            <div className="container mx-auto px-4 max-w-7xl">
+            <div className="container mx-auto px-8 max-w-7xl">
                 <div className="text-center mb-20 space-y-4">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
                         Client <span className="text-primary italic">Voices</span>

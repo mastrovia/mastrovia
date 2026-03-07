@@ -11,7 +11,7 @@ export function Works() {
 
   return (
     <section id="works" className="py-24 bg-background relative">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
             <h2 className="text-5xl md:text-6xl leading-none md:flex gap-4">

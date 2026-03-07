@@ -74,7 +74,7 @@ export default function ContactPage() {
   return (
     <div
       id="contact"
-      className="container mx-auto px-4 max-w-7xl py-24 sm:py-32"
+      className="container mx-auto px-8 max-w-7xl py-24 sm:py-32"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         {/* Left Side: Contact Information */}
@@ -86,7 +86,7 @@ export default function ContactPage() {
           className="space-y-12"
         >
           <div className="space-y-6">
-            <h2 className="text-5xl sm:text-7xl font-bold tracking-tight">
+            <h2 className="text-5xl sm:text-7xl tracking-tight">
               Ready to create <br />
               <span className="text-primary italic">something great?</span>
             </h2>
@@ -97,7 +97,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 mt-8 md:mt-10">
             {contactInfo.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -105,24 +105,24 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-5 group"
+                className="flex items-start gap-4 group"
               >
-                <div className="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                  <item.icon className="w-6 h-6" />
+                <div className="bg-primary/5 p-3 rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <item.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">
+                  <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
                     {item.label}
                   </p>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-xl font-semibold hover:text-primary transition-colors"
+                      className="text-base font-sans tracking-tight hover:text-primary transition-colors"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-xl font-semibold">{item.value}</p>
+                    <p className="text-base font-sans tracking-tight">{item.value}</p>
                   )}
                 </div>
               </motion.div>
@@ -130,7 +130,7 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-6 pt-8">
-            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-muted-foreground">
               Follow Our Journey
             </p>
             <div className="flex gap-4">
@@ -156,8 +156,8 @@ export default function ContactPage() {
           className="relative"
         >
           <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full -z-10" />
-          <div className="bg-card border border-border/50 p-8 sm:p-12 rounded-[2.5rem] shadow-2xl backdrop-blur-sm relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-700" />
+          <div className="bg-card border p-8 sm:p-12 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group">
+            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-700" /> */}
 
             <form
               onSubmit={(e) => {
@@ -168,12 +168,12 @@ export default function ContactPage() {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground px-1">
+                  <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                     Your Name
                   </label>
                   <Input
                     disabled={submitDataLoading}
-                    className="h-14 bg-muted/30 border-none rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-base px-5"
+                    className="h-12 bg-muted/30 border-none rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-5 font-sans tracking-tight"
                     value={data?.name || ""}
                     onChange={(e) =>
                       setData((pre) => ({ ...pre, name: e.target.value }))
@@ -183,13 +183,13 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground px-1">
+                  <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                     Email Address
                   </label>
                   <Input
                     disabled={submitDataLoading}
                     type="email"
-                    className="h-14 bg-muted/30 border-none rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-base px-5"
+                    className="h-12 bg-muted/30 border-none rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-5 font-sans tracking-tight"
                     value={data?.email || ""}
                     onChange={(e) =>
                       setData((pre) => ({
@@ -205,12 +205,12 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground px-1">
+                  <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                     Phone (Optional)
                   </label>
                   <Input
                     disabled={submitDataLoading}
-                    className="h-14 bg-muted/30 border-none rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-base px-5"
+                    className="h-12 bg-muted/30 border-none rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-5 font-sans tracking-tight"
                     value={data?.phone || ""}
                     onChange={(e) =>
                       setData((pre) => ({ ...pre, phone: e.target.value }))
@@ -219,12 +219,12 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground px-1">
+                  <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                     Subject
                   </label>
                   <Input
                     disabled={submitDataLoading}
-                    className="h-14 bg-muted/30 border-none rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-base px-5"
+                    className="h-12 bg-muted/30 border-none rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm px-5 font-sans tracking-tight"
                     value={data?.websiteType || ""}
                     onChange={(e) =>
                       setData((pre) => ({
@@ -239,13 +239,13 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground px-1">
+                <label className="text-[10px] font-sans font-bold text-muted-foreground px-1 tracking-[0.1em]">
                   Tell us about your project
                 </label>
                 <Textarea
                   disabled={submitDataLoading}
-                  rows={5}
-                  className="bg-muted/30 border-none rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-base p-5 resize-none overflow-hidden"
+                  rows={4}
+                  className="bg-muted/30 border-none rounded-xl focus-visible:ring-2 focus-visible:ring-primary/20 transition-all text-sm p-5 resize-none overflow-hidden font-sans tracking-tight"
                   value={data?.query || ""}
                   onChange={(e) =>
                     setData((pre) => ({ ...pre, query: e.target.value }))
@@ -258,7 +258,7 @@ export default function ContactPage() {
               <AnimatedButton
                 noArrow
                 disabled={submitDataLoading}
-                className="w-full h-16 text-base font-bold uppercase tracking-[0.2em] rounded-2xl group flex items-center justify-center gap-3 overflow-hidden"
+                className="w-full h-14 text-sm font-sans font-bold uppercase tracking-[0.1em] rounded-xl group flex items-center justify-center gap-3 overflow-hidden"
               >
                 <span>
                   {submitDataLoading ? "Sending Proposal..." : "Send Message"}
