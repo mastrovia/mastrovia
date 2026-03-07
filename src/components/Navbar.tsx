@@ -59,20 +59,20 @@ export default function Navbar() {
           </span>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center">
           <div className="hidden md:flex items-center gap-8 mr-4 leading-none">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm hover:text-primary transition-colors py-2"
+                className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" ? "md:hidden xl:block" : ""}`}
               >
                 {link.name}
               </a>
             ))}
             <ContactPopup>
               <button
-                className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-sm font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
+                className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
               >
                 Estimate Cost
               </button>

@@ -29,7 +29,7 @@ const testimonials = [
 
 export function Testimonials() {
     return (
-        <section id="testimonials" className="py-24 bg-muted/20 relative overflow-hidden">
+        <section id="testimonials" className="py-24 bg-muted/20 relative overflow-hidden md:hidden xl:block">
             {/* Dynamic background element */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
