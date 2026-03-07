@@ -6,6 +6,7 @@ import { Works } from "../components/Works";
 import { Testimonials } from "../components/Testimonials";
 import { FAQ } from "../components/FAQ";
 import { LottiePlayer } from "@/components/LottiePlayer";
+import { TechMarquee } from "@/components/TechMarquee";
 
 
 const services = [
@@ -199,6 +200,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TechMarquee />
 
       <Works />
       <Testimonials />
