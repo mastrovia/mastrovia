@@ -13,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ContactPopup } from "@/components/common/ContactPopup";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -74,13 +73,12 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <ContactPopup>
-              <button
-                className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
-              >
-                Estimate Cost
-              </button>
-            </ContactPopup>
+            <button
+              onClick={() => navigate("/cost-estimate")}
+              className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
+            >
+              Estimate Cost
+            </button>
           </div>
 
           <div className="flex items-center gap-2">
@@ -122,15 +120,16 @@ export default function Navbar() {
                           {link.name}
                         </a>
                       ))}
-                      <ContactPopup>
-                        <button
-                          className="text-xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
-                          style={{ transitionDelay: `${navLinks.length * 50}ms` }}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Estimate Cost &nbsp; &rarr;
-                        </button>
-                      </ContactPopup>
+                      <button
+                        className="text-xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
+                        style={{ transitionDelay: `${navLinks.length * 50}ms` }}
+                        onClick={() => {
+                          setIsOpen(false);
+                          navigate("/cost-estimate");
+                        }}
+                      >
+                        Estimate Cost &nbsp; &rarr;
+                      </button>
                     </div>
                     <div className="mt-auto p-8 border-t border-border bg-muted/30">
                       <p className="text-xs tracking-widest text-muted-foreground mb-2">
