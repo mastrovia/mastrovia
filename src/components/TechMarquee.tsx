@@ -10,14 +10,10 @@ import {
 } from "motion/react";
 
 const technologies = [
-    "node.js",
-    "react",
-    "aws",
-    "mongodb",
-    "sql",
-    "react-native",
-    "figma",
-    "cloud",
+    "Creative thinking",
+    "Idea to Production",
+    "ERP",
+    "Monitoring",
 ];
 
 export function TechMarquee() {
@@ -64,13 +60,13 @@ export function TechMarquee() {
     const x = useTransform(baseX, (v) => `${v}%`);
 
     return (
-        <div className="w-full py-12 bg-background border-y border-border/50 overflow-hidden select-none flex">
+        <div className="w-full py-10 bg-background border-y border-border/50 overflow-hidden select-none flex">
             <motion.div className="flex" style={{ x }}>
                 {[0, 1, 2, 3].map((groupIdx) => (
                     <div key={groupIdx} className="flex items-center shrink-0 pr-12 gap-12">
                         {technologies.map((tech, idx) => (
                             <div key={idx} className="flex items-center gap-12 group shrink-0">
-                                <span className="text-3xl md:text-5xl font-light tracking-tight text-muted-foreground/30 hover:text-primary transition-colors duration-500 cursor-default">
+                                <span className="text-2xl md:text-4xl font-light tracking-tight text-primary/50 hover:text-primary transition-colors duration-200 cursor-default">
                                     {tech}
                                 </span>
                                 <span className="text-primary/20 text-2xl shrink-0">✦</span>
