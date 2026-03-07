@@ -69,7 +69,7 @@ export default function CaseStudyPage() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors mb-8 group"
+                className="inline-flex items-center gap-2 text-sm font-bold font-sans uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors mb-8 group"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Works
@@ -81,15 +81,15 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="flex flex-wrap items-center gap-4 mb-6"
+              className="flex flex-wrap items-center gap-4 mb-6 font-sans"
             >
-              <Badge className="bg-primary/10 text-primary border-primary/20 text-xs tracking-wider px-4 py-1.5">
+              <Badge className="bg-primary/10 text-primary border-primary/20 text-xs tracking-wider px-4 py-1.5 font-bold">
                 {caseStudy.category}
               </Badge>
-              <span className="text-sm text-muted-foreground font-mono">
+              <span className="text-sm text-muted-foreground font-medium">
                 {caseStudy.year}
               </span>
-              <span className="text-sm text-muted-foreground italic">
+              <span className="text-sm text-muted-foreground italic tracking-tight">
                 Client: {caseStudy.client}
               </span>
             </motion.div>
@@ -99,7 +99,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-none"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] mb-6 leading-none"
             >
               {caseStudy.title}
             </motion.h1>
@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 leading-relaxed"
+              className="text-lg md:text-xl font-sans text-muted-foreground max-w-3xl mb-8 leading-relaxed tracking-tight"
             >
               {caseStudy.description}
             </motion.p>
@@ -119,7 +119,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap items-center gap-4 font-sans"
             >
               <div className="flex flex-wrap gap-2">
                 {caseStudy.tags.map((tag) => (
@@ -140,10 +140,10 @@ export default function CaseStudyPage() {
                 >
                   <AnimatedButton
                     variant="outline"
-                    className="gap-2 rounded-full flex items-center group"
+                    className="gap-2 rounded-full flex items-center group font-bold tracking-wide"
                     noArrow
                   >
-                    <span>Visit Live Site</span>
+                    <span className="underline underline-offset-4 font-sans">Visit Live Site</span>
                     <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </AnimatedButton>
                 </a>
@@ -183,7 +183,7 @@ export default function CaseStudyPage() {
                 <h2 className="text-3xl font-bold tracking-tight">
                   Overview
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
                   {caseStudy.overview}
                 </p>
               </motion.div>
@@ -198,7 +198,7 @@ export default function CaseStudyPage() {
                 <h2 className="text-3xl font-bold tracking-tight">
                   Challenge
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
                   {caseStudy.challenge}
                 </p>
               </motion.div>
@@ -213,7 +213,7 @@ export default function CaseStudyPage() {
                 <h2 className="text-3xl font-bold tracking-tight">
                   Solution
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
                   {caseStudy.solution}
                 </p>
               </motion.div>
@@ -245,7 +245,7 @@ export default function CaseStudyPage() {
                   <Card className="border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
                     <CardContent className="p-6 flex items-start gap-4">
                       <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                      <p className="text-lg leading-relaxed">{result}</p>
+                      <p className="text-lg font-sans leading-relaxed tracking-tight">{result}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -276,7 +276,7 @@ export default function CaseStudyPage() {
                   transition={{ delay: idx * 0.05 }}
                   className="p-4 rounded-xl border border-border/40 bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300"
                 >
-                  <p className="text-sm leading-relaxed">{feature}</p>
+                  <p className="text-sm font-sans leading-relaxed tracking-tight">{feature}</p>
                 </motion.div>
               ))}
             </div>
@@ -316,7 +316,7 @@ export default function CaseStudyPage() {
                       {caseStudy.technologies.frontend.map((tech, idx) => (
                         <li
                           key={idx}
-                          className="text-sm text-muted-foreground flex items-center gap-2"
+                          className="text-sm font-sans tracking-tight text-muted-foreground flex items-center gap-2"
                         >
                           <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                           {tech}
@@ -349,14 +349,14 @@ export default function CaseStudyPage() {
                         caseStudy.technologies.backend.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="text-sm text-muted-foreground flex items-center gap-2"
+                            className="text-sm font-sans tracking-tight text-muted-foreground flex items-center gap-2"
                           >
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                             {tech}
                           </li>
                         ))
                       ) : (
-                        <li className="text-sm text-muted-foreground italic">
+                        <li className="text-sm font-sans tracking-tight text-muted-foreground italic">
                           Frontend-only application
                         </li>
                       )}
@@ -387,7 +387,7 @@ export default function CaseStudyPage() {
                         (tech, idx) => (
                           <li
                             key={idx}
-                            className="text-sm text-muted-foreground flex items-center gap-2"
+                            className="text-sm font-sans tracking-tight text-muted-foreground flex items-center gap-2"
                           >
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                             {tech}
@@ -431,7 +431,7 @@ export default function CaseStudyPage() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="text-sm text-muted-foreground text-center italic">
+                  <p className="text-sm font-sans text-muted-foreground tracking-tight text-center italic">
                     {screenshot.caption}
                   </p>
                 </motion.div>
@@ -486,11 +486,11 @@ export default function CaseStudyPage() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                 Ready to Start Your Project?
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground font-sans leading-relaxed tracking-tight max-w-2xl mx-auto">
                 Let's build something exceptional together. Get in touch to
                 discuss your next digital project.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 font-sans">
                 <Link to="/#contact">
                   <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-wider">
                     Start a Project
