@@ -47,7 +47,7 @@ export default function Navbar() {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border"
     >
-      <div className="container mx-auto max-w-7xl flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
           onClick={() => navigate("/")}

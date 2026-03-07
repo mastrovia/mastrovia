@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 import { motion } from "motion/react";
 import { services } from "@/data/homeData";
-import { LottiePlayer } from "@/components/common/LottiePlayer";
+
+const LottiePlayer = lazy(() => import("@/components/common/LottiePlayer"));
 
 export const Services: FC = () => {
     return (
@@ -41,8 +42,10 @@ export const Services: FC = () => {
                                     {service.description}
                                 </p>
                             </div>
-                            <div className="mt-auto overflow-hidden rounded-2xl border border-border/50 bg-white">
-                                <LottiePlayer src={service.lottie} />
+                            <div className="mt-auto overflow-hidden rounded-2xl border border-border/50 bg-white min-h-[150px] flex items-center justify-center">
+                                <Suspense fallback={<div className="w-8 h-8 border-2 border-primary/20 border-t-primary rounded-full animate-spin" />}>
+                                    <LottiePlayer src={service.lottie} />
+                                </Suspense>
                             </div>
                         </motion.div>
                     ))}

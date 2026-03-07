@@ -1,7 +1,7 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
-export const LottiePlayer = ({ src }: { src?: string }) => {
+const LottiePlayer = ({ src }: { src?: string }) => {
     return <DotLottieReact
         src={src || "/lottie/website_hosting.lottie"}
         autoplay
@@ -9,3 +9,5 @@ export const LottiePlayer = ({ src }: { src?: string }) => {
         className="max-w-md w-full aspect-square"
     />
 };
+
+export default LottiePlayer;

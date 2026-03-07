@@ -1,15 +1,24 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import HomePage from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import ContactPage from "./pages/Contact";
-import CaseStudyPage from "./pages/CaseStudy";
-import CostEstimatePage from "./pages/CostEstimate";
 import { ThemeProvider } from "./components/theme-provider";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "sonner";
+
+// Lazy load pages for code splitting
+const HomePage = lazy(() => import("./pages/Home"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const CaseStudyPage = lazy(() => import("./pages/CaseStudy"));
+const CostEstimatePage = lazy(() => import("./pages/CostEstimate"));
+
+// Minimal loading fallback
+const PageLoader = () => (
+  <div className="min-h-screen w-full flex items-center justify-center bg-background">
+    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const router = createBrowserRouter([
   {
@@ -18,19 +27,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "contact",
-        element: <ContactPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ContactPage />
+          </Suspense>
+        ),
       },
       {
         path: "case-study/:id",
-        element: <CaseStudyPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <CaseStudyPage />
+          </Suspense>
+        ),
       },
       {
         path: "cost-estimate",
-        element: <CostEstimatePage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <CostEstimatePage />
+          </Suspense>
+        ),
       },
     ],
   },
