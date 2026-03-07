@@ -74,7 +74,7 @@ export default function ContactPage() {
   return (
     <div
       id="contact"
-      className="container mx-auto px-8 max-w-7xl py-24 sm:py-32"
+      className="container mx-auto max-w-7xl py-24 sm:py-32"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         {/* Left Side: Contact Information */}
@@ -83,7 +83,7 @@ export default function ContactPage() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="space-y-12"
+          className="space-y-12 px-8" 
         >
           <div className="space-y-6">
             <h2 className="text-5xl sm:text-7xl tracking-tight">
@@ -153,10 +153,10 @@ export default function ContactPage() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative"
+          className="relative px-5"
         >
           <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full -z-10" />
-          <div className="bg-card border p-8 sm:p-12 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group">
+          <div className="bg-card border p-8 sm:p-12  rounded-lg md:rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group">
             {/* <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-700" /> */}
 
             <form
