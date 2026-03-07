@@ -124,8 +124,25 @@ export const caseStudies: CaseStudy[] = [
       infrastructure: ["Cloud Architecture", "Digital SCM"],
     },
     screenshots: [
+
       {
         url: "/banners/microconnect-homepage.png",
+        caption: "MicroConnect Ecosystem Overview",
+      },
+      {
+        url: "/works/microconnect/image-03.png",
+        caption: "MicroConnect Ecosystem Overview",
+      },
+      {
+        url: "/works/microconnect/image-04.png",
+        caption: "MicroConnect Ecosystem Overview",
+      },
+      {
+        url: "/works/microconnect/image-05.png",
+        caption: "MicroConnect Ecosystem Overview",
+      },
+      {
+        url: "/works/microconnect/image-02.png",
         caption: "MicroConnect Ecosystem Overview",
       },
     ],

@@ -174,7 +174,7 @@ export default function CaseStudyPage() {
         </section>
 
         {/* Overview Section */}
-        <section className="px-4 py-20 bg-muted/20">
+        <section className="px-4 py-20 bg-muted/20 border-t">
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-3 gap-12">
               <motion.div
@@ -183,7 +183,7 @@ export default function CaseStudyPage() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl tracking-tight">
                   Overview
                 </h2>
                 <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
@@ -198,7 +198,7 @@ export default function CaseStudyPage() {
                 transition={{ delay: 0.1 }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl tracking-tight">
                   Challenge
                 </h2>
                 <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
@@ -213,7 +213,7 @@ export default function CaseStudyPage() {
                 transition={{ delay: 0.2 }}
                 className="space-y-4"
               >
-                <h2 className="text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl tracking-tight">
                   Solution
                 </h2>
                 <p className="text-muted-foreground font-sans leading-relaxed tracking-tight">
@@ -225,13 +225,13 @@ export default function CaseStudyPage() {
         </section>
 
         {/* Results Section */}
-        <section className="px-4 py-20">
+        <section className="px-4 py-20 border-t">
           <div className="container mx-auto max-w-6xl">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
+              className="text-3xl md:text-4xl tracking-tight mb-12"
             >
               Key Results
             </motion.h2>
@@ -245,10 +245,10 @@ export default function CaseStudyPage() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                 >
-                  <Card className="border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
+                  <Card className="border-border/70 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 shadow-none">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                      <p className="text-lg font-sans leading-relaxed tracking-tight">{result}</p>
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <p className="font-sans leading-relaxed tracking-tight">{result}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -264,7 +264,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
+              className="text-3xl md:text-4xl tracking-tight mb-12"
             >
               Features & Capabilities
             </motion.h2>
@@ -277,7 +277,7 @@ export default function CaseStudyPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="p-4 rounded-xl border border-border/40 bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300"
+                  className="p-4 rounded-xl border border-border/70 backdrop-blur-sm hover:border-primary/30 transition-all duration-300"
                 >
                   <p className="text-sm font-sans leading-relaxed tracking-tight">{feature}</p>
                 </motion.div>
@@ -293,7 +293,7 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
+              className="text-3xl md:text-4xl tracking-tight mb-12"
             >
               Technology Stack
             </motion.h2>
@@ -305,13 +305,13 @@ export default function CaseStudyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <Card className="border-border/40 bg-card/30 backdrop-blur-sm h-full">
+                <Card className="border-border/70 backdrop-blur-sm h-full shadow-none">
                   <CardContent className="p-8 space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="p-3 rounded-xl bg-primary/10">
                         <Code2 className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-xl font-bold uppercase tracking-wide">
+                      <h3 className="text-xl tracking-tight">
                         Frontend
                       </h3>
                     </div>
@@ -337,13 +337,13 @@ export default function CaseStudyPage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <Card className="border-border/40 bg-card/30 backdrop-blur-sm h-full">
+                <Card className="border-border/70 backdrop-blur-sm h-full shadow-none">
                   <CardContent className="p-8 space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="p-3 rounded-xl bg-primary/10">
                         <Server className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-xl font-bold uppercase tracking-wide">
+                      <h3 className="text-xl tracking-tight">
                         Backend
                       </h3>
                     </div>
@@ -375,13 +375,13 @@ export default function CaseStudyPage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="border-border/40 bg-card/30 backdrop-blur-sm h-full">
+                <Card className="border-border/70 backdrop-blur-sm h-full shadow-none">
                   <CardContent className="p-8 space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="p-3 rounded-xl bg-primary/10">
                         <Cloud className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-xl font-bold uppercase tracking-wide">
+                      <h3 className="text-xl tracking-tight">
                         Infrastructure
                       </h3>
                     </div>
@@ -412,33 +412,43 @@ export default function CaseStudyPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-12"
+              className="text-3xl md:text-4xl tracking-tight mb-12"
             >
               Project Screenshots
             </motion.h2>
 
-            <div className="space-y-12">
-              {caseStudy.screenshots.slice(0, 1).map((screenshot, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="space-y-4"
-                >
-                  <div className="relative aspect-video rounded-2xl overflow-hidden border border-border shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-[250px] sm:auto-rows-[300px] md:auto-rows-[400px]">
+              {caseStudy.screenshots.map((screenshot, idx) => {
+                const colSpanClass = [
+                  "md:col-span-8",
+                  "md:col-span-4",
+                  "md:col-span-4",
+                  "md:col-span-8",
+                  "md:col-span-12",
+                ][idx % 5];
+
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`relative rounded-3xl overflow-hidden border border-border group bg-muted/20 shadow-none ${colSpanClass}`}
+                  >
                     <img
                       src={screenshot.url}
                       alt={screenshot.caption}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                     />
-                  </div>
-                  <p className="text-sm font-sans text-muted-foreground tracking-tight text-center italic">
-                    {screenshot.caption}
-                  </p>
-                </motion.div>
-              ))}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8 pointer-events-none">
+                      <p className="text-sm md:text-base font-sans text-white/90 tracking-tight">
+                        {screenshot.caption}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
