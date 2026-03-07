@@ -5,6 +5,8 @@ import { Code2, Rocket, Palette } from "lucide-react";
 import { Works } from "../components/Works";
 import { Testimonials } from "../components/Testimonials";
 import { FAQ } from "../components/FAQ";
+import { LottiePlayer } from "@/components/LottiePlayer";
+
 
 const services = [
   {
@@ -14,6 +16,7 @@ const services = [
     image: "/banners/design-image.png",
     icon: Palette,
     id: "01",
+    lottie: "/lottie/designing_in_progress.lottie"
   },
   {
     title: "We Develop",
@@ -22,6 +25,7 @@ const services = [
     image: "/banners/develop-image.png",
     icon: Code2,
     id: "02",
+    lottie: "/lottie/development.lottie"
   },
   {
     title: "We Deploy",
@@ -30,6 +34,7 @@ const services = [
     image: "/banners/deploy-image-4.jpeg",
     icon: Rocket,
     id: "03",
+    lottie: "/lottie/website_hosting.lottie"
   },
 ];
 
@@ -158,7 +163,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border overflow-hidden rounded-3xl bg-background shadow-2xl shadow-primary/5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border overflow-hidden rounded-3xl bg-background shadow-primary/5">
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
@@ -179,14 +184,15 @@ export default function HomePage() {
                     {service.description}
                   </p>
                 </div>
-                <div className="mt-auto overflow-hidden rounded-2xl border border-border/50">
-                  <motion.img
+                <div className="mt-auto overflow-hidden rounded-2xl border border-border/50 bg-white">
+                  <LottiePlayer src={service.lottie} />
+                  {/* <motion.img
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.6 }}
                     src={service.image}
                     alt={service.title}
                     className="w-full aspect-[4/3] object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-                  />
+                  /> */}
                 </div>
               </motion.div>
             ))}
@@ -197,6 +203,7 @@ export default function HomePage() {
       <Works />
       <Testimonials />
       <FAQ />
+
 
       {/* Pricing Section */}
       {/* <section id="pricing" className="py-24 sm:py-32 relative">
