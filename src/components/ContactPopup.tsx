@@ -61,15 +61,9 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-12 md:pt-0">
+            <DialogContent className="w-full h-[100dvh] max-w-none md:max-w-6xl md:h-[auto] bg-card border-none md:border-solid md:border-border/50 rounded-none md:rounded-[2.5rem] p-0 shadow-2xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col pt-20 md:pt-0">
 
-                <button
-                    onClick={() => setOpen(false)}
-                    className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-2 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
-                    aria-label="Close"
-                >
-                    <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                </button>
+
 
                 {/* <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/5 rotate-45 translate-x-8 -translate-y-8 md:translate-x-16 md:-translate-y-16 pointer-events-none" /> */}
 
@@ -77,14 +71,25 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                     {/* Left Column: Info */}
                     <div className="p-6 sm:p-8 md:p-12 md:col-span-2 bg-muted/20 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between h-full relative z-10">
                         <div>
-                            <DialogHeader className="mb-6">
-                                <DialogTitle className="text-3xl sm:text-4xl tracking-tight text-left font-normal">
-                                    Let's Build something <span className="text-primary italic">amazing</span>
-                                </DialogTitle>
-                                <DialogDescription className="text-left text-muted-foreground font-sans font-normal text-sm sm:text-base tracking-tight leading-relaxed">
-                                    Let's discuss your project and how we can help you achieve your goals.
-                                </DialogDescription>
-                            </DialogHeader>
+                            <div className="flex justify-between items-start gap-4">
+                                <DialogHeader className="mb-6">
+                                    <DialogTitle className="text-3xl sm:text-4xl tracking-tight text-left font-normal">
+                                        Let's Build something <span className="text-primary italic">amazing</span>
+                                    </DialogTitle>
+                                    <DialogDescription className="text-left text-muted-foreground font-sans font-normal text-sm sm:text-base tracking-tight leading-relaxed">
+                                        Let's discuss your project and how we can help you achieve your goals.
+                                    </DialogDescription>
+                                </DialogHeader>
+
+                                {/* Mobile Close Button */}
+                                <button
+                                    onClick={() => setOpen(false)}
+                                    className="md:hidden shrink-0 mt-1 p-2 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
+                                    aria-label="Close"
+                                >
+                                    <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                                </button>
+                            </div>
 
                             <div className="space-y-6 mt-8 md:mt-10 hidden md:block">
                                 {contactInfo.map((item, idx) => (
@@ -127,7 +132,16 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                     </div>
 
                     {/* Right Column: Form */}
-                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10">
+                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 flex flex-col justify-center">
+                        {/* Desktop Close Button */}
+                        <button
+                            onClick={() => setOpen(false)}
+                            className="hidden md:block absolute top-8 right-8 z-50 p-3 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
+                            aria-label="Close"
+                        >
+                            <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                        </button>
+
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
