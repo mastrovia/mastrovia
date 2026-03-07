@@ -64,7 +64,7 @@ export function Works() {
                     <div className="flex flex-col gap-2 flex-1 md:pl-8">
                       <div className="flex items-center gap-4">
                         <motion.h3
-                          className={`text-xl sm:text-2xl md:text-3xl transition-all text-foreground font-light underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
+                          className={`text-xl sm:text-2xl md:text-3xl transition-all text-foreground underline underline-offset-8 md:no-underline md:text-muted-foreground/40 ${isActive ? "md:text-primary md:underline" : ""
                             } text-left`}
                         >
                           {work.title}
