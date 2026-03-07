@@ -131,9 +131,9 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                         </div>
                     </div>
 
-                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 flex flex-col justify-center md:h-full md:overflow-y-auto">
+                    <div className="p-6 sm:p-8 md:p-12 md:col-span-3 relative z-10 justify-center md:h-full md:overflow-y-auto">
                         {/* Desktop Close Button Wrapper */}
-                        <div className="hidden md:flex justify-end w-full mb-8">
+                        <div className="hidden md:flex justify-end w-full mb-6 top-0 z-50 bg-card">
                             <button
                                 onClick={() => setOpen(false)}
                                 className="p-3 bg-muted/50 hover:bg-muted border border-border rounded-full transition-colors cursor-pointer"
