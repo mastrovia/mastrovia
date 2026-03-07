@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
       "Empowering local entrepreneurs to build sustainable businesses through a structured nano-distribution model. MicroConnect transforms last-mile commerce through community leadership and systematic growth.",
     image: "/banners/microconnect-homepage.png",
     tags: ["Entrepreneurship", "Distribution", "Sustainability"],
-    link: "#",
+    link: "https://microconnect.store/",
     year: "2024",
     client: "MicroConnect",
     overview:
