@@ -150,11 +150,11 @@ export default function HomePage() {
       {/* Services Section */}
       <section
         id="services"
-        className="py-20 sm:py-32 bg-muted/20 border-t textured-surface"
+        className="py-20 sm:py-32 bg-muted/20 border-t"
       >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
+            <h2 className="text-5xl md:text-7xl tracking-tight">
               Our Professional <br /> <span className="text-primary italic">Services</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto font-sans">
@@ -177,7 +177,7 @@ export default function HomePage() {
                   <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary/40 group-hover:text-primary transition-all duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-sans tracking-tight leading-tight">
+                  <h3 className="text-2xl sm:text-3xl mb-4 font-sans tracking-tight leading-tight">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8 font-sans">
