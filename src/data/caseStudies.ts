@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Coworking & Virtual Offices",
     description:
       "We help you find your ideal workspace in Kerala. Discover premium coworking spaces and virtual offices across God's Own Country. Professional workspaces in Kochi, Trivandrum, Calicut, Thrissur and more.",
-    image: "/banners/Cowork-Homepage.png",
+    image: "/works/co-work/page-hero.png",
     tags: ["Next.js", "MongoDB", "Tailwind"],
     link: "https://www.coworkkerala.com/",
     year: "2025",

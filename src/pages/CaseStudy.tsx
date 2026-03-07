@@ -160,7 +160,7 @@ export default function CaseStudyPage() {
             transition={{ delay: 0.5 }}
             className="container mx-auto max-w-6xl group overflow-hidden"
           >
-            <div className="relative aspect-video rounded-none overflow-hidden border border-border bg-muted/20">
+            <div className="relative rounded-none overflow-hidden border border-border bg-muted/20">
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
