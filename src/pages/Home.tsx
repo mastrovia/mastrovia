@@ -146,12 +146,15 @@ export default function HomePage() {
           </span>
           <div className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent" />
         </motion.div>
+
+        {/* Bottom Fade Gradient for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
       </section>
 
       {/* Services Section */}
       <section
         id="services"
-        className="py-20 sm:py-32 bg-muted/20 border-t"
+        className="py-20 sm:py-32"
       >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-20 space-y-4">
