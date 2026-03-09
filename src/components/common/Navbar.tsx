@@ -50,9 +50,9 @@ export default function Navbar() {
       className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border"
     >
       <div className="container mx-auto flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div
+        <Link
+          href="/"
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
-          onClick={() => navigate.push("/")}
         >
           <img
             src="/logo.png"
@@ -62,7 +62,7 @@ export default function Navbar() {
           <span className="hidden sm:inline text-2xl sm:text-3xl font-bold tracking-tight">
             Mastrovia
           </span>
-        </div>
+        </Link>
 
         <div className="flex items-center">
           <div className="hidden md:flex items-center gap-8 mr-4 leading-none">
@@ -76,12 +76,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <button
-              onClick={() => navigate.push("/cost-estimate")}
+            <Link
+              href="/cost-estimate"
               className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
             >
               Estimate Cost
-            </button>
+            </Link>
           </div>
 
           <div className="flex items-center gap-2">
@@ -123,16 +123,14 @@ export default function Navbar() {
                           {link.name}
                         </Link>
                       ))}
-                      <button
+                      <Link
+                        href="/cost-estimate"
+                        onClick={() => setIsOpen(false)}
                         className="text-xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
                         style={{ transitionDelay: `${navLinks.length * 50}ms` }}
-                        onClick={() => {
-                          setIsOpen(false);
-                          navigate.push("/cost-estimate");
-                        }}
                       >
                         Estimate Cost &nbsp; &rarr;
-                      </button>
+                      </Link>
                     </div>
                     <div className="mt-auto p-8 border-t border-border bg-muted/30">
                       <p className="text-xs tracking-widest text-muted-foreground mb-2">

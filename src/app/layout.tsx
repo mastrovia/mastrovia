@@ -4,6 +4,7 @@ import TopMarquee from "@/components/sections/TopMarquee";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Mastrovia, A web development company",
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" storageKey="mastrovia-theme" enableSystem>
+          <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} showForHashAnchor={false}/>
           <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
             <TopMarquee />
             <Navbar />
