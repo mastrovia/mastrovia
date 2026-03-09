@@ -34,7 +34,7 @@ export function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(3); // Keep 4th item open by default like the image
 
     return (
-        <section className="py-24 sm:py-32 bg-background border-t border-border/40">
+        <section id="faq" className="py-24 sm:py-32 bg-background border-t border-border/40">
             <div className="container mx-auto px-8">
                 <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
 
