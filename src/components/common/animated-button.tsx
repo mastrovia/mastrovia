@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, MotionProps } from "motion/react";
 import React, { ButtonHTMLAttributes, useState } from "react";
 import { ArrowRight } from "lucide-react";

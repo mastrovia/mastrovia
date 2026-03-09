@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, lazy, Suspense } from "react";
 import { motion } from "motion/react";
 import { services } from "@/data/homeData";

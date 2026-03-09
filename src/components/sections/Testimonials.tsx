@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { motion } from "motion/react";
 import AnimatedButton from "@/components/common/animated-button";

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { motion } from "motion/react";
 import { contactInfo, socials } from "@/data/contactData";
