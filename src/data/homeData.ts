@@ -17,7 +17,7 @@ export const services = [
         image: "/banners/develop-image.png",
         icon: Code2,
         id: "02",
-        lottie: "/lottie/development.lottie"
+        lottie: "/lottie/programming_and_website.lottie"
     },
     {
         title: "We Deploy",
