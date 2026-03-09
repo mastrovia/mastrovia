@@ -35,35 +35,21 @@ export const Hero: FC = () => {
 
             <div className="container relative z-20 mx-auto text-center max-w-5xl">
                 {/* Minimal Professional Heading */}
-                <motion.div
-                    initial={{ filter: "blur(10px)", opacity: 0 }}
-                    animate={{ filter: "blur(0px)", opacity: 1 }}
-                    transition={{ duration: .7, ease: "easeOut" }}
-                >
+                <div className="animate-hero-blur-fade">
                     <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] tracking-[-0.04em] leading-[1.1] mb-8 capitalize">
                         digital <br />
                         <span className="text-primary italic">architects</span>
                     </h1>
-                </motion.div>
+                </div>
 
                 {/* Concise Sub-headline */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-base sm:text-lg text-muted-foreground mb-12 max-w-md mx-auto font-sans leading-relaxed tracking-tight"
-                >
+                <p className="animate-hero-blur-fade-delay-1 text-base sm:text-lg text-muted-foreground mb-12 max-w-md mx-auto font-sans leading-relaxed tracking-tight">
                     We build high-performance digital infrastructure for brands that
                     refuse to be silent.
-                </motion.p>
+                </p>
 
                 {/* Minimal Action Item */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6"
-                >
+                <div className="animate-hero-blur-fade-delay-2 flex flex-col sm:flex-row items-center justify-center gap-6">
                     <ContactPopup>
                         <AnimatedButton className="font-bold w-full sm:w-auto capitalize">
                             Book a call
@@ -77,7 +63,7 @@ export const Hero: FC = () => {
                             Estimate Cost
                         </AnimatedButton>
                     </Link>
-                </motion.div>
+                </div>
             </div>
 
             {/* Bottom Fade Gradient for smooth transition */}
