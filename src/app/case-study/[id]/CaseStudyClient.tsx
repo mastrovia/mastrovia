@@ -58,7 +58,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               </motion.p>
             </div>
             <div className="md:col-span-2">
-              <div className="relative rounded-lg md:rounded-xl overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[1.4/1] md:aspect-[1.4/1]">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[4/3]">
                 <Image
                   src={caseStudy.image}
                   alt={caseStudy.title}
