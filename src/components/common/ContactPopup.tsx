@@ -9,6 +9,7 @@ import {
     DialogContent,
     DialogHeader,
     DialogTrigger,
+    DialogTitle,
 } from "@/components/ui/dialog";
 
 export function ContactPopup({ children }: { children: React.ReactNode }) {
@@ -24,6 +25,7 @@ export function ContactPopup({ children }: { children: React.ReactNode }) {
                     <div className="p-6 sm:p-8 md:p-12 md:col-span-2 bg-muted/20 border-b md:border-b-0 md:border-r border-border flex flex-col justify-between h-full md:h-full relative z-10 md:overflow-y-auto">
                         <div className="flex justify-between items-start gap-4">
                             <DialogHeader>
+                                <DialogTitle className="sr-only">Contact Us</DialogTitle>
                                 <ContactInfo compact />
                             </DialogHeader>
 
