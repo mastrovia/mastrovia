@@ -83,9 +83,9 @@ export function Works() {
                     </div>
 
                     {/* Mobile Image (Always visible on mobile) */}
-                    <div className="md:hidden relative w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50 ml-4">
+                    <div className="md:hidden relative aspect-[4/3] h-24 shrink-0 border border-border/50 ml-4">
                       <Image
-                        src={work.screenshots[0].url}
+                        src={work.image}
                         alt={work.title}
                         fill
                         className="object-cover"
@@ -98,15 +98,15 @@ export function Works() {
                     {isHovered && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 200 }}
+                        animate={{ opacity: 1, height: 250 }}
                         exit={{ opacity: 0, height: 0, transition: { duration: 0.1, ease: [0.16, 1, 0.3, 1] } }}
                         transition={{ duration: .7, ease: [0.26, 1, 0.3, 1] }}
-                        className="hidden md:flex absolute top-0 right-8 lg:right-16 w-[350px] pointer-events-none origin-top overflow-hidden z-[100] border-b dark:border-none dark:shadow-none shadow-sm"
+                        className="hidden md:flex absolute top-0 right-8 lg:right-16 w-[333px] pointer-events-none origin-top overflow-hidden z-[100] border-b dark:border-none dark:shadow-none shadow-sm"
                       >
-                        <div className="w-[350px] h-[200px] overflow-hidden relative">
+                        <div className="w-[333px] h-[250px] overflow-hidden relative">
                           <Image
-                            src={work.screenshots[0].url}
-                            alt={work.screenshots[0].caption || work.title}
+                            src={work.image}
+                            alt={work.title}
                             fill
                             className="object-cover bg-background border border-border/50 pointer-events-none"
                           />
