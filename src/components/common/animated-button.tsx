@@ -63,7 +63,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           <>
             <motion.span
-              animate={{ x: isHovered && !disabled ? -6 : 0 }}
+              animate={{ x: isHovered && !disabled ? -5 : 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className="inline-flex items-center"
             >
@@ -73,7 +73,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <motion.span
               animate={{
                 opacity: isHovered && !disabled ? 1 : 0,
-                x: isHovered && !disabled ? 0 : -6,
+                x: isHovered && !disabled ? -2 : -5,
               }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className="inline-flex items-center absolute right-2.5"

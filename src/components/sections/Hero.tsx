@@ -62,8 +62,8 @@ export const Hero: FC = () => {
                     className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
                     <ContactPopup>
-                        <AnimatedButton className="font-bold w-full sm:w-auto">
-                            Get Started
+                        <AnimatedButton className="font-bold w-full sm:w-auto capitalize">
+                            Book a call
                         </AnimatedButton>
                     </ContactPopup>
                     <a href="/cost-estimate" className="w-full sm:w-auto">
