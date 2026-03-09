@@ -5,6 +5,7 @@ import {
   Menu, Github, Instagram, Mail
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { ModeToggle } from "./mode-toggle";
@@ -56,10 +57,12 @@ export default function Navbar() {
           href="/"
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
         >
-          <img
+          <Image
             src="/logo.png"
             alt="Mastrovia Logo"
-            className="w-10 sm:w-12 transition-transform duration-300 invert dark:invert-0"
+            width={48}
+            height={23}
+            className="w-10 sm:w-12 h-auto transition-transform duration-300 invert dark:invert-0"
           />
           <span className="hidden sm:inline text-2xl sm:text-3xl font-bold tracking-tight">
             Mastrovia

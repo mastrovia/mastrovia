@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { CaseStudy } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
@@ -149,11 +150,12 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
           transition={{ delay: 0.5 }}
           className="container mx-auto max-w-6xl group overflow-hidden"
         >
-          <div className="relative rounded-none overflow-hidden border border-border bg-muted/20">
-            <img
+          <div className="relative rounded-none overflow-hidden border border-border bg-muted/20 w-full aspect-video">
+            <Image
               src={caseStudy.image}
               alt={caseStudy.title}
-              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+              fill
+              className="object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
             />
           </div>
         </motion.div>
@@ -408,10 +410,11 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                   transition={{ delay: idx * 0.1 }}
                   className={`relative rounded-3xl overflow-hidden border border-border group bg-muted/20 shadow-none ${colSpanClass}`}
                 >
-                  <img
+                  <Image
                     src={screenshot.url}
                     alt={screenshot.caption}
-                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                    fill
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8 pointer-events-none">
                     <p className="text-sm md:text-base font-sans text-white/90 tracking-tight">

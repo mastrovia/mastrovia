@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Works() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -18,8 +19,8 @@ export function Works() {
             <h2 className="text-3xl md:text-5xl leading-none md:flex gap-4">
               People we
               <span className="text-primary italic flex items-end">
-                <img src="/icons/love.png" alt="heart" className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
-                <img src="/icons/love-arrow.png" alt="heart" className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
+                <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
+                <Image src="/icons/love-arrow.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
                 loved
               </span>
               working with
@@ -82,11 +83,12 @@ export function Works() {
                     </div>
 
                     {/* Mobile Image (Always visible on mobile) */}
-                    <div className="md:hidden w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50 ml-4">
-                      <img
+                    <div className="md:hidden relative w-24 h-24 sm:w-32 sm:h-32 shrink-0 border border-border/50 ml-4">
+                      <Image
                         src={work.screenshots[0].url}
                         alt={work.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     </div>
                   </Link>
@@ -102,10 +104,11 @@ export function Works() {
                         className="hidden md:flex absolute top-0 right-8 lg:right-16 w-[350px] pointer-events-none origin-top overflow-hidden z-[100] border-b dark:border-none dark:shadow-none shadow-sm"
                       >
                         <div className="w-[350px] h-[200px] overflow-hidden relative">
-                          <img
+                          <Image
                             src={work.screenshots[0].url}
-                            alt={work.screenshots[0].caption}
-                            className="absolute top-0 left-0 w-full h-full object-cover bg-background border border-border/50 pointer-events-none"
+                            alt={work.screenshots[0].caption || work.title}
+                            fill
+                            className="object-cover bg-background border border-border/50 pointer-events-none"
                           />
                         </div>
                       </motion.div>
