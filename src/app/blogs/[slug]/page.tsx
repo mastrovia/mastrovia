@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           Back to Journal
         </Link>
         
-        <header className="mb-16 border-b border-border/50 pb-16 text-left">
+        <header className="mb-8 md:mb-16 border-b border-border/50 pb-8 md:pb-16 text-left">
           <time className="text-sm font-bold uppercase tracking-widest text-primary mb-6 block">
             {new Date(post.metadata.publishedAt).toLocaleDateString('en-US', {
                month: 'long',
@@ -49,17 +49,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                year: 'numeric'
             })}
           </time>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-8 leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4 md:mb-8 leading-[1.1]">
             {post.metadata.title}
           </h1>
           {post.metadata.summary && (
-            <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-12">
+            <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
               {post.metadata.summary}
             </p>
           )}
 
           {post.metadata.image && (
-            <div className="w-full aspect-[16/9] textured-surface relative rounded-2xl overflow-hidden border border-border/50 mt-12 bg-muted/20">
+            <div className="w-full aspect-[16/9] textured-surface relative rounded-2xl overflow-hidden border border-border/50 mt-6 md:mt-12 bg-muted/20">
               <Image
                 src={post.metadata.image}
                 alt={post.metadata.title}
