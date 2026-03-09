@@ -33,13 +33,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 pt-8 sm:pt-12 pb-8 sm:pb-16 max-w-4xl">
-        <Link 
+        {/* <Link 
           href="/blogs"
           className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.15em] text-muted-foreground hover:text-primary transition-colors mb-10 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Journal
-        </Link>
+        </Link> */}
         
         <header className="mb-8 md:mb-16 border-b border-border/50 pb-8 md:pb-16 text-left">
           <time className="text-sm font-bold uppercase tracking-widest text-primary mb-6 block">
