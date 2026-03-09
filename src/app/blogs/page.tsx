@@ -10,7 +10,7 @@ export default function BlogsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-background pt-20 pb-24">
+    <div className="min-h-screen bg-background pt-8 pb-24 sm:pt-12">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">Our Journal</h1>
         <p className="text-lg text-muted-foreground font-light mb-16 max-w-2xl">
