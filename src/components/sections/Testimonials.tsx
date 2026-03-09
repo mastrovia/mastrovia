@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useAnimate } from 'motion/react';
-import { Quote } from 'lucide-react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
 
 const testimonials = [
     {
@@ -29,11 +29,8 @@ const testimonials = [
     }
 ];
 
-// Repeat testimonials to ensure continuous loop in marquee
-const repeatedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
-
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-    <div className="flex-none w-[280px] sm:w-[450px] bg-card/40 backdrop-blur-sm border border-border/50 p-6 sm:p-8 rounded-[2rem] flex flex-col gap-4 sm:gap-6 group hover:border-primary/30 transition-all duration-300">
+    <div className="flex-none w-[300px] sm:w-[450px] bg-card/40 backdrop-blur-sm border border-border/50 p-6 sm:p-8 rounded-[2rem] flex flex-col gap-4 sm:gap-6 group hover:border-primary/30 transition-all duration-300">
         <div className="bg-primary/10 w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center">
             <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-primary fill-primary/20" />
         </div>
@@ -61,47 +58,122 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
     </div>
 );
 
-const Marquee = ({ children, reverse = false, duration = 60 }: { children: React.ReactNode, reverse?: boolean, duration?: number }) => {
-    const [scope, animate] = useAnimate();
+const Carousel = () => {
+    const scrollRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-    const animationRef = useRef<any>(null);
+    const lastActivityRef = useRef<number>(Date.now());
+    const animationFrameRef = useRef<number | null>(null);
+
+    const handleManualActivity = useCallback(() => {
+        lastActivityRef.current = Date.now();
+    }, []);
 
     useEffect(() => {
-        const controls = animate(
-            scope.current,
-            { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] },
-            {
-                duration: duration,
-                repeat: Infinity,
-                ease: "linear",
-            }
-        );
-        animationRef.current = controls;
-        return () => controls.stop();
-    }, [duration, reverse, animate, scope]);
+        const el = scrollRef.current;
+        if (!el) return;
 
-    useEffect(() => {
-        if (animationRef.current) {
-            if (isHovered) {
-                animationRef.current.pause();
-            } else {
-                animationRef.current.play();
+        const animate = () => {
+            const now = Date.now();
+            const inactivityDuration = now - lastActivityRef.current;
+
+            // Start auto-scrolling if not hovered AND inactive for 2 seconds
+            if (!isHovered && inactivityDuration > 2000) {
+                // Adjust speed here
+                el.scrollLeft += 0.8;
+
+                // Infinite loop logic:
+                // We have exactly 3 sets of testimonials.
+                // Each set is el.scrollWidth / 3.
+                const setWidth = el.scrollWidth / 3;
+                
+                if (el.scrollLeft >= setWidth * 2) {
+                    el.scrollLeft -= setWidth;
+                } else if (el.scrollLeft <= 0) {
+                    el.scrollLeft += setWidth;
+                }
             }
-        }
+
+            animationFrameRef.current = requestAnimationFrame(animate);
+        };
+
+        animationFrameRef.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+        };
     }, [isHovered]);
+
+    // Initial positioning to the middle set
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (el) {
+            // Give a small delay to ensure layout is calculated
+            const timer = setTimeout(() => {
+                const setWidth = el.scrollWidth / 3;
+                el.scrollLeft = setWidth;
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const scroll = (direction: 'left' | 'right') => {
+        handleManualActivity();
+        if (scrollRef.current) {
+            const scrollAmount = 400;
+            scrollRef.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    // Render the set of cards
+    const renderCards = (suffix: string) => (
+        <>
+            {testimonials.map((t, i) => (
+                <TestimonialCard key={`${suffix}-${i}`} testimonial={t} />
+            ))}
+        </>
+    );
 
     return (
         <div 
-            className="flex overflow-hidden py-4 select-none"
+            className="relative group/carousel"
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={() => {
+                setIsHovered(false);
+                handleManualActivity();
+            }}
         >
-            <div
-                ref={scope}
-                className="flex gap-4 sm:gap-8 px-4 w-fit"
+            {/* Navigation Buttons */}
+            <button 
+                onClick={() => scroll('left')}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto"
+                aria-label="Scroll left"
             >
-                {children}
-                {children}
+                <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button 
+                onClick={() => scroll('right')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto"
+                aria-label="Scroll right"
+            >
+                <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Scroll Container */}
+            <div 
+                ref={scrollRef}
+                className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide py-4 px-4 no-scrollbar cursor-grab active:cursor-grabbing select-none"
+                onScroll={handleManualActivity}
+                onTouchStart={handleManualActivity}
+                onMouseDown={handleManualActivity}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+                {renderCards('set1')}
+                {renderCards('set2')}
+                {renderCards('set3')}
             </div>
         </div>
     );
@@ -119,16 +191,12 @@ export function Testimonials() {
                 </div>
             </div>
 
-            <div className="relative flex flex-col gap-4">
-                {/* Responsive Left and Right fades */}
-                <div className="absolute inset-y-0 left-0 w-16 sm:w-32 md:w-56 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-16 sm:w-32 md:w-56 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="relative">
+                {/* Side Fades */}
+                <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-background via-background/40 to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-background via-background/40 to-transparent z-10 pointer-events-none" />
 
-                <Marquee>
-                    {repeatedTestimonials.slice(0, 6).map((t, i) => (
-                        <TestimonialCard key={i} testimonial={t} />
-                    ))}
-                </Marquee>
+                <Carousel />
             </div>
         </section>
     );
