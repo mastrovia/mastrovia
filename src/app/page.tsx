@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
@@ -5,7 +7,7 @@ import { TechMarquee } from "@/components/sections/TechMarquee";
 import { Works } from "@/components/sections/Works";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
-import ContactPage from "./Contact";
+import ContactPage from "@/app/contact/page";
 import { Footer } from "@/components/common/Footer";
 
 export default function HomePage() {

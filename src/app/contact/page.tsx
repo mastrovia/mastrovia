@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { ContactForm } from "@/components/common/ContactForm";
 import { ContactInfo } from "@/components/common/ContactInfo";

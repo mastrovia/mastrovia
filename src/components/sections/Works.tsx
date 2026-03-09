@@ -1,8 +1,10 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export function Works() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -57,7 +59,7 @@ export function Works() {
                   onMouseLeave={() => setHoveredIdx(null)}
                 >
                   <Link
-                    to={`/case-study/${work.id}`}
+                    href={`/case-study/${work.id}`}
                     className="flex justify-between items-center py-3 md:py-4 lg:py-6 group/item"
                   >
                     <div className="flex flex-col gap-2 flex-1 md:pl-8">

@@ -1,8 +1,10 @@
+"use client";
+
 import { useState, useRef } from "react";
 import {
   Menu, Github, Instagram, Mail
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { ModeToggle } from "./mode-toggle";
 import {
@@ -23,7 +25,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [marqueeHidden, setMarqueeHidden] = useState(false);
   const lastScrollY = useRef(0);
@@ -49,7 +51,7 @@ export default function Navbar() {
       <div className="container mx-auto flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <div
           className="py-4 cursor-pointer select-none flex flex-row items-center gap-2 group"
-          onClick={() => navigate("/")}
+          onClick={() => navigate.push("/")}
         >
           <img
             src="/logo.png"
@@ -74,7 +76,7 @@ export default function Navbar() {
               </a>
             ))}
             <button
-              onClick={() => navigate("/cost-estimate")}
+              onClick={() => navigate.push("/cost-estimate")}
               className="px-6 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-tight hover:bg-primary/90 transition-all cursor-pointer"
             >
               Estimate Cost
@@ -125,7 +127,7 @@ export default function Navbar() {
                         style={{ transitionDelay: `${navLinks.length * 50}ms` }}
                         onClick={() => {
                           setIsOpen(false);
-                          navigate("/cost-estimate");
+                          navigate.push("/cost-estimate");
                         }}
                       >
                         Estimate Cost &nbsp; &rarr;
