@@ -55,7 +55,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-7xl md:text-[6rem] lg:text-[7.5rem] font-medium tracking-tight mb-8 leading-[0.9]"
+              className="text-4xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-medium tracking-tight mb-8 leading-[0.9]"
             >
               {caseStudy.title}
             </motion.h1>
@@ -64,7 +64,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl md:text-2xl text-muted-foreground/80 max-w-3xl leading-relaxed tracking-normal font-light"
+              className="text-lg md:text-xl text-muted-foreground/80 max-w-3xl leading-relaxed tracking-normal"
             >
               {caseStudy.description}
             </motion.p>
@@ -142,8 +142,8 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="text-3xl font-medium tracking-tight">Overview</h2>
-              <p className="text-muted-foreground leading-relaxed tracking-normal font-light">
+              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Overview</h2>
+              <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.overview}
               </p>
             </motion.div>
@@ -155,8 +155,8 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               transition={{ delay: 0.1 }}
               className="space-y-4"
             >
-              <h2 className="text-3xl font-medium tracking-tight">Challenge</h2>
-              <p className="text-muted-foreground leading-relaxed tracking-normal font-light">
+              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Challenge</h2>
+              <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.challenge}
               </p>
             </motion.div>
@@ -168,8 +168,8 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               transition={{ delay: 0.2 }}
               className="space-y-4"
             >
-              <h2 className="text-3xl font-medium tracking-tight">Solution</h2>
-              <p className="text-muted-foreground leading-relaxed tracking-normal font-light">
+              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Solution</h2>
+              <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.solution}
               </p>
             </motion.div>
@@ -184,7 +184,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-medium tracking-tight mb-12"
+            className="text-xl md:text-3xl font-medium tracking-tight mb-12"
           >
             Key Results
           </motion.h2>
@@ -200,7 +200,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                 className="flex items-start gap-4 py-4 md:py-6 border-b border-border/50 hover:border-primary/50 transition-colors"
               >
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-xl leading-relaxed tracking-normal font-light text-muted-foreground">{result}</p>
+                <p className="text-xl leading-relaxed tracking-normal text-muted-foreground">{result}</p>
               </motion.div>
             ))}
           </div>
@@ -216,7 +216,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-medium tracking-tight mb-12"
+            className="text-xl md:text-3xl font-medium tracking-tight mb-12"
           >
             Project Screenshots
           </motion.h2>
@@ -265,25 +265,25 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-10"
+            className="space-y-5"
           >
-            <h2 className="text-5xl md:text-7xl font-medium tracking-tight">
+            <h2 className="text-xl md:text-3xl font-medium tracking-tight">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground/80 leading-relaxed font-light tracking-normal max-w-2xl mx-auto">
+            <p className="text-muted-foreground/80 leading-relaxed tracking-normal max-w-2xl mx-auto">
               Let's build something exceptional together. Get in touch to
               discuss your next digital project.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
               <ContactPopup>
-                <AnimatedButton className="px-12 py-7 text-sm font-bold uppercase tracking-wider">
+                <AnimatedButton className="px-10 py-4 text-sm font-bold uppercase tracking-wider">
                   Start a Project
                 </AnimatedButton>
               </ContactPopup>
               <Link href="/#works">
                 <AnimatedButton
                   variant="outline"
-                  className="px-12 py-7 text-sm font-bold uppercase tracking-wider"
+                  className="px-10 py-4 text-sm font-bold uppercase tracking-wider"
                 >
                   View More Work
                 </AnimatedButton>
