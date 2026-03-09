@@ -76,7 +76,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" ? "md:hidden xl:block" : ""
+                className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" || link.name == "Journal"? "md:hidden xl:block" : ""
                   }`}
               >
                 {link.name}
@@ -107,7 +107,7 @@ export default function Navbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className={`w-[70%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[85px] sm:top-[93px]"
+                  className={`w-[70%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[82px] sm:top-[93px]"
                     }`}
                   style={{ transition: "top 0.3s ease-out" }}
                 >
