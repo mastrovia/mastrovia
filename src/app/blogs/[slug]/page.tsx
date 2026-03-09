@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                year: 'numeric'
             })}
           </time>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight mb-8 leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-8 leading-[1.1]">
             {post.metadata.title}
           </h1>
           {post.metadata.summary && (
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
 
           {post.metadata.image && (
-            <div className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden border border-border/50 mt-12 bg-muted/20">
+            <div className="w-full aspect-[16/9] textured-surface relative rounded-2xl overflow-hidden border border-border/50 mt-12 bg-muted/20">
               <Image
                 src={post.metadata.image}
                 alt={post.metadata.title}

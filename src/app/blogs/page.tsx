@@ -14,13 +14,13 @@ export default function BlogsPage() {
     <div className="min-h-screen bg-background pt-8 pb-24 sm:pt-12">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">Our Journal</h1>
-        <p className="text-lg text-muted-foreground font-light mb-16 max-w-2xl">
+        <p className="text-lg text-muted-foreground mb-16 max-w-2xl">
           Thoughts, perspectives, and strategies on creating modern digital products and the web ecosystem.
         </p>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-3">
           {blogs.map((blog) => (
-            <Link key={blog.slug} href={`/blogs/${blog.slug}`} className="group relative border border-border/50 rounded-2xl p-6 sm:p-10 bg-muted/20 hover:bg-muted/30 transition-all hover:border-primary/30">
+            <Link key={blog.slug} href={`/blogs/${blog.slug}`} className="group relative border border-border/50 rounded-2xl p-4 sm:p-8 bg-muted/20 hover:bg-muted/30 transition-all hover:border-primary/30">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 {blog.metadata.image && (
                   <div className="w-full md:w-1/3 aspect-[16/10] relative overflow-hidden rounded-xl border border-border/50">
@@ -43,7 +43,7 @@ export default function BlogsPage() {
                   <h2 className="text-2xl sm:text-3xl font-medium tracking-tight group-hover:text-primary transition-colors">
                     {blog.metadata.title}
                   </h2>
-                  <p className="text-base text-muted-foreground font-light leading-relaxed">
+                  <p className="text-base text-muted-foreground leading-relaxed">
                     {blog.metadata.summary}
                   </p>
                 </div>
