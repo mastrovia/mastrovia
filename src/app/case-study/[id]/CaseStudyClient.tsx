@@ -20,7 +20,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-30 pb-12 px-4 overflow-hidden">
+      <section className="relative pt-10 md:pt-15 md:pb-10 px-5 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" />
 
         {/* Minimal, Centered Soft Glow */}
@@ -36,38 +36,37 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-20">
-          {/* Back Button */}
-          <Link href="/#works">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground hover:text-primary transition-colors mb-12 md:mb-16 group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Works
-            </motion.div>
-          </Link>
-
           {/* Title & Description */}
-          <div className="max-w-5xl mb-12 md:mb-16">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-medium tracking-tight mb-8 leading-[0.9]"
-            >
-              {caseStudy.title}
-            </motion.h1>
+          <div className="grid grid-cols-1 md:grid-cols-5 md:gap-5 mb-5">
+            <div className="max-w-5xl mb-10 md:mb-14 md:col-span-3 flex flex-col justify-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl md:text-6xl lg:text-[6rem] tracking-tight mb-8 leading-[0.9]"
+              >
+                {caseStudy.title}
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg md:text-xl text-muted-foreground/80 max-w-3xl leading-relaxed tracking-normal"
-            >
-              {caseStudy.description}
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="md:text-lg text-muted-foreground/90 max-w-3xl leading-relaxed tracking-normal"
+              >
+                {caseStudy.description}
+              </motion.p>
+            </div>
+            <div className="md:col-span-2">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[1.4/1] md:aspect-[1.4/1]">
+                <Image
+                  src={caseStudy.image}
+                  alt={caseStudy.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Metadata Grid */}
@@ -75,22 +74,22 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border/40"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-border/40"
           >
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">Client</span>
+              <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Client</span>
               <span className="text-lg font-medium tracking-tight">{caseStudy.client}</span>
             </div>
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">Category</span>
+              <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Category</span>
               <span className="text-lg font-medium tracking-tight">{caseStudy.category}</span>
             </div>
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">Year</span>
+              <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Year</span>
               <span className="text-lg font-medium tracking-tight">{caseStudy.year}</span>
             </div>
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">Live Site</span>
+              <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Live Site</span>
               {caseStudy.link !== "#" ? (
                 <a
                   href={caseStudy.link}
@@ -111,25 +110,6 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             </div>
           </motion.div>
         </div>
-      </section>
-
-      {/* Hero Image */}
-      <section className="px-4 pb-20 md:pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="container mx-auto max-w-7xl group overflow-hidden"
-        >
-          <div className="relative rounded-lg md:rounded-xl overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[4/3] md:aspect-[21/9]">
-            <Image
-              src={caseStudy.image}
-              alt={caseStudy.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-            />
-          </div>
-        </motion.div>
       </section>
 
       {/* Overview Section */}
@@ -178,18 +158,18 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
       </section>
 
       {/* Results Section */}
-      <section className="px-4 py-20 border-t">
+      <section className="px-4 py-10 md:py-20 border-y">
         <div className="container mx-auto max-w-7xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xl md:text-3xl font-medium tracking-tight mb-12"
+            className="text-xl md:text-3xl font-medium tracking-tight mb-10"
           >
             Key Results
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-3 md:gap-6">
             {caseStudy.results.map((result, idx) => (
               <motion.div
                 key={idx}
@@ -197,10 +177,10 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-4 py-4 md:py-6 border-b border-border/50 hover:border-primary/50 transition-colors"
+                className="flex items-start gap-4 p-4 md:p-6 border border-border/50 hover:border-primary/50 transition-colors rounded-md"
               >
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-xl leading-relaxed tracking-normal text-muted-foreground">{result}</p>
+                <p className="md:text-lg leading-relaxed tracking-normal text-muted-foreground">{result}</p>
               </motion.div>
             ))}
           </div>
@@ -210,7 +190,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
 
 
       {/* Screenshots Gallery */}
-      <section className="px-4 py-20 bg-muted/20">
+      {/* <section className="px-4 py-20 bg-muted/20">
         <div className="container mx-auto max-w-7xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -256,10 +236,10 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="px-4 py-32 bg-muted/20">
+      <section className="px-4 py-16 md:py-32 bg-muted/20">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
