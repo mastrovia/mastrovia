@@ -4,6 +4,7 @@ import { FC } from "react";
 import { motion } from "motion/react";
 import AnimatedButton from "@/components/common/animated-button";
 import { ContactPopup } from "@/components/common/ContactPopup";
+import Link from "next/link";
 
 export const Hero: FC = () => {
     return (
@@ -66,14 +67,14 @@ export const Hero: FC = () => {
                             Book a call
                         </AnimatedButton>
                     </ContactPopup>
-                    <a href="/cost-estimate" className="w-full sm:w-auto">
+                    <Link href="/cost-estimate" className="w-full sm:w-auto">
                         <AnimatedButton
                             variant="outline"
                             className="font-bold w-full"
                         >
                             Estimate Cost
                         </AnimatedButton>
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
 

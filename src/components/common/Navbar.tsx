@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import {
   Menu, Github, Instagram, Mail
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { ModeToggle } from "./mode-toggle";
@@ -18,10 +19,10 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
-  { name: "Works", href: "#works" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/#services" },
+  { name: "Works", href: "/#works" },
+  { name: "Testimonials", href: "/#testimonials" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -66,14 +67,14 @@ export default function Navbar() {
         <div className="flex items-center">
           <div className="hidden md:flex items-center gap-8 mr-4 leading-none">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className={`text-sm hover:text-primary transition-colors py-2 ${link.name === "Testimonials" ? "md:hidden xl:block" : ""
                   }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <button
               onClick={() => navigate.push("/cost-estimate")}
@@ -112,7 +113,7 @@ export default function Navbar() {
                     </SheetHeader>
                     <div className="flex flex-col p-8 gap-8">
                       {navLinks.map((link, idx) => (
-                        <a
+                        <Link
                           key={link.name}
                           href={link.href}
                           className="text-xl tracking-tight hover:text-primary transition-all duration-300 translate-x-0 hover:translate-x-2"
@@ -120,7 +121,7 @@ export default function Navbar() {
                           onClick={() => setIsOpen(false)}
                         >
                           {link.name}
-                        </a>
+                        </Link>
                       ))}
                       <button
                         className="text-xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
