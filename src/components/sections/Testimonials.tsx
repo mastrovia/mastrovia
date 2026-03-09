@@ -109,7 +109,7 @@ const Marquee = ({ children, reverse = false, duration = 60 }: { children: React
 
 export function Testimonials() {
     return (
-        <section id="testimonials" className="py-20 sm:py-24 bg-muted/5 relative overflow-hidden">
+        <section id="testimonials" className="py-20 sm:py-24 bg-muted/5 border-t border-border/50 relative overflow-hidden">
             <div className="container mx-auto px-6 sm:px-8 max-w-7xl relative z-10 mb-12 sm:mb-16">
                 <div className="md:text-center">
                     <h2 className="text-3xl md:text-5xl tracking-tight mb-4 leading-tight">
