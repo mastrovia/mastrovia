@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getBlogPosts } from "@/lib/mdx";
 
 export default function BlogsPage() {
@@ -20,7 +21,17 @@ export default function BlogsPage() {
         <div className="flex flex-col gap-10">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`} className="group relative border border-border/50 rounded-2xl p-6 sm:p-10 bg-muted/20 hover:bg-muted/30 transition-all hover:border-primary/30">
-              <div className="flex flex-col md:flex-row gap-6 md:items-center">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                {blog.metadata.image && (
+                  <div className="w-full md:w-1/3 aspect-[16/10] relative overflow-hidden rounded-xl border border-border/50">
+                    <Image
+                      src={blog.metadata.image}
+                      alt={blog.metadata.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                )}
                 <div className="flex-1 space-y-4">
                   <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     {new Date(blog.metadata.publishedAt).toLocaleDateString('en-US', {
@@ -35,9 +46,6 @@ export default function BlogsPage() {
                   <p className="text-base text-muted-foreground font-light leading-relaxed">
                     {blog.metadata.summary}
                   </p>
-                </div>
-                <div className="hidden md:flex items-center justify-center p-4 rounded-full bg-background border border-border group-hover:scale-110 transition-transform duration-500">
-                  <span className="text-primary font-medium tracking-widest text-sm uppercase">Read &rarr;</span>
                 </div>
               </div>
             </Link>

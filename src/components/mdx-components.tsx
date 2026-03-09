@@ -2,22 +2,22 @@ import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, BlockquoteHTML
 
 export const mdxComponents = {
   h1: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight mt-16 mb-8 text-foreground" {...props} />
+    <h1 className="text-4xl sm:text-5xl md:text-6xl mt-16 mb-8" {...props} />
   ),
   h2: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight mt-14 mb-6 text-foreground" {...props} />
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl mt-14 mb-6" {...props} />
   ),
   h3: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight mt-10 mb-4 text-foreground" {...props} />
+    <h3 className="text-2xl sm:text-3xl lg:text-4xl mt-10 mb-4" {...props} />
   ),
   p: (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
-    <p className="text-lg md:text-xl leading-relaxed tracking-normal font-light mb-8 text-muted-foreground" {...props} />
+    <p className="mb-8 text-muted-foreground" {...props} />
   ),
   ul: (props: DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>) => (
-    <ul className="list-none space-y-4 mb-8 text-lg md:text-xl tracking-normal font-light text-muted-foreground" {...props} />
+    <ul className="list-none space-y-4 mb-8 text-muted-foreground" {...props} />
   ),
   ol: (props: DetailedHTMLProps<HTMLAttributes<HTMLOListElement>, HTMLOListElement>) => (
-    <ol className="list-decimal list-inside space-y-4 mb-8 text-lg md:text-xl tracking-normal font-light text-muted-foreground" {...props} />
+    <ol className="list-decimal list-inside space-y-4 mb-8 text-muted-foreground" {...props} />
   ),
   li: (props: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>) => (
     <li className="flex items-start gap-3" {...props}>
@@ -26,11 +26,11 @@ export const mdxComponents = {
     </li>
   ),
   strong: (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => (
-    <strong className="font-medium text-foreground" {...props} />
+    <strong className="text-foreground" {...props} />
   ),
   a: (props: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => (
     <a 
-      className="font-medium text-foreground hover:text-primary underline underline-offset-4 decoration-border/50 hover:decoration-primary transition-all" 
+      className="text-foreground hover:text-primary underline underline-offset-4 decoration-border/50 hover:decoration-primary transition-all" 
       target={props.href?.startsWith('http') ? '_blank' : undefined}
       rel={props.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       {...props} 
