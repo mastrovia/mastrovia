@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { motion, useMotionValue, useAnimationFrame, animate } from 'motion/react';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -25,6 +26,20 @@ const testimonials = [
         role: 'Founder',
         company: 'Alpha Roots',
         content: 'The team at Mastrovia brought our vision to life with precision and creativity. Their commitment to quality and attention to detail is unmatched in the industry.',
+        avatar: '',
+    },
+    {
+        name: 'Arjun Das',
+        role: 'CEO',
+        company: 'Nova Soft',
+        content: 'Mastrovia transformed our online presence. Their team is highly skilled and very responsive to our needs. Highly recommended for any digital project.',
+        avatar: '',
+    },
+    {
+        name: 'Sarah Chen',
+        role: 'Product Manager',
+        company: 'Nexus tech',
+        content: 'The level of professionalism and technical depth Mastrovia brings to the table is refreshing. They don\'t just build code; they build solutions.',
         avatar: '',
     }
 ];
@@ -59,93 +74,106 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
 );
 
 const Carousel = () => {
-    const scrollRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
     const lastActivityRef = useRef<number>(Date.now());
-    const animationFrameRef = useRef<number | null>(null);
+    const x = useMotionValue(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const innerRef = useRef<HTMLDivElement>(null);
+    
+    // Triple the testimonials for seamless looping
+    const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
+    const getSetWidth = useCallback(() => {
+        if (innerRef.current) {
+            return innerRef.current.scrollWidth / 3;
+        }
+        return 0;
+    }, []);
+
+    // Helper to perform the wrap jump
+    const wrapX = useCallback((currentX: number) => {
+        const setWidth = getSetWidth();
+        if (setWidth === 0) return currentX;
+
+        // The boundary is the middle set. If we go too far left or right, jump back.
+        // Middle set starts at -setWidth and ends at -setWidth * 2.
+        if (currentX <= -setWidth * 2) {
+            return currentX + setWidth;
+        } else if (currentX >= 0) {
+            return currentX - setWidth;
+        }
+        return currentX;
+    }, [getSetWidth]);
 
     const handleManualActivity = useCallback(() => {
         lastActivityRef.current = Date.now();
     }, []);
 
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
+    // Continuous auto-scroll
+    useAnimationFrame((_t, delta) => {
+        const now = Date.now();
+        const inactivityDuration = now - lastActivityRef.current;
 
-        const animate = () => {
-            const now = Date.now();
-            const inactivityDuration = now - lastActivityRef.current;
+        if (!isHovered && !isDragging && inactivityDuration > 1500) {
+            const currentX = x.get();
+            const setWidth = getSetWidth();
+            if (setWidth === 0) return;
 
-            // Start auto-scrolling if not hovered AND inactive for 2 seconds
-            if (!isHovered && inactivityDuration > 2000) {
-                // Adjust speed here
-                el.scrollLeft += 0.8;
-
-                // Infinite loop logic:
-                // We have exactly 3 sets of testimonials.
-                // Each set is el.scrollWidth / 3.
-                const setWidth = el.scrollWidth / 3;
-                
-                if (el.scrollLeft >= setWidth * 2) {
-                    el.scrollLeft -= setWidth;
-                } else if (el.scrollLeft <= 0) {
-                    el.scrollLeft += setWidth;
-                }
-            }
-
-            animationFrameRef.current = requestAnimationFrame(animate);
-        };
-
-        animationFrameRef.current = requestAnimationFrame(animate);
-
-        return () => {
-            if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-        };
-    }, [isHovered]);
-
-    // Initial positioning to the middle set
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (el) {
-            // Give a small delay to ensure layout is calculated
-            const timer = setTimeout(() => {
-                const setWidth = el.scrollWidth / 3;
-                el.scrollLeft = setWidth;
-            }, 100);
-            return () => clearTimeout(timer);
+            // Slow continuous move left
+            const moveBy = 0.04 * delta; 
+            const nextX = wrapX(currentX - moveBy);
+            x.set(nextX);
         }
-    }, []);
+    });
+
+    // Handle wrapping during drag or scroll animation
+    useEffect(() => {
+        return x.on("change", (latest) => {
+            const setWidth = getSetWidth();
+            if (setWidth === 0) return;
+
+            // If we've dragged or animated past boundaries, jump silently
+            if (latest <= -setWidth * 2) {
+                x.set(latest + setWidth);
+            } else if (latest >= 0) {
+                x.set(latest - setWidth);
+            }
+        });
+    }, [x, getSetWidth]);
+
+    // Initial positioning
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            const setWidth = getSetWidth();
+            if (setWidth > 0) x.set(-setWidth);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [x, getSetWidth]);
 
     const scroll = (direction: 'left' | 'right') => {
         handleManualActivity();
-        if (scrollRef.current) {
-            const scrollAmount = 400;
-            scrollRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
-        }
+        const currentX = x.get();
+        const moveAmount = 400; // Approx one card
+        const targetX = direction === 'left' ? currentX + moveAmount : currentX - moveAmount;
+        
+        animate(x, targetX, {
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+            mass: 1,
+            onUpdate: handleManualActivity
+        });
     };
-
-    // Render the set of cards
-    const renderCards = (suffix: string) => (
-        <>
-            {testimonials.map((t, i) => (
-                <TestimonialCard key={`${suffix}-${i}`} testimonial={t} />
-            ))}
-        </>
-    );
 
     return (
         <div 
-            className="relative group/carousel"
+            ref={containerRef}
+            className="relative group/carousel overflow-hidden py-4"
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => {
-                setIsHovered(false);
-                handleManualActivity();
-            }}
+            onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Navigation Buttons */}
+            {/* Buttons */}
             <button 
                 onClick={() => scroll('left')}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto"
@@ -162,19 +190,29 @@ const Carousel = () => {
                 <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Scroll Container */}
-            <div 
-                ref={scrollRef}
-                className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide py-4 px-4 no-scrollbar cursor-grab active:cursor-grabbing select-none"
-                onScroll={handleManualActivity}
-                onTouchStart={handleManualActivity}
-                onMouseDown={handleManualActivity}
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            {/* Content Overflow Fades */}
+            <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-background via-background/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-background via-background/40 to-transparent z-10 pointer-events-none" />
+
+            <motion.div 
+                ref={innerRef}
+                style={{ x, willChange: 'transform' }}
+                drag="x"
+                onDragStart={() => {
+                    setIsDragging(true);
+                    handleManualActivity();
+                }}
+                onDragEnd={() => {
+                    setIsDragging(false);
+                    handleManualActivity();
+                }}
+                onUpdate={handleManualActivity}
+                className="flex gap-4 sm:gap-6 w-fit cursor-grab active:cursor-grabbing select-none px-4"
             >
-                {renderCards('set1')}
-                {renderCards('set2')}
-                {renderCards('set3')}
-            </div>
+                {tripleTestimonials.map((t, i) => (
+                    <TestimonialCard key={`${i}-${t.name}`} testimonial={t} />
+                ))}
+            </motion.div>
         </div>
     );
 };
@@ -192,10 +230,6 @@ export function Testimonials() {
             </div>
 
             <div className="relative">
-                {/* Side Fades */}
-                <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-background via-background/40 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-background via-background/40 to-transparent z-10 pointer-events-none" />
-
                 <Carousel />
             </div>
         </section>
