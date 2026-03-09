@@ -43,11 +43,13 @@ export default function TopMarquee() {
         <motion.div
             animate={{ y: hidden ? -32 : 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            style={{ willChange: "transform" }}
             className="fixed top-0 left-0 w-full z-[60] bg-foreground text-background overflow-hidden select-none"
         >
             <div className="relative flex items-center h-8">
                 <motion.div
                     className="flex items-center gap-0 whitespace-nowrap"
+                    style={{ willChange: "transform" }}
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{
                         x: {

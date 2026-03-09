@@ -69,7 +69,7 @@ export function TechMarquee() {
 
     return (
         <div className="w-full py-10 bg-background border-y border-border/50 overflow-hidden select-none flex">
-            <motion.div className="flex" style={{ x }}>
+            <motion.div className="flex" style={{ x, willChange: "transform" }}>
                 {Array.from({ length: GROUP_COUNT }).map((_, groupIdx) => (
                     <div key={groupIdx} className="flex items-center shrink-0 pr-12 gap-12">
                         {technologies.map((tech, idx) => (

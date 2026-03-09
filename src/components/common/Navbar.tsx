@@ -45,9 +45,11 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      animate={{ top: marqueeHidden ? 0 : 32 }}
+      initial={{ y: 32 }}
+      animate={{ y: marqueeHidden ? 0 : 32 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="z-[101] w-full fixed bg-background/80 backdrop-blur-xl border-b border-border"
+      className="z-[101] w-full fixed top-0 left-0 bg-background/80 backdrop-blur-xl border-b border-border"
+      style={{ willChange: "transform" }}
     >
       <div className="container mx-auto flex flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
