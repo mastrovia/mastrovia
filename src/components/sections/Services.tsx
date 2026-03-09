@@ -12,7 +12,7 @@ export const Services: FC = () => {
             id="services"
             className="pb-20 sm:pb-32"
         >
-            <div className="container mx-auto px-8">
+            <div className="container mx-auto px-3 md:px-8">
                 <div className="text-center mb-20 space-y-4">
                     <h2 className="text-4xl md:text-6xl tracking-tight">
                         Our Professional <br /> <span className="text-primary italic">Services</span>
@@ -28,7 +28,7 @@ export const Services: FC = () => {
                         <motion.div
                             key={idx}
                             whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                            className="p-8 sm:p-12 flex flex-col gap-8 border-b md:border-b-0 md:border-r last:border-0 border-border group"
+                            className="p-6 sm:p-12 flex flex-col gap-8 border-b md:border-b-0 md:border-r last:border-0 border-border group"
                         >
                             <div className="flex justify-between items-start">
                                 <span className="text-sm font-bold text-primary/30 font-sans tracking-widest leading-none">
