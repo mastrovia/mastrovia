@@ -19,11 +19,17 @@ At Mastrovia, our process revolves around deep understanding and meticulous exec
 
 MDX is an incredibly powerful tool because it lets us combine the simplicity of Markdown with the rich interactive potential of React components. In the future, this exact setup will power incredibly immersive case studies.
 
-```tsx
-// Example Code Block
-function Welcome() {
-  return <h1>Hello from Mastrovia</h1>;
-}
+```typescript
+// Example of a Mastrovia component structure
+export const MastroviaApp = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="min-h-screen bg-background font-sans">
+      <main className="container mx-auto px-4 py-20">
+        {children}
+      </main>
+    </div>
+  );
+};
 ```
 
-Stay tuned for more deep dives into web development patterns!
+Stay tuned for more updates, deep dives into our tech stack, and case studies from our latest projects.

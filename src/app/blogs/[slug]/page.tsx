@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
+import rehypeHighlight from "rehype-highlight";
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
@@ -26,6 +27,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { default: MDXContent } = await evaluate(post.content, {
     ...(runtime as any),
     remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeHighlight],
   });
 
   return (

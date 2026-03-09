@@ -1,4 +1,5 @@
-import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, BlockquoteHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, BlockquoteHTMLAttributes, ReactNode, Children, isValidElement } from "react";
+import { CopyButton } from "@/components/ui/copy-button";
 
 export const mdxComponents = {
   h1: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
@@ -29,20 +30,43 @@ export const mdxComponents = {
     <strong className="text-foreground" {...props} />
   ),
   a: (props: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => (
-    <a 
-      className="text-foreground hover:text-primary underline underline-offset-4 decoration-border/50 hover:decoration-primary transition-all" 
+    <a
+      className="text-foreground hover:text-primary underline underline-offset-4 decoration-border/50 hover:decoration-primary transition-all"
       target={props.href?.startsWith('http') ? '_blank' : undefined}
       rel={props.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-      {...props} 
+      {...props}
     />
   ),
   blockquote: (props: DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>) => (
     <blockquote className="border-l-2 border-primary pl-6 my-10 italic text-xl md:text-2xl font-light text-muted-foreground tracking-tight" {...props} />
   ),
   code: (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => (
-    <code className="bg-muted/50 px-2 py-1 rounded-md text-sm font-mono border border-border/50 text-foreground" {...props} />
+    <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono border border-border/50 text-foreground" {...props} />
   ),
-  pre: (props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) => (
-    <pre className="bg-[#1C1C1C] p-6 rounded-2xl overflow-x-auto text-sm font-mono my-10 shadow-none border border-border/20 text-[#D4D4D4] leading-relaxed" {...props} />
-  ),
+  pre: (props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) => {
+    const { children, ...rest } = props;
+    // Helper to extract text from nested children (especially from rehype-pretty-code nodes)
+    const getText = (node: any): string => {
+      if (!node) return '';
+      if (typeof node === 'string') return node;
+      if (typeof node === 'number') return node.toString();
+      if (Array.isArray(node)) return node.map(getText).join('');
+      if (isValidElement(node)) return getText((node.props as any).children);
+      return '';
+    };
+
+    const textContent = getText(children);
+
+    return (
+      <div className="relative group my-10">
+        <CopyButton text={textContent} />
+        <pre
+          className="bg-muted/30 p-6 rounded-2xl overflow-x-auto text-sm font-mono shadow-none border border-border/50 leading-relaxed"
+          {...rest}
+        >
+          {children}
+        </pre>
+      </div>
+    );
+  },
 };

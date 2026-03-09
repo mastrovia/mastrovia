@@ -291,3 +291,26 @@
   opacity: 0;
   animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
 }
+
+/* 
+  Mastrovia Syntax Highlighting (hljs)
+  Theme-aware colors derived from the site's aurora palette.
+*/
+.hljs { background: transparent !important; }
+.hljs-comment, .hljs-quote { color: #6b7280; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-addition { color: #818cf8; font-weight: 500; }
+.hljs-number, .hljs-string, .hljs-type, .hljs-literal, .hljs-bullet, .hljs-attribute { color: #34d399; }
+.hljs-function .hljs-title, .hljs-section { color: #fbbf24; }
+.hljs-params, .hljs-variable, .hljs-template-variable { color: #9ca3af; }
+.hljs-built_in, .hljs-class .hljs-title { color: #f472b6; }
+.hljs-tag, .hljs-name, .hljs-attr { color: #818cf8; }
+.hljs-link { color: #6366f1; text-decoration: underline; }
+
+/* Light Mode Overrides */
+:root:not(.dark) .hljs-keyword, :root:not(.dark) .hljs-selector-tag, :root:not(.dark) .hljs-addition { color: #6366f1; }
+:root:not(.dark) .hljs-number, :root:not(.dark) .hljs-string, :root:not(.dark) .hljs-type, :root:not(.dark) .hljs-literal, :root:not(.dark) .hljs-bullet, :root:not(.dark) .hljs-attribute { color: #059669; }
+:root:not(.dark) .hljs-function .hljs-title, :root:not(.dark) .hljs-section { color: #d97706; }
+:root:not(.dark) .hljs-built_in, :root:not(.dark) .hljs-class .hljs-title { color: #db2777; }
+:root:not(.dark) .hljs-tag, :root:not(.dark) .hljs-name, :root:not(.dark) .hljs-attr { color: #4f46e5; }
+:root:not(.dark) .hljs-comment { color: #9ca3af; }
+
