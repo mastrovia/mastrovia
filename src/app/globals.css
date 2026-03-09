@@ -312,5 +312,6 @@
 :root:not(.dark) .hljs-function .hljs-title, :root:not(.dark) .hljs-section { color: #d97706; }
 :root:not(.dark) .hljs-built_in, :root:not(.dark) .hljs-class .hljs-title { color: #db2777; }
 :root:not(.dark) .hljs-tag, :root:not(.dark) .hljs-name, :root:not(.dark) .hljs-attr { color: #4f46e5; }
+:root:not(.dark) .hljs-params, :root:not(.dark) .hljs-variable, :root:not(.dark) .hljs-template-variable { color: #565a61; }
 :root:not(.dark) .hljs-comment { color: #9ca3af; }
 

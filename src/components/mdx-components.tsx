@@ -58,7 +58,7 @@ export const mdxComponents = {
     const textContent = getText(children);
 
     return (
-      <div className="relative group my-10">
+      <div className="relative group my-10 textured-surface">
         <CopyButton text={textContent} />
         <pre
           className="bg-muted/30 p-6 rounded-2xl overflow-x-auto text-sm font-mono shadow-none border border-border/50 leading-relaxed"
