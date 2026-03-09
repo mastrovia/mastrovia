@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
+import { Footer } from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "Mastrovia, A web development company",
@@ -28,6 +29,7 @@ export default function RootLayout({
             <TopMarquee />
             <Navbar />
             <main className="pt-20 sm:pt-24">{children}</main>
+            <Footer />
 
             {/* Grain Overlay */}
             <div className="fixed pointer-events-none inset-0 z-[100] opacity-[0.06] mix-blend-overlay">

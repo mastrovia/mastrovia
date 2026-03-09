@@ -4,15 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { CaseStudy } from "@/data/caseStudies";
-
-import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowLeft,
   ExternalLink,
   CheckCircle2,
-  Code2,
-  Server,
-  Cloud,
 } from "lucide-react";
 import AnimatedButton from "@/components/common/animated-button";
 import { ContactPopup } from "@/components/common/ContactPopup";
@@ -25,8 +20,8 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
       className="min-h-screen bg-background"
     >
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-30 pb-12 px-4 overflow-hidden textured-surface">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+      <section className="relative pt-20 md:pt-30 pb-12 px-4 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" />
 
         {/* Minimal, Centered Soft Glow */}
         <div className="absolute top-0 left-0 right-0 pointer-events-none z-0 overflow-hidden flex justify-center">
@@ -126,7 +121,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
           transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="container mx-auto max-w-7xl group overflow-hidden"
         >
-          <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[4/3] md:aspect-[21/9]">
+          <div className="relative rounded-lg md:rounded-xl overflow-hidden border border-border/50 bg-muted/20 w-full aspect-[4/3] md:aspect-[21/9]">
             <Image
               src={caseStudy.image}
               alt={caseStudy.title}
@@ -202,158 +197,17 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
+                className="flex items-start gap-4 py-4 md:py-6 border-b border-border/50 hover:border-primary/50 transition-colors"
               >
-                <Card className="border-border/70 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 shadow-none">
-                  <CardContent className="p-6 flex items-start gap-4">
-                     <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-lg leading-relaxed tracking-normal font-light">{result}</p>
-                  </CardContent>
-                </Card>
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-xl leading-relaxed tracking-normal font-light text-muted-foreground">{result}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-4 py-20 bg-muted/20">
-        <div className="container mx-auto max-w-7xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-medium tracking-tight mb-12"
-          >
-            Features & Capabilities
-          </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {caseStudy.features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="p-5 rounded-2xl border border-border/70 backdrop-blur-sm hover:border-primary/30 transition-all duration-300"
-              >
-                <p className="text-base leading-relaxed tracking-normal font-light">{feature}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Stack */}
-      <section className="px-4 py-20">
-        <div className="container mx-auto max-w-7xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-medium tracking-tight mb-12"
-          >
-            Technology Stack
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Frontend */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <Card className="border-border/70 backdrop-blur-sm h-full shadow-none overflow-hidden rounded-3xl">
-                <CardContent className="p-8 space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3.5 rounded-2xl bg-primary/5 border border-primary/10">
-                      <Code2 className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-medium tracking-tight">Frontend</h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {caseStudy.technologies.frontend.map((tech, idx) => (
-                      <li
-                        key={idx}
-                        className="text-base tracking-normal font-light text-muted-foreground flex items-center gap-3"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-0                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Backend */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <Card className="border-border/70 backdrop-blur-sm h-full shadow-none overflow-hidden rounded-3xl">
-                <CardContent className="p-8 space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3.5 rounded-2xl bg-primary/5 border border-primary/10">
-                      <Server className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-medium tracking-tight">Backend</h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {caseStudy.technologies.backend.length > 0 ? (
-                      caseStudy.technologies.backend.map((tech, idx) => (
-                        <li
-                          key={idx}
-                          className="text-base tracking-normal font-light text-muted-foreground flex items-center gap-3"
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-                          {tech}
-                        </li>
-                      ))
-                    ) : (
-                      <li className="text-base tracking-normal font-light text-muted-foreground italic">
-                        Frontend-only application
-                      </li>
-                    )}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Infrastructure */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <Card className="border-border/70 backdrop-blur-sm h-full shadow-none overflow-hidden rounded-3xl">
-                <CardContent className="p-8 space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3.5 rounded-2xl bg-primary/5 border border-primary/10">
-                      <Cloud className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-medium tracking-tight">Infrastructure</h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {caseStudy.technologies.infrastructure.map((tech, idx) => (
-                      <li
-                        key={idx}
-                        className="text-base tracking-normal font-light text-muted-foreground flex items-center gap-3"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Screenshots Gallery */}
       <section className="px-4 py-20 bg-muted/20">
@@ -384,7 +238,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`relative rounded-[2rem] overflow-hidden border border-border/50 group bg-muted/20 shadow-none ${colSpanClass}`}
+                  className={`relative rounded-xl md:rounded-2xl overflow-hidden border border-border/50 group bg-muted/20 shadow-none ${colSpanClass}`}
                 >
                   <Image
                     src={screenshot.url}

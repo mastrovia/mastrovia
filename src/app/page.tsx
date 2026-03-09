@@ -5,7 +5,6 @@ import { Works } from "@/components/sections/Works";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import ContactClient from "@/app/contact/ContactClient";
-import { Footer } from "@/components/common/Footer";
 
 export default function HomePage() {
   return (
@@ -24,8 +23,6 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <ContactClient />
       </section>
-
-      <Footer />
     </div>
   );
 }
