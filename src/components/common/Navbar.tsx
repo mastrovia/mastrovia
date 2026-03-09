@@ -107,22 +107,22 @@ export default function Navbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className={`w-[85%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[85px] sm:top-[93px]"
+                  className={`w-[70%] sm:w-[350px] bg-background border-l border-border p-0 !h-auto bottom-0 z-[100] ${marqueeHidden ? "top-[50px] sm:top-[68px]" : "top-[85px] sm:top-[93px]"
                     }`}
                   style={{ transition: "top 0.3s ease-out" }}
                 >
                   <div className="flex flex-col h-full overflow-y-auto">
-                    <SheetHeader className="p-8 border-b border-border">
+                    <SheetHeader className="p-4 border-b border-border">
                       <SheetTitle className="text-left text-2xl font-normal tracking-tight">
                         Navigation
                       </SheetTitle>
                     </SheetHeader>
-                    <div className="flex flex-col p-8 gap-8">
+                    <div className="flex flex-col p-8 gap-6">
                       {navLinks.map((link, idx) => (
                         <Link
                           key={link.name}
                           href={link.href}
-                          className="text-xl tracking-tight hover:text-primary transition-all duration-300 translate-x-0 hover:translate-x-2"
+                          className=" tracking-tight hover:text-primary transition-all duration-150 translate-x-0 hover:translate-x-2"
                           style={{ transitionDelay: `${idx * 50}ms` }}
                           onClick={() => setIsOpen(false)}
                         >
@@ -132,13 +132,13 @@ export default function Navbar() {
                       <Link
                         href="/cost-estimate"
                         onClick={() => setIsOpen(false)}
-                        className="text-xl text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
+                        className="text-left font-bold tracking-tight text-primary hover:translate-x-2 transition-all duration-300"
                         style={{ transitionDelay: `${navLinks.length * 50}ms` }}
                       >
                         Estimate Cost &nbsp; &rarr;
                       </Link>
                     </div>
-                    <div className="mt-auto p-8 border-t border-border bg-muted/30">
+                    <div className="mt-auto p-5 pb-10 border-t border-border bg-muted/30">
                       <p className="text-xs tracking-widest text-muted-foreground mb-2">
                         Socials
                       </p>
