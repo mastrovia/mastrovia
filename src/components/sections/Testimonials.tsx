@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useMotionValue, useAnimationFrame, animate } from 'motion/react';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
 
 const testimonials = [
     {
@@ -26,20 +25,6 @@ const testimonials = [
         role: 'Founder',
         company: 'Alpha Roots',
         content: 'The team at Mastrovia brought our vision to life with precision and creativity. Their commitment to quality and attention to detail is unmatched in the industry.',
-        avatar: '',
-    },
-    {
-        name: 'Arjun Das',
-        role: 'CEO',
-        company: 'Nova Soft',
-        content: 'Mastrovia transformed our online presence. Their team is highly skilled and very responsive to our needs. Highly recommended for any digital project.',
-        avatar: '',
-    },
-    {
-        name: 'Sarah Chen',
-        role: 'Product Manager',
-        company: 'Nexus tech',
-        content: 'The level of professionalism and technical depth Mastrovia brings to the table is refreshing. They don\'t just build code; they build solutions.',
         avatar: '',
     }
 ];
@@ -78,7 +63,6 @@ const Carousel = () => {
     const [isDragging, setIsDragging] = useState(false);
     const lastActivityRef = useRef<number>(Date.now());
     const x = useMotionValue(0);
-    const containerRef = useRef<HTMLDivElement>(null);
     const innerRef = useRef<HTMLDivElement>(null);
     
     // Triple the testimonials for seamless looping
@@ -91,75 +75,69 @@ const Carousel = () => {
         return 0;
     }, []);
 
-    // Helper to perform the wrap jump
-    const wrapX = useCallback((currentX: number) => {
-        const setWidth = getSetWidth();
-        if (setWidth === 0) return currentX;
-
-        // The boundary is the middle set. If we go too far left or right, jump back.
-        // Middle set starts at -setWidth and ends at -setWidth * 2.
-        if (currentX <= -setWidth * 2) {
-            return currentX + setWidth;
-        } else if (currentX >= 0) {
-            return currentX - setWidth;
-        }
-        return currentX;
-    }, [getSetWidth]);
-
     const handleManualActivity = useCallback(() => {
         lastActivityRef.current = Date.now();
     }, []);
 
-    // Continuous auto-scroll
+    // Continuous auto-scroll with increased speed
     useAnimationFrame((_t, delta) => {
         const now = Date.now();
         const inactivityDuration = now - lastActivityRef.current;
 
         if (!isHovered && !isDragging && inactivityDuration > 1500) {
-            const currentX = x.get();
             const setWidth = getSetWidth();
             if (setWidth === 0) return;
 
-            // Slow continuous move left
-            const moveBy = 0.04 * delta; 
-            const nextX = wrapX(currentX - moveBy);
-            x.set(nextX);
+            // Increased speed: 0.08 * delta (approx 5-6px per frame at 60fps)
+            // Using a slightly higher multiplier for consistent flow
+            const moveBy = -1.2 * (delta / 16); 
+            x.set(x.get() + moveBy);
         }
     });
 
-    // Handle wrapping during drag or scroll animation
+    // Unified wrapping logic - handles auto-scroll, drag, and button clicks
     useEffect(() => {
         return x.on("change", (latest) => {
             const setWidth = getSetWidth();
             if (setWidth === 0) return;
 
-            // If we've dragged or animated past boundaries, jump silently
+            // Seamless jump when boundaries are hit
             if (latest <= -setWidth * 2) {
                 x.set(latest + setWidth);
-            } else if (latest >= 0) {
-                x.set(latest - setWidth);
+            } else if (latest >= -setWidth * 0.5 && latest > -setWidth) {
+                // If we scroll too far right (towards 0), jump back to the middle
+                // Boundary check adjusted for better coverage
+                if (latest >= 0) {
+                    x.set(latest - setWidth);
+                }
             }
         });
     }, [x, getSetWidth]);
 
-    // Initial positioning
+    // Initial positioning to the middle set
     useEffect(() => {
-        const timer = setTimeout(() => {
+        const setPosition = () => {
             const setWidth = getSetWidth();
-            if (setWidth > 0) x.set(-setWidth);
-        }, 100);
+            if (setWidth > 0) {
+                x.set(-setWidth);
+            } else {
+                // Retry if layout isn't ready
+                requestAnimationFrame(setPosition);
+            }
+        };
+        const timer = setTimeout(setPosition, 50);
         return () => clearTimeout(timer);
     }, [x, getSetWidth]);
 
     const scroll = (direction: 'left' | 'right') => {
         handleManualActivity();
         const currentX = x.get();
-        const moveAmount = 400; // Approx one card
+        const moveAmount = 450; // One card width
         const targetX = direction === 'left' ? currentX + moveAmount : currentX - moveAmount;
         
         animate(x, targetX, {
             type: "spring",
-            stiffness: 300,
+            stiffness: 200,
             damping: 30,
             mass: 1,
             onUpdate: handleManualActivity
@@ -168,15 +146,14 @@ const Carousel = () => {
 
     return (
         <div 
-            ref={containerRef}
-            className="relative group/carousel overflow-hidden py-4"
+            className="relative group/carousel overflow-hidden py-8"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Buttons */}
+            {/* Nav Arrows */}
             <button 
                 onClick={() => scroll('left')}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto shadow-xl"
                 aria-label="Scroll left"
             >
                 <ChevronLeft className="w-6 h-6" />
@@ -184,20 +161,21 @@ const Carousel = () => {
 
             <button 
                 onClick={() => scroll('right')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto shadow-xl"
                 aria-label="Scroll right"
             >
                 <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Content Overflow Fades */}
-            <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-background via-background/40 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-background via-background/40 to-transparent z-10 pointer-events-none" />
+            {/* Premium Edge Fades */}
+            <div className="absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-background via-background/60 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-background via-background/60 to-transparent z-10 pointer-events-none" />
 
             <motion.div 
                 ref={innerRef}
                 style={{ x, willChange: 'transform' }}
                 drag="x"
+                dragElastic={0.1}
                 onDragStart={() => {
                     setIsDragging(true);
                     handleManualActivity();
@@ -206,8 +184,7 @@ const Carousel = () => {
                     setIsDragging(false);
                     handleManualActivity();
                 }}
-                onUpdate={handleManualActivity}
-                className="flex gap-4 sm:gap-6 w-fit cursor-grab active:cursor-grabbing select-none px-4"
+                className="flex gap-6 sm:gap-8 w-fit cursor-grab active:cursor-grabbing select-none px-12"
             >
                 {tripleTestimonials.map((t, i) => (
                     <TestimonialCard key={`${i}-${t.name}`} testimonial={t} />
@@ -219,12 +196,12 @@ const Carousel = () => {
 
 export function Testimonials() {
     return (
-        <section id="testimonials" className="py-20 sm:py-24 bg-muted/5 border-t border-border/50 relative overflow-hidden">
-            <div className="container mx-auto px-6 sm:px-8 max-w-7xl relative z-10 mb-12 sm:mb-16">
+        <section id="testimonials" className="py-20 sm:py-32 bg-muted/5 border-t border-border/50 relative overflow-hidden">
+            <div className="container mx-auto px-6 sm:px-8 max-w-7xl relative z-10 mb-16">
                 <div className="md:text-center">
-                    <h2 className="text-3xl md:text-5xl tracking-tight mb-4 leading-tight">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl tracking-tighter mb-6 leading-tight font-medium">
                         Words of praise from others <br />
-                        <span className="text-foreground/60 italic">about our presence.</span>
+                        <span className="text-foreground/40 italic font-light">about our presence.</span>
                     </h2>
                 </div>
             </div>
