@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Coworking & Virtual Offices",
     description:
       "We help you find your ideal workspace in Kerala. Discover premium coworking spaces and virtual offices across God's Own Country. Professional workspaces in Kochi, Trivandrum, Calicut, Thrissur and more.",
-    image: "/works/co-work/page-hero.png",
+    image: "/works/co-work/thump.png",
     tags: ["Next.js", "MongoDB", "Tailwind"],
     link: "https://www.coworkkerala.com/",
     year: "2025",
@@ -93,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Nano-Distribution Ecosystem",
     description:
       "Empowering local entrepreneurs to build sustainable businesses through a structured nano-distribution model. MicroConnect transforms last-mile commerce through community leadership and systematic growth.",
-    image: "/banners/microconnect-homepage.png",
+    image: "/works/microconnect/thump.png",
     tags: ["Entrepreneurship", "Distribution", "Sustainability"],
     link: "https://microconnect.store/",
     year: "2024",
@@ -159,7 +159,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Accommodation",
     description:
       "Choose your next home. Discover quality PGs, apartments, and hostels tailored for your work or study needs. Your ideal accommodation is just a search away.",
-    image: "/banners/letseller.png",
+    image: "/works/letsellr/thump.png",
     tags: ["Next.js", "MongoDB", "Tailwind"],
     link: "https://letsellr.in/",
     year: "2025",
