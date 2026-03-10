@@ -33,6 +33,7 @@ export const Footer: FC = () => {
                     <div className="md:col-span-3 lg:col-span-2 lg:col-start-7 flex flex-col gap-4">
                         <h3 className="text-sm font-bold uppercase tracking-widest text-foreground/80 mb-2">Explore</h3>
                         <Link href="/" className="text-base text-muted-foreground hover:text-primary transition-colors tracking-normal">Home</Link>
+                        <Link href="/blogs/about-us" className="text-base text-muted-foreground hover:text-primary transition-colors tracking-normal">About Us</Link>
                         <Link href="/blogs" className="text-base text-muted-foreground hover:text-primary transition-colors tracking-normal">Journal</Link>
                         <Link href="/#works" className="text-base text-muted-foreground hover:text-primary transition-colors tracking-normal">Works</Link>
                         <Link href="/#services" className="text-base text-muted-foreground hover:text-primary transition-colors tracking-normal">Services</Link>
