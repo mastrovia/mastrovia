@@ -12,7 +12,7 @@ export const ContactInfo: FC<ContactInfoProps> = ({ compact = false }) => {
     return (
         <div className={`space-y-12 ${compact ? "md:overflow-y-auto" : ""}`}>
             <div className="space-y-6">
-                <h2 className={`${compact ? "text-3xl sm:text-4xl" : "text-5xl sm:text-7xl"} tracking-tight`}>
+                <h2 className={`${compact ? "text-2xl sm:text-4xl" : "text-3xl sm:text-5xl"} tracking-tight`}>
                     {compact ? "Let's Build something" : "Ready to create"} <br />
                     <span className="text-primary italic">{compact ? "amazing" : "something great?"}</span>
                 </h2>

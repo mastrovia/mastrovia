@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { ContactForm } from "@/components/common/ContactForm";
 import { ContactInfo } from "@/components/common/ContactInfo";
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { MessageSquare, Calendar as CalendarIcon, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function ContactClient() {
-  const [activeTab, setActiveTab] = useState<"message" | "calendar">("message");
   const [isCalLoaded, setIsCalLoaded] = useState(false);
 
   useEffect(() => {
@@ -26,110 +25,89 @@ export default function ContactClient() {
   return (
     <div
       id="contact"
-      className="container mx-auto pt-8 pb-20 sm:py-32"
+      className="container mx-auto pt-12 pb-1 sm:py-20 max-w-7xl px-4 sm:px-6"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-        {/* Left Side: Contact Information */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="text-center mb-12 sm:mb-16"
+      >
+        <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 ring-1 ring-primary/20 backdrop-blur-sm uppercase tracking-wider">
+          Let&apos;s Connect
+        </span>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl tracking-tight mb-4 sm:mb-6 leading-tight">
+          Schedule a strategy call
+        </h2>
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-sans">
+          Pick a time that works best for you. We&apos;d love to discuss how we can help scale your digital presence.
+        </p>
+      </motion.div>
+
+      {/* Full Width Calendar */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        viewport={{ once: true }}
+        className="w-full mb-16 relative flex flex-col"
+      >
+        <div className="relative flex-1 w-full pt-4 min-h-[450px]">
+          {!isCalLoaded && (
+            <div className="absolute inset-0 z-0 flex items-center justify-center flex-col gap-4 text-muted-foreground">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              <span className="text-sm font-sans font-medium uppercase tracking-wider animate-pulse">Loading Calendar...</span>
+            </div>
+          )}
+
+          <div className="relative z-10 w-full overflow-hidden">
+            <Cal
+              calLink="mastrovia/30min"
+              style={{ width: "100%", height: "100%", overflow: "auto" }}
+              config={{ layout: "month_view" }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* OR Divider */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="flex items-center justify-center gap-4 mb-16 sm:mb-20"
+      >
+        <div className="h-px bg-border flex-1 max-w-[150px] sm:max-w-[250px]" />
+        <span className="text-muted-foreground font-sans text-xs sm:text-sm font-semibold tracking-widest text-center px-4 uppercase">
+          Or send us a message
+        </span>
+        <div className="h-px bg-border flex-1 max-w-[150px] sm:max-w-[250px]" />
+      </motion.div>
+
+      {/* Contact Form & Info */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="px-8 lg:sticky lg:top-32"
+          className="lg:col-span-2 lg:sticky lg:top-32"
         >
           <ContactInfo />
         </motion.div>
 
-        {/* Right Side: Contact Form / Calendar Tabs */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative px-5 w-full"
+          className="lg:col-span-3 relative"
         >
           <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full -z-10" />
-          
-          <div className="bg-card border p-6 sm:p-10 rounded-3xl md:rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group flex flex-col min-h-[640px] shadow-xl">
-            
-            {/* Elegant Segmented Tab Control */}
-            <div className="p-1.5 bg-muted/40 rounded-2xl flex items-center mb-8 relative border border-border/50 shadow-inner w-full max-w-sm mx-auto">
-              {/* Animated Background Indicator */}
-              <div className="absolute inset-y-1.5 left-1.5 right-1.5 pointer-events-none flex">
-                <motion.div
-                  className="w-1/2 h-full bg-background rounded-xl shadow-sm border border-border/50"
-                  initial={false}
-                  animate={{
-                    x: activeTab === "message" ? "0%" : "100%",
-                  }}
-                  transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
-                />
-              </div>
-
-              <button
-                onClick={() => setActiveTab("message")}
-                className={`relative z-10 flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-colors duration-300 ${
-                  activeTab === "message" ? "text-foreground" : "text-muted-foreground hover:text-foreground/80"
-                }`}
-              >
-                <MessageSquare className="w-4 h-4" />
-                Message Us
-              </button>
-              
-              <button
-                onClick={() => setActiveTab("calendar")}
-                className={`relative z-10 flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-colors duration-300 ${
-                  activeTab === "calendar" ? "text-foreground" : "text-muted-foreground hover:text-foreground/80"
-                }`}
-              >
-                <CalendarIcon className="w-4 h-4" />
-                Schedule Call
-              </button>
-            </div>
-
-            {/* Tab Contents */}
-            <div className="relative flex-1 flex flex-col w-full">
-              <AnimatePresence mode="wait">
-                {activeTab === "message" ? (
-                  <motion.div
-                    key="message"
-                    initial={{ opacity: 0, x: -15, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, x: 15, filter: "blur(4px)" }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="w-full flex-1"
-                  >
-                    <ContactForm />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="calendar"
-                    initial={{ opacity: 0, x: 15, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, x: -15, filter: "blur(4px)" }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="w-full h-full min-h-[500px] flex flex-col relative"
-                  >
-                    {!isCalLoaded && (
-                      <div className="absolute inset-0 z-0 flex items-center justify-center flex-col gap-4 text-muted-foreground bg-card rounded-2xl">
-                        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-                        <span className="text-sm font-sans font-medium uppercase tracking-wider animate-pulse">Loading Calendar...</span>
-                      </div>
-                    )}
-                    
-                    <div className="relative z-10 w-full flex-1 h-full max-h-[500px]">
-                      {/* Note: using mastrovia as username assuming that's the intention. */}
-                      <Cal
-                        calLink="mastrovia/30min" 
-                        style={{ width: "100%", height: "100%", overflow: "auto" }}
-                        config={{ layout: "month_view" }}
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
+          <div className="bg-card border p-6 sm:p-10 rounded-3xl md:rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden">
+            <ContactForm />
           </div>
         </motion.div>
       </div>

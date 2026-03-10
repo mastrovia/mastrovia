@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export const Footer: FC = () => {
     return (
-        <footer className="py-20 border-t border-border/50 bg-background text-foreground textured-surface">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <footer className="py-12 border-t border-border/50 bg-background text-foreground textured-surface">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 items-start">
                     
                     {/* Brand Section */}
