@@ -199,7 +199,7 @@ export function Testimonials() {
         <section id="testimonials" className="py-20 sm:py-32 bg-muted/5 border-t border-border/50 relative overflow-hidden">
             <div className="container mx-auto px-6 sm:px-8 max-w-7xl relative z-10 mb-16">
                 <div className="md:text-center">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl tracking-tighter mb-6 leading-tight font-medium">
+                    <h2 className="text-4xl md:text-6xl tracking-tight mb-6">
                         Words of praise from others <br />
                         <span className="text-foreground/40 italic font-light">about our presence.</span>
                     </h2>

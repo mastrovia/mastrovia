@@ -25,7 +25,7 @@ export default function ContactClient() {
   return (
     <div
       id="contact"
-      className="container mx-auto pt-12 pb-1 sm:py-20 max-w-7xl px-4 sm:px-6"
+      className="container mx-auto pt-12 pb-12 sm:py-20 max-w-7xl px-4 sm:px-6"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -34,10 +34,10 @@ export default function ContactClient() {
         viewport={{ once: true }}
         className="text-center mb-12 sm:mb-16"
       >
-        <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 ring-1 ring-primary/20 backdrop-blur-sm uppercase tracking-wider">
+        <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 ring-1 ring-primary/20 backdrop-blur-sm tracking-wider">
           Let&apos;s Connect
         </span>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl tracking-tight mb-4 sm:mb-6 leading-tight">
+        <h2 className="text-4xl md:text-6xl tracking-tight mb-4 sm:mb-6">
           Schedule a strategy call
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-sans">
@@ -80,7 +80,7 @@ export default function ContactClient() {
         className="flex items-center justify-center gap-4 mb-16 sm:mb-20"
       >
         <div className="h-px bg-border flex-1 max-w-[150px] sm:max-w-[250px]" />
-        <span className="text-muted-foreground font-sans text-xs sm:text-sm font-semibold tracking-widest text-center px-4 uppercase">
+        <span className="text-muted-foreground font-sans text-xs sm:text-sm tracking-widest text-center px-4">
           Or send us a message
         </span>
         <div className="h-px bg-border flex-1 max-w-[150px] sm:max-w-[250px]" />
@@ -106,7 +106,7 @@ export default function ContactClient() {
           className="lg:col-span-3 relative"
         >
           <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full -z-10" />
-          <div className="bg-card border p-6 sm:p-10 rounded-3xl md:rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden">
+          <div className="p-3 sm:p-6 rounded-3xl md:rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden">
             <ContactForm />
           </div>
         </motion.div>
