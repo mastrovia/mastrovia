@@ -15,6 +15,42 @@ export async function generateStaticParams() {
 
 import { mdxComponents } from "@/components/mdx-components";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = getBlogPost(resolvedParams.slug);
+
+  if (!post) {
+    return {
+      title: "Blog Not Found",
+    };
+  }
+
+  const ogImage = post.metadata.image || "/branding/mastrovia-banner.png";
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.summary,
+    openGraph: {
+      title: `${post.metadata.title} | Mastrovia Journal`,
+      description: post.metadata.summary,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      images: [ogImage],
+    },
+  };
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const post = getBlogPost(resolvedParams.slug);

@@ -23,12 +23,32 @@ export async function generateMetadata({
     };
   }
 
+  const ogImage = caseStudy.image || "/branding/mastrovia-banner.png";
+
   return {
-    title: `${caseStudy.title} - Case Study | Mastrovia`,
+    title: caseStudy.title,
     description: caseStudy.description,
     keywords: `${caseStudy.title}, ${caseStudy.tags.join(
       ", "
     )}, case study, web development`,
+    openGraph: {
+      title: `${caseStudy.title} | Mastrovia Case Study`,
+      description: caseStudy.description,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: caseStudy.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${caseStudy.title} | Mastrovia Case Study`,
+      description: caseStudy.description,
+      images: [ogImage],
+    },
   };
 }
 

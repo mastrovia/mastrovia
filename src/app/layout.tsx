@@ -10,10 +10,38 @@ import ScrollToTop from "@/components/common/ScrollToTop";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Mastrovia, A web development company",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://mastrovia.com"),
+  title: {
+    default: "Mastrovia | Digital Architects",
+    template: "%s | Mastrovia"
+  },
   description: "Professional web development and design services focused on creating, updating, deploying, and supporting high-quality, modern websites customized to your needs. Elevate your online presence with our expertise.",
+  keywords: ["Web Development", "UI/UX Design", "Digital Agency", "Next.js Agency", "Digital Architects", "Performance Optimization"],
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "Mastrovia | Digital Architects",
+    description: "Empowering visionary brands with exceptional digital architecture. Built for performance, designed for meaningful impact.",
+    url: "https://mastrovia.com",
+    siteName: "Mastrovia",
+    images: [
+      {
+        url: "/branding/mastrovia-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Mastrovia Digital Agency Banner",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mastrovia | Digital Architects",
+    description: "Empowering visionary brands with exceptional digital architecture. Built for performance, designed for meaningful impact.",
+    images: ["/branding/mastrovia-banner.png"],
+    creator: "@mastrovia",
   },
 };
 
