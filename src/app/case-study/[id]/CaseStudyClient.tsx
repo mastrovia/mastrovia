@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import AnimatedButton from "@/components/common/animated-button";
 import { ContactPopup } from "@/components/common/ContactPopup";
+import Balancer from "react-wrap-balancer";
 
 export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
@@ -45,7 +46,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                 transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-4xl md:text-6xl lg:text-[6rem] tracking-tight mb-8 leading-[0.9]"
               >
-                {caseStudy.title}
+                <Balancer>{caseStudy.title}</Balancer>
               </motion.h1>
 
               <motion.p

@@ -1,15 +1,22 @@
 import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, BlockquoteHTMLAttributes, ReactNode, Children, isValidElement } from "react";
 import { CopyButton } from "@/components/ui/copy-button";
+import Balancer from "react-wrap-balancer";
 
 export const mdxComponents = {
-  h1: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h1 className="text-4xl sm:text-5xl md:text-6xl mt-16 mb-8" {...props} />
+  h1: ({ children, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
+    <h1 className="text-4xl sm:text-5xl md:text-6xl mt-16 mb-8" {...props}>
+      <Balancer>{children}</Balancer>
+    </h1>
   ),
-  h2: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl mt-14 mb-6" {...props} />
+  h2: ({ children, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl mt-14 mb-6" {...props}>
+      <Balancer>{children}</Balancer>
+    </h2>
   ),
-  h3: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h3 className="text-2xl sm:text-3xl lg:text-4xl mt-10 mb-4" {...props} />
+  h3: ({ children, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
+    <h3 className="text-2xl sm:text-3xl lg:text-4xl mt-10 mb-4" {...props}>
+      <Balancer>{children}</Balancer>
+    </h3>
   ),
   p: (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
     <p className="mb-8 text-muted-foreground" {...props} />

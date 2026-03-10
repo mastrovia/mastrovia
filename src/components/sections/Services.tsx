@@ -3,6 +3,7 @@
 import { FC, lazy, Suspense } from "react";
 import { motion } from "motion/react";
 import { services } from "@/data/homeData";
+import Balancer from "react-wrap-balancer";
 
 const LottiePlayer = lazy(() => import("@/components/common/LottiePlayer"));
 
@@ -18,8 +19,10 @@ export const Services: FC = () => {
                         Our Professional <br /> <span className="text-primary italic">Services</span>
                     </h2>
                     <p className="text-muted-foreground max-w-xl mx-auto font-sans">
-                        We provide end-to-end digital solutions from strategy and design
-                        to deployment and long-term scaling.
+                        <Balancer>
+                            We provide end-to-end digital solutions from strategy and design
+                            to deployment and long-term scaling.
+                        </Balancer>
                     </p>
                 </div>
 

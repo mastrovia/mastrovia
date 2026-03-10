@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import Link from "next/link";
 import Image from "next/image";
+import Balancer from "react-wrap-balancer";
 
 export function Works() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -17,17 +18,19 @@ export function Works() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl leading-none md:flex gap-4">
-              People we
-              <span className="text-primary italic flex items-end">
-                <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
-                <Image src="/icons/love-arrow.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
-                loved
-              </span>
-              working with
+                People we
+                <span className="text-primary italic flex items-end">
+                  <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
+                  <Image src="/icons/love-arrow.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
+                  loved
+                </span>
+                working with
             </h2>
             <p className="text-muted-foreground max-w-md font-sans text-lg">
-              A curated collection of our most challenging and impactful digital
-              projects.
+              <Balancer>
+                A curated collection of our most challenging and impactful digital
+                projects.
+              </Balancer>
             </p>
           </div>
           {/* <AnimatedButton

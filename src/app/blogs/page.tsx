@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getBlogPosts } from "@/lib/mdx";
+import Balancer from "react-wrap-balancer";
 
 export default function BlogsPage() {
   const blogs = getBlogPosts();
@@ -13,9 +14,13 @@ export default function BlogsPage() {
   return (
     <div className="min-h-screen bg-background pt-8 pb-24 sm:pt-12">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">Our Journal</h1>
+        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">
+          <Balancer>Our Journal</Balancer>
+        </h1>
         <p className="text-lg text-muted-foreground mb-16 max-w-2xl">
-          Thoughts, perspectives, and strategies on creating modern digital products and the web ecosystem.
+          <Balancer>
+            Thoughts, perspectives, and strategies on creating modern digital products and the web ecosystem.
+          </Balancer>
         </p>
 
         <div className="flex flex-col gap-3">

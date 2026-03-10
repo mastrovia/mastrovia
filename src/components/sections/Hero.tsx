@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import AnimatedButton from "@/components/common/animated-button";
 import { ContactPopup } from "@/components/common/ContactPopup";
 import Link from "next/link";
+import Balancer from "react-wrap-balancer";
 
 export const Hero: FC = () => {
     return (
@@ -37,15 +38,17 @@ export const Hero: FC = () => {
                 {/* Minimal Professional Heading */}
                 <div className="animate-hero-blur-fade">
                     <h1 className="text-[20vw] sm:text-9xl lg:text-[10rem] tracking-[-0.04em] leading-[1.1] mb-8 capitalize">
-                        digital <br />
-                        <span className="text-primary italic">architects</span>
+                            digital <br />
+                            <span className="text-primary italic">architects</span>
                     </h1>
                 </div>
 
                 {/* Concise Sub-headline */}
                 <p className="animate-hero-blur-fade-delay-1 text-base sm:text-lg text-muted-foreground mb-12 max-w-md mx-auto font-sans leading-relaxed tracking-tight">
-                    We build high-performance digital infrastructure for brands that
-                    refuse to be silent.
+                    <Balancer>
+                        We build high-performance digital infrastructure for brands that
+                        refuse to be silent.
+                    </Balancer>
                 </p>
 
                 {/* Minimal Action Item */}

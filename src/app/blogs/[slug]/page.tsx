@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import * as runtime from 'react/jsx-runtime';
 import { evaluate } from '@mdx-js/mdx';
 import rehypeHighlight from "rehype-highlight";
+import Balancer from "react-wrap-balancer";
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
@@ -86,11 +87,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             })}
           </time>
           <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4 md:mb-8 leading-[1.1]">
-            {post.metadata.title}
+            <Balancer>{post.metadata.title}</Balancer>
           </h1>
           {post.metadata.summary && (
             <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
-              {post.metadata.summary}
+              <Balancer>{post.metadata.summary}</Balancer>
             </p>
           )}
 
