@@ -18,8 +18,10 @@ export const mdxComponents = {
       <Balancer>{children}</Balancer>
     </h3>
   ),
-  p: (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
-    <p className="mb-8 text-muted-foreground" {...props} />
+  p: ({ children, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
+    <p className="mb-8 text-muted-foreground" {...props}>
+      <Balancer>{children}</Balancer>
+    </p>
   ),
   ul: (props: DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>) => (
     <ul className="list-none space-y-4 mb-8 text-muted-foreground" {...props} />
@@ -27,10 +29,10 @@ export const mdxComponents = {
   ol: (props: DetailedHTMLProps<HTMLAttributes<HTMLOListElement>, HTMLOListElement>) => (
     <ol className="list-decimal list-inside space-y-4 mb-8 text-muted-foreground" {...props} />
   ),
-  li: (props: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>) => (
+  li: ({ children, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>) => (
     <li className="flex items-start gap-3" {...props}>
       <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2.5 flex-shrink-0" />
-      <span className="flex-1">{props.children}</span>
+      <span className="flex-1"><Balancer>{children}</Balancer></span>
     </li>
   ),
   strong: (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => (
@@ -44,8 +46,10 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  blockquote: (props: DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>) => (
-    <blockquote className="border-l-2 border-primary pl-6 my-10 italic text-xl md:text-2xl font-light text-muted-foreground tracking-tight" {...props} />
+  blockquote: ({ children, ...props }: DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>) => (
+    <blockquote className="border-l-2 border-primary pl-6 my-10 italic text-xl md:text-2xl font-light text-muted-foreground tracking-tight" {...props}>
+      <Balancer>{children}</Balancer>
+    </blockquote>
   ),
   code: (props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => (
     <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono border border-border/50 text-foreground" {...props} />
