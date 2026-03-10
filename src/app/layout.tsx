@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" storageKey="mastrovia-theme" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" storageKey="mastrovia-theme" enableSystem>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} showForHashAnchor={false}/>
           <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
             <Suspense fallback={null}>
