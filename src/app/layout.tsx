@@ -65,7 +65,7 @@ export default function RootLayout({
             <Footer />
 
             {/* Grain Overlay */}
-            <div className="fixed pointer-events-none inset-0 z-[100] opacity-[0.06] mix-blend-overlay">
+            {/* <div className="fixed pointer-events-none inset-0 z-[100] opacity-[0.06] mix-blend-overlay">
               <div
                 className="w-full h-full"
                 style={{
@@ -73,7 +73,7 @@ export default function RootLayout({
                   backgroundRepeat: "repeat",
                 }}
               />
-            </div>
+            </div> */}
           </div>
           <Toaster position="bottom-right" richColors />
         </ThemeProvider>
