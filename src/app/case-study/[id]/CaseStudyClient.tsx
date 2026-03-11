@@ -75,19 +75,19 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-border/40"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-border/40"
           >
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Client</span>
-              <span className="text-lg font-medium tracking-tight">{caseStudy.client}</span>
+              <span className="text-sm md:text-lg font-medium tracking-tight">{caseStudy.client}</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Category</span>
-              <span className="text-lg font-medium tracking-tight">{caseStudy.category}</span>
+              <span className="text-sm md:text-lg font-medium tracking-tight">{caseStudy.category}</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Year</span>
-              <span className="text-lg font-medium tracking-tight">{caseStudy.year}</span>
+              <span className="text-sm md:text-lg font-medium tracking-tight">{caseStudy.year}</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold tracking-[0.1em] text-muted-foreground/60">Live Site</span>
@@ -96,7 +96,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
                   href={caseStudy.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-medium tracking-tight inline-flex items-center gap-2 group hover:text-primary transition-colors w-fit"
+                  className="text-sm md:text-lg font-medium tracking-tight inline-flex items-center gap-2 group hover:text-primary transition-colors w-fit"
                 >
                   <span className="underline underline-offset-4 decoration-border/50 group-hover:decoration-primary">
                     Visit Project
@@ -113,17 +113,32 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
         </div>
       </section>
 
-      {/* Overview Section */}
-      <section className="px-4 py-20 bg-muted/20 border-t">
+      {/* Banner Section */}
+      {caseStudy.screenshots?.[0]?.url && <section className="px-4 py-5 md:py-20 bg-muted/20 border-t">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="relative w-full h-full aspect-[1.46/1]">
+            <Image
+              src={caseStudy.screenshots?.[0].url}
+              alt={caseStudy.title}
+              fill
+              className="w-full h-full group-hover:scale-105 transition-transform duration-1000 ease-out"
+            />
+          </div>
+        </div>
+      </section>}
+
+
+      {/* Overview Section */}
+      <section className="px-4 py-10 md:py-20 bg-muted/20 border-t">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Overview</h2>
+              <h2 className="text-xl md:text-3xl tracking-tight">Overview</h2>
               <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.overview}
               </p>
@@ -136,7 +151,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               transition={{ delay: 0.1 }}
               className="space-y-4"
             >
-              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Challenge</h2>
+              <h2 className="text-xl md:text-3xl tracking-tight">Challenge</h2>
               <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.challenge}
               </p>
@@ -149,7 +164,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
               transition={{ delay: 0.2 }}
               className="space-y-4"
             >
-              <h2 className="text-xl md:text-3xl font-medium tracking-tight">Solution</h2>
+              <h2 className="text-xl md:text-3xl tracking-tight">Solution</h2>
               <p className="text-muted-foreground leading-relaxed tracking-normal">
                 {caseStudy.solution}
               </p>
@@ -165,7 +180,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xl md:text-3xl font-medium tracking-tight mb-10"
+            className="text-xl md:text-3xl tracking-tight mb-10"
           >
             Key Results
           </motion.h2>
@@ -248,7 +263,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             viewport={{ once: true }}
             className="space-y-5"
           >
-            <h2 className="text-xl md:text-3xl font-medium tracking-tight">
+            <h2 className="text-xl md:text-3xl tracking-tight">
               Ready to Start Your Project?
             </h2>
             <p className="text-muted-foreground/80 leading-relaxed tracking-normal max-w-2xl mx-auto">

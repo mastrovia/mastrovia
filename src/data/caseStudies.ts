@@ -74,12 +74,7 @@ export const caseStudies: CaseStudy[] = [
       backend: ["Node.js", "Express", "MongoDB", "Redis", "Stripe API"],
       infrastructure: ["Vercel", "MongoDB Atlas", "AWS S3", "Cloudflare"],
     },
-    screenshots: [
-      {
-        url: "/banners/Cowork-Homepage.png",
-        caption: "Homepage with featured coworking spaces",
-      },
-    ],
+    screenshots: [],
     testimonial: {
       quote:
         "The platform has revolutionized how we connect with clients. The booking system is intuitive and the technical infrastructure is rock-solid.",
@@ -124,26 +119,9 @@ export const caseStudies: CaseStudy[] = [
       infrastructure: ["Cloud Architecture", "Digital SCM"],
     },
     screenshots: [
-
       {
-        url: "/banners/microconnect-homepage.png",
-        caption: "MicroConnect Ecosystem Overview",
-      },
-      {
-        url: "/works/microconnect/image-03.png",
-        caption: "MicroConnect Ecosystem Overview",
-      },
-      {
-        url: "/works/microconnect/image-04.png",
-        caption: "MicroConnect Ecosystem Overview",
-      },
-      {
-        url: "/works/microconnect/image-05.png",
-        caption: "MicroConnect Ecosystem Overview",
-      },
-      {
-        url: "/works/microconnect/image-02.png",
-        caption: "MicroConnect Ecosystem Overview",
+        url: "/works/microconnect/bento-full.png",
+        caption: "MicroConnect",
       },
     ],
     testimonial: {
@@ -203,12 +181,7 @@ export const caseStudies: CaseStudy[] = [
       ],
       infrastructure: ["Vercel", "MongoDB Atlas", "AWS S3", "Cloudflare CDN"],
     },
-    screenshots: [
-      {
-        url: "/banners/letseller.png",
-        caption: "Homepage with featured listings and search functionality",
-      },
-    ],
+    screenshots: [],
     testimonial: {
       quote:
         "Mastrovia transformed our vision into a powerful platform that's helping thousands find their perfect home. The attention to detail and technical expertise was exceptional.",
