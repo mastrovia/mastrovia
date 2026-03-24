@@ -174,7 +174,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
       </section>
 
       {/* Results Section */}
-      <section className="px-4 py-10 md:py-20 border-y">
+      {/* <section className="px-4 py-10 md:py-20 border-y">
         <div className="container mx-auto max-w-7xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -201,7 +201,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
 
 
