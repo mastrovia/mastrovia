@@ -255,7 +255,7 @@ export default function CaseStudyClient({ caseStudy }: { caseStudy: CaseStudy })
       </section> */}
 
       {/* CTA Section */}
-      <section className="px-4 py-16 md:py-32 bg-muted/20">
+      <section className="px-4 py-16 md:py-32 bg-muted/20 border-t">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
