@@ -4,6 +4,10 @@ export interface CaseStudy {
   category: string;
   description: string;
   image: string;
+  thump?: {
+    min?: string;
+    max?: string;
+  };
   tags: string[];
   link: string;
   year: string;
@@ -37,6 +41,9 @@ export const caseStudies: CaseStudy[] = [
     description:
       "We help you find your ideal workspace in Kerala. Discover premium coworking spaces and virtual offices across God's Own Country. Professional workspaces in Kochi, Trivandrum, Calicut, Thrissur and more.",
     image: "/works/co-work/thump.png",
+    thump: {
+      min: "/works/co-work/thump-min.webp"
+    },
     tags: ["Next.js", "MongoDB", "Tailwind"],
     link: "https://www.coworkkerala.com/",
     year: "2025",
@@ -89,6 +96,9 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Empowering local entrepreneurs to build sustainable businesses through a structured nano-distribution model. MicroConnect transforms last-mile commerce through community leadership and systematic growth.",
     image: "/works/microconnect/image.png",
+    thump: {
+      min: "/works/microconnect/thump-min.webp"
+    },
     tags: ["Entrepreneurship", "Distribution", "Sustainability"],
     link: "https://microconnect.store/",
     year: "2024",
@@ -138,6 +148,9 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Choose your next home. Discover quality PGs, apartments, and hostels tailored for your work or study needs. Your ideal accommodation is just a search away.",
     image: "/works/letsellr/thump.png",
+    thump: {
+      min: "/works/letsellr/thump-min.webp"
+    },
     tags: ["Next.js", "MongoDB", "Tailwind"],
     link: "https://letsellr.in/",
     year: "2025",

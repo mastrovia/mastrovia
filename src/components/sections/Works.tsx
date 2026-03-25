@@ -18,13 +18,13 @@ export function Works() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl leading-none md:flex gap-4">
-                People we
-                <span className="text-primary italic flex items-end">
-                  <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
-                  <Image src="/icons/love-arrow.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
-                  loved
-                </span>
-                working with
+              People we
+              <span className="text-primary italic flex items-end">
+                <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
+                <Image src="/icons/love-arrow.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 dark:invert hidden dark:block" />
+                loved
+              </span>
+              working with
             </h2>
             <p className="text-muted-foreground max-w-md font-sans text-lg">
               <Balancer>
@@ -88,7 +88,7 @@ export function Works() {
                     {/* Mobile Image (Always visible on mobile) */}
                     <div className="md:hidden relative aspect-[4/3] h-24 shrink-0 border border-border/50 ml-4">
                       <Image
-                        src={work.image}
+                        src={work?.thump?.min || work?.thump?.max || work?.image}
                         alt={work.title}
                         fill
                         className="object-cover"
@@ -108,7 +108,7 @@ export function Works() {
                       >
                         <div className="w-[333px] h-[250px] overflow-hidden relative">
                           <Image
-                            src={work.image}
+                            src={work?.thump?.min || work?.thump?.max || work?.image}
                             alt={work.title}
                             fill
                             className="object-cover bg-background border border-border/50 pointer-events-none"
