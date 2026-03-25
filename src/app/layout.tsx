@@ -8,6 +8,7 @@ import NextTopLoader from "nextjs-toploader";
 import { Footer } from "@/components/common/Footer";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import { Suspense } from "react";
+import AttachedContact from "@/components/sections/AttachedContact";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://mastrovia.com"),
@@ -54,12 +55,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" storageKey="mastrovia-theme" enableSystem>
-          <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} showForHashAnchor={false}/>
+          <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} showForHashAnchor={false} />
           <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
             <Suspense fallback={null}>
               <ScrollToTop />
             </Suspense>
             <TopMarquee />
+            <AttachedContact />
             <Navbar />
             <main className="pt-20 sm:pt-24">{children}</main>
             <Footer />
