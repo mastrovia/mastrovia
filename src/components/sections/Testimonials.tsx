@@ -168,8 +168,8 @@ const Carousel = () => {
             </button>
 
             {/* Premium Edge Fades */}
-            <div className="absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-background via-background/60 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-background via-background/60 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-5 sm:w-48 bg-gradient-to-r from-background via-background/60 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-5 sm:w-48 bg-gradient-to-l from-background via-background/60 to-transparent z-10 pointer-events-none" />
 
             <motion.div 
                 ref={innerRef}
