@@ -17,7 +17,7 @@ export function Works() {
       <div className="container mx-auto px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl leading-none md:flex gap-4">
+            <h2 className="text-3xl md:text-5xl leading-none lg:flex gap-4 whitespace-nowrap">
               People we
               <span className="text-primary italic flex items-end">
                 <Image src="/icons/love.png" alt="heart" width={40} height={40} className="w-6 h-6 md:w-10 md:h-10 block dark:hidden" />
