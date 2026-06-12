@@ -1,213 +1,201 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { motion, useMotionValue, useAnimationFrame, animate } from 'motion/react';
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+gsap.registerPlugin(useGSAP);
 
 const testimonials = [
     {
-        name: 'Sreedev',
-        role: 'Founder',
-        company: 'Devxtra Academy',
-        content: 'Working with Mastrovia significantly improved our workflow and operational efficiency. Their technical expertise and attention to detail made the entire process seamless and professional.',
-        avatar: '',
+        name: "Sreedev",
+        role: "Founder",
+        company: "Devxtra Academy",
+        content:
+            "Working with Mastrovia significantly improved our workflow and operational efficiency. Their technical expertise and attention to detail made the entire process seamless and professional.",
     },
     {
-        name: 'Yedhu Krishna',
-        role: 'Founder',
-        company: 'Wagmi',
-        content: "Mastrovia's approach to building digital products is exceptional. They delivered a solution that not only met our requirements but exceeded our expectations in every way.",
-        avatar: '',
+        name: "Yedhu Krishna",
+        role: "Founder",
+        company: "Wagmi",
+        content:
+            "Mastrovia's approach to building digital products is exceptional. They delivered a solution that not only met our requirements but exceeded our expectations in every way.",
     },
     {
-        name: 'Magesh P',
-        role: 'Founder',
-        company: 'Alpha Roots',
-        content: 'The team at Mastrovia brought our vision to life with precision and creativity. Their commitment to quality and attention to detail is unmatched in the industry.',
-        avatar: '',
-    }
+        name: "Magesh P",
+        role: "Founder",
+        company: "Alpha Roots",
+        content:
+            "The team at Mastrovia brought our vision to life with precision and creativity. Their commitment to quality and attention to detail is unmatched in the industry.",
+    },
 ];
 
-const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-    <div className="flex-none w-[300px] sm:w-[450px] bg-card/40 backdrop-blur-sm border border-border/50 p-6 sm:p-8 rounded-[2rem] flex flex-col gap-4 sm:gap-6 group hover:border-primary/30 transition-all duration-300">
-        <div className="bg-primary/10 w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center">
-            <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-primary fill-primary/20" />
-        </div>
-
-        <p className="text-sm sm:text-lg leading-relaxed text-foreground/90 font-sans tracking-tight italic">
-            "{testimonial.content}"
-        </p>
-
-        <div className="flex items-center gap-3 sm:gap-4 mt-auto">
-            <Avatar className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-primary/10">
-                <AvatarImage src={testimonial.avatar} alt={testimonial.name} className="object-cover" />
-                <AvatarFallback className="bg-primary/10 text-primary font-bold">
-                    {testimonial.name?.slice(0, 1)?.toUpperCase()}
-                </AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-                <h4 className="font-bold text-sm sm:text-base tracking-tight leading-tight">
-                    {testimonial.name}
-                </h4>
-                <p className="text-[10px] sm:text-xs text-muted-foreground font-sans uppercase tracking-widest mt-0.5 sm:mt-1">
-                    {testimonial.role}, {testimonial.company}
-                </p>
-            </div>
-        </div>
-    </div>
-);
-
-const Carousel = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [isDragging, setIsDragging] = useState(false);
-    const lastActivityRef = useRef<number>(Date.now());
-    const x = useMotionValue(0);
-    const innerRef = useRef<HTMLDivElement>(null);
-    
-    // Triple the testimonials for seamless looping
-    const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
-
-    const getSetWidth = useCallback(() => {
-        if (innerRef.current) {
-            return innerRef.current.scrollWidth / 3;
-        }
-        return 0;
-    }, []);
-
-    const handleManualActivity = useCallback(() => {
-        lastActivityRef.current = Date.now();
-    }, []);
-
-    // Continuous auto-scroll with increased speed
-    useAnimationFrame((_t, delta) => {
-        const now = Date.now();
-        const inactivityDuration = now - lastActivityRef.current;
-
-        if (!isHovered && !isDragging && inactivityDuration > 1500) {
-            const setWidth = getSetWidth();
-            if (setWidth === 0) return;
-
-            // Increased speed: 0.08 * delta (approx 5-6px per frame at 60fps)
-            // Using a slightly higher multiplier for consistent flow
-            const moveBy = -1.2 * (delta / 16); 
-            x.set(x.get() + moveBy);
-        }
-    });
-
-    // Unified wrapping logic - handles auto-scroll, drag, and button clicks
-    useEffect(() => {
-        return x.on("change", (latest) => {
-            const setWidth = getSetWidth();
-            if (setWidth === 0) return;
-
-            // Seamless jump when boundaries are hit
-            if (latest <= -setWidth * 2) {
-                x.set(latest + setWidth);
-            } else if (latest >= -setWidth * 0.5 && latest > -setWidth) {
-                // If we scroll too far right (towards 0), jump back to the middle
-                // Boundary check adjusted for better coverage
-                if (latest >= 0) {
-                    x.set(latest - setWidth);
-                }
-            }
-        });
-    }, [x, getSetWidth]);
-
-    // Initial positioning to the middle set
-    useEffect(() => {
-        const setPosition = () => {
-            const setWidth = getSetWidth();
-            if (setWidth > 0) {
-                x.set(-setWidth);
-            } else {
-                // Retry if layout isn't ready
-                requestAnimationFrame(setPosition);
-            }
-        };
-        const timer = setTimeout(setPosition, 50);
-        return () => clearTimeout(timer);
-    }, [x, getSetWidth]);
-
-    const scroll = (direction: 'left' | 'right') => {
-        handleManualActivity();
-        const currentX = x.get();
-        const moveAmount = 450; // One card width
-        const targetX = direction === 'left' ? currentX + moveAmount : currentX - moveAmount;
-        
-        animate(x, targetX, {
-            type: "spring",
-            stiffness: 200,
-            damping: 30,
-            mass: 1,
-            onUpdate: handleManualActivity
-        });
-    };
-
-    return (
-        <div 
-            className="relative group/carousel overflow-hidden py-8"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            {/* Nav Arrows */}
-            <button 
-                onClick={() => scroll('left')}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto shadow-xl"
-                aria-label="Scroll left"
-            >
-                <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <button 
-                onClick={() => scroll('right')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-auto shadow-xl"
-                aria-label="Scroll right"
-            >
-                <ChevronRight className="w-6 h-6" />
-            </button>
-
-            {/* Premium Edge Fades */}
-            <div className="absolute inset-y-0 left-0 w-5 sm:w-48 bg-gradient-to-r from-background via-background/60 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-5 sm:w-48 bg-gradient-to-l from-background via-background/60 to-transparent z-10 pointer-events-none" />
-
-            <motion.div 
-                ref={innerRef}
-                style={{ x, willChange: 'transform' }}
-                drag="x"
-                dragElastic={0.1}
-                onDragStart={() => {
-                    setIsDragging(true);
-                    handleManualActivity();
-                }}
-                onDragEnd={() => {
-                    setIsDragging(false);
-                    handleManualActivity();
-                }}
-                className="flex gap-6 sm:gap-8 w-fit cursor-grab active:cursor-grabbing select-none px-12"
-            >
-                {tripleTestimonials.map((t, i) => (
-                    <TestimonialCard key={`${i}-${t.name}`} testimonial={t} />
-                ))}
-            </motion.div>
-        </div>
-    );
-};
+const DURATION = 7; // seconds per testimonial
 
 export function Testimonials() {
+    const [active, setActive] = useState(0);
+    const root = useRef<HTMLDivElement>(null);
+    const progressRef = useRef<HTMLSpanElement>(null);
+    const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+    const t = testimonials[active];
+    const go = (i: number) =>
+        setActive((i + testimonials.length) % testimonials.length);
+
+    useGSAP(
+        () => {
+            const mm = gsap.matchMedia();
+
+            mm.add("(prefers-reduced-motion: no-preference)", () => {
+                const tl = gsap.timeline();
+
+                tl.from(".reveal-mark", {
+                    scale: 0.7,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "back.out(2)",
+                })
+                    .from(
+                        ".reveal-word",
+                        {
+                            yPercent: 120,
+                            opacity: 0,
+                            filter: "blur(8px)",
+                            duration: 0.7,
+                            ease: "power3.out",
+                            stagger: 0.018,
+                        },
+                        "-=0.35"
+                    )
+                    .from(
+                        ".reveal-meta",
+                        { y: 18, opacity: 0, duration: 0.6, ease: "power2.out" },
+                        "-=0.45"
+                    );
+
+                // hairline progress → auto-advance
+                if (progressRef.current) {
+                    gsap.set(progressRef.current, { scaleX: 0, transformOrigin: "left" });
+                    tweenRef.current = gsap.to(progressRef.current, {
+                        scaleX: 1,
+                        duration: DURATION,
+                        ease: "none",
+                        delay: 0.5,
+                        onComplete: () => go(active + 1),
+                    });
+                }
+            });
+
+            return () => mm.revert();
+        },
+        { scope: root, dependencies: [active], revertOnUpdate: true }
+    );
+
     return (
-        <section id="testimonials" className="py-20 sm:py-32 bg-muted/5 border-t border-border/50 relative overflow-hidden">
-            <div className="container mx-auto px-6 sm:px-8 max-w-7xl relative z-10 mb-16">
-                <div className="md:text-center">
-                    <h2 className="text-4xl md:text-6xl tracking-tight mb-6">
+        <section
+            id="testimonials"
+            className="py-20 sm:py-32 bg-muted/5 border-t border-border/50 relative overflow-hidden"
+        >
+            <div
+                ref={root}
+                className="container mx-auto px-6 sm:px-8 max-w-7xl"
+                onMouseEnter={() => tweenRef.current?.pause()}
+                onMouseLeave={() => tweenRef.current?.resume()}
+            >
+                {/* Header */}
+                <div className="mb-16">
+                    <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-5 flex items-center gap-3">
+                        <span className="w-7 h-px bg-foreground/40" />
+                        Testimonials
+                    </div>
+                    <h2 className="text-4xl md:text-6xl tracking-tight">
                         Words of praise from others <br />
-                        <span className="text-foreground/40 italic font-light">about our presence.</span>
+                        <span className="text-foreground/40 italic font-light">
+                            about our presence.
+                        </span>
                     </h2>
                 </div>
-            </div>
 
-            <div className="relative">
-                <Carousel />
+                {/* Editorial grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0">
+                    {/* Client index */}
+                    <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col">
+                        {testimonials.map((item, i) => {
+                            const isActive = i === active;
+                            return (
+                                <button
+                                    key={item.name}
+                                    onClick={() => go(i)}
+                                    aria-label={`Show testimonial from ${item.name}, ${item.company}`}
+                                    aria-pressed={isActive}
+                                    className={`group relative text-left border-t border-border/60 py-5 transition-opacity duration-300 ${
+                                        isActive ? "opacity-100" : "opacity-40 hover:opacity-70"
+                                    }`}
+                                >
+                                    {isActive && (
+                                        <span
+                                            ref={progressRef}
+                                            className="absolute left-0 -top-px h-px w-full bg-foreground"
+                                            style={{ transform: "scaleX(0)" }}
+                                        />
+                                    )}
+                                    <div className="flex items-baseline gap-4">
+                                        <span className="font-alumni text-base tabular-nums text-muted-foreground w-6">
+                                            0{i + 1}
+                                        </span>
+                                        <div>
+                                            <div className="text-lg font-medium tracking-tight leading-tight">
+                                                {item.name}
+                                            </div>
+                                            <div className="text-[11px] uppercase tracking-widest text-muted-foreground mt-1">
+                                                {item.company}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            );
+                        })}
+                        <div className="border-t border-border/60" />
+                    </div>
+
+                    {/* Featured quote */}
+                    <div className="order-1 lg:order-2 lg:col-span-8 lg:pl-16 flex flex-col justify-between min-h-[360px]">
+                        <div>
+                            <span className="reveal-mark block font-alumni text-[7rem] leading-[0.5] text-foreground/10 select-none">
+                                &ldquo;
+                            </span>
+                            <p className="mt-6 text-2xl md:text-4xl lg:text-[2.7rem] font-light leading-[1.28] tracking-tight">
+                                {t.content.split(" ").map((w, i) => (
+                                    <span
+                                        key={`${active}-${i}`}
+                                        className="reveal-word inline-block mr-[0.26em] will-change-transform"
+                                    >
+                                        {w}
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+
+                        <div className="reveal-meta flex items-center justify-between mt-12 pt-8 border-t border-border/60">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center font-medium select-none">
+                                    {t.name.slice(0, 1).toUpperCase()}
+                                </div>
+                                <div>
+                                    <div className="font-medium tracking-tight leading-tight">
+                                        {t.name}
+                                    </div>
+                                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground mt-1">
+                                        {t.role}, {t.company}
+                                    </div>
+                                </div>
+                            </div>
+                            <span className="font-alumni text-5xl text-foreground/10 tabular-nums leading-none">
+                                0{active + 1}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
