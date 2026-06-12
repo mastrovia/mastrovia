@@ -129,7 +129,7 @@ export function Testimonials() {
         >
             <div
                 ref={root}
-                className="container mx-auto px-6 sm:px-8 max-w-7xl"
+                className="container mx-auto px-8"
                 onMouseEnter={() => tweenRef.current?.pause()}
                 onMouseLeave={() => tweenRef.current?.resume()}
             >
