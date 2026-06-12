@@ -9,6 +9,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "@/data/homeData";
 import Balancer from "react-wrap-balancer";
 import ServiceVisual, { addServiceAnimation, ServiceKey } from "@/components/common/ServiceVisual";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
+// ServiceVisual (GSAP SVG) kept in code but disabled for now — cards use Lottie.
+void ServiceVisual;
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -119,9 +123,14 @@ export const Services: FC = () => {
                                 {service.description}
                             </p>
 
-                            {/* Custom GSAP vector animation + plain caption */}
-                            <div className="relative mb-6 overflow-hidden rounded-2xl border border-border/60 bg-secondary/30 aspect-[3/2]">
-                                <ServiceVisual serviceKey={service.key as ServiceKey} />
+                            {/* Lottie animation + plain caption (GSAP ServiceVisual disabled) */}
+                            <div className="relative -mx-6 sm:-mx-10 md:mx-0 mb-6 overflow-hidden border-y md:border md:rounded-2xl border-border/60 bg-secondary/30 aspect-[3/2]">
+                                <DotLottieReact
+                                    src={service.lottie}
+                                    autoplay
+                                    loop
+                                    className="w-full h-full"
+                                />
                                 <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border/60 px-2.5 py-1 text-[11px] font-sans font-medium text-primary/70">
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                     {service.caption}
