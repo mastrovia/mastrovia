@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "@/data/homeData";
 import Balancer from "react-wrap-balancer";
-import ServiceVisual, { buildServiceTimeline, ServiceKey } from "@/components/common/ServiceVisual";
+import ServiceVisual, { addServiceAnimation, ServiceKey } from "@/components/common/ServiceVisual";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -19,32 +19,38 @@ export const Services: FC = () => {
         () => {
             const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const svgs = gsap.utils.toArray<SVGElement>("[data-svc]");
-            const make = (el: SVGElement) =>
-                buildServiceTimeline(el, el.dataset.svc as ServiceKey);
+            const keyOf = (el: SVGElement) => el.dataset.svc as ServiceKey;
 
             if (reduce) {
-                svgs.forEach((el) => make(el).progress(1));
+                svgs.forEach((el) => {
+                    const tl = gsap.timeline();
+                    addServiceAnimation(tl, el, keyOf(el), 0);
+                    tl.progress(1);
+                });
                 return;
             }
 
             const mm = gsap.matchMedia();
 
-            // Desktop: play them one after another, then a calm pause, then repeat.
+            // Desktop: one master timeline plays them one after another,
+            // then a calm pause, then repeats.
             mm.add("(min-width: 768px)", () => {
                 const master = gsap.timeline({
                     repeat: -1,
                     repeatDelay: 1.8,
-                    scrollTrigger: { trigger: root.current, start: "top 78%" },
+                    defaults: { ease: "sine.inOut" },
+                    scrollTrigger: { trigger: root.current, start: "top 80%" },
                 });
                 svgs.forEach((el, i) =>
-                    master.add(make(el), i === 0 ? 0 : "+=0.45")
+                    addServiceAnimation(master, el, keyOf(el), i === 0 ? 0 : ">+=0.45")
                 );
             });
 
             // Mobile: cards are read one at a time — play each once when it scrolls in.
             mm.add("(max-width: 767px)", () => {
                 svgs.forEach((el) => {
-                    const tl = make(el);
+                    const tl = gsap.timeline({ paused: true, defaults: { ease: "sine.inOut" } });
+                    addServiceAnimation(tl, el, keyOf(el), 0);
                     ScrollTrigger.create({
                         trigger: el,
                         start: "top 82%",
@@ -105,6 +111,14 @@ export const Services: FC = () => {
                                 &ldquo;{service.question}&rdquo;
                             </p>
 
+                            {/* Plain-language answer */}
+                            <h3 className="text-2xl sm:text-[1.75rem] font-sans tracking-tight leading-tight">
+                                {service.title}
+                            </h3>
+                            <p className="mt-3 mb-6 text-muted-foreground text-sm leading-relaxed font-sans">
+                                {service.description}
+                            </p>
+
                             {/* Custom GSAP vector animation + plain caption */}
                             <div className="relative mb-6 overflow-hidden rounded-2xl border border-border/60 bg-secondary/30 aspect-[3/2]">
                                 <ServiceVisual serviceKey={service.key as ServiceKey} />
@@ -113,14 +127,6 @@ export const Services: FC = () => {
                                     {service.caption}
                                 </span>
                             </div>
-
-                            {/* Plain-language answer */}
-                            <h3 className="text-2xl sm:text-[1.75rem] font-sans tracking-tight leading-tight">
-                                {service.title}
-                            </h3>
-                            <p className="mt-3 text-muted-foreground text-sm leading-relaxed font-sans">
-                                {service.description}
-                            </p>
 
                             {/* What you get */}
                             <ul className="mt-auto pt-6 border-t border-border/60 space-y-2.5">

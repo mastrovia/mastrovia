@@ -12,12 +12,6 @@ gsap.registerPlugin(useGSAP);
 const HEADLINE = ["Digital", "Architects"];
 const ROTATING = ["platforms", "interfaces", "brands", "infrastructure"];
 
-// Deterministic spark positions (no Math.random in render -> no hydration drift)
-const SPARKS = [
-    [12, 18], [22, 72], [34, 9], [40, 88], [18, 46], [55, 30], [63, 78],
-    [70, 14], [78, 58], [28, 60], [48, 6], [60, 50], [84, 38], [15, 84],
-];
-
 /** Per-character spans for one word (motion-graphics target). */
 const chars = (word: string, cls: string) =>
     word.split("").map((c, i) => (
@@ -85,22 +79,8 @@ export const Hero: FC = () => {
                 gsap.delayedCall(3.5, swap);
             }
 
-            // ---- Contribution grid: sparks twinkle ----
+            // ---- Drifting reveal blobs + cursor spotlight ----
             if (!reduce) {
-                gsap.fromTo(
-                    ".spark",
-                    { opacity: 0, scale: 0.4 },
-                    {
-                        opacity: () => 0.5 + Math.random() * 0.5,
-                        scale: 1,
-                        duration: () => 0.8 + Math.random() * 1.4,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: "sine.inOut",
-                        stagger: { each: 0.18, from: "random" },
-                    }
-                );
-
                 // Drifting reveal blobs so the grid is alive without a cursor
                 const drift = (vx: string, vy: string, x: number[], y: number[], d: number) =>
                     gsap.to(active.current, {
@@ -150,7 +130,7 @@ export const Hero: FC = () => {
                 {/* Lime active grid, revealed by cursor + drifting blobs */}
                 <div
                     ref={active}
-                    className="absolute inset-0 text-[#E1FF00]"
+                    className="absolute inset-0 text-[var(--lime)]"
                     style={
                         {
                             backgroundImage: dotBg,
@@ -168,15 +148,6 @@ export const Hero: FC = () => {
                     }
                 />
 
-                {/* Twinkling spark cells */}
-                {SPARKS.map(([t, l], i) => (
-                    <span
-                        key={i}
-                        className="spark absolute h-[6px] w-[6px] rounded-[2px] bg-[#E1FF00] shadow-[0_0_12px_2px_rgba(225,255,0,0.5)]"
-                        style={{ top: `${t}%`, left: `${l}%` }}
-                    />
-                ))}
-
                 {/* Center wash so text stays readable over the grid */}
                 <div
                     className="absolute inset-0"
@@ -192,8 +163,8 @@ export const Hero: FC = () => {
                 {/* Eyebrow: live "activity" status */}
                 <div className="hero-fade mb-10 inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.28em] text-muted-foreground sm:text-sm">
                     <span className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E1FF00] opacity-75" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-[#E1FF00]" />
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--lime)] opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--lime)]" />
                     </span>
                     Open for new projects
                 </div>
@@ -207,7 +178,7 @@ export const Hero: FC = () => {
                     <span aria-hidden className="word-0 block whitespace-nowrap text-foreground">
                         {chars(HEADLINE[0], "")}
                     </span>
-                    <span aria-hidden className="word-1 block whitespace-nowrap italic text-[#E1FF00]">
+                    <span aria-hidden className="word-1 block whitespace-nowrap italic text-[var(--lime)]">
                         {chars(HEADLINE[1], "")}
                     </span>
                 </h1>

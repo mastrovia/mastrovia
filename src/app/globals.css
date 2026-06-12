@@ -122,6 +122,10 @@
     --clr-3: #f59e0b;
     --clr-4: #ec4899;
 
+    /* Brand lime — darkened for contrast on the light surface */
+    --lime: #6e7d00;
+    --lime-rgb: 110 125 0;
+
     --blur-aurora: clamp(4rem, 10vw, 8rem);
     --aurora-blend-mode: overlay;
   }
@@ -151,6 +155,10 @@
     --clr-2: #34d399;
     --clr-3: #fbbf24;
     --clr-4: #f472b6;
+
+    /* Brand lime — electric on the dark surface */
+    --lime: #e1ff00;
+    --lime-rgb: 225 255 0;
   }
 }
 
