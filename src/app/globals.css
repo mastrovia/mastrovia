@@ -183,6 +183,15 @@
   background-size: 40px 40px;
 }
 
+/* Hero spotlight: on touch / no-hover devices there is no cursor,
+   so reveal the full solid headline instantly (no JS, no flash). */
+@media (hover: none), (pointer: coarse) {
+  .spotlight-reveal {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
+
 .textured-surface {
   position: relative;
 }
