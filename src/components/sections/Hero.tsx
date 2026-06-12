@@ -202,7 +202,7 @@ export const Hero: FC = () => {
                 <h1
                     aria-label={HEADLINE.join(" ")}
                     className="alumni-sans select-none font-medium leading-[0.92] tracking-[-0.03em]"
-                    style={{ fontSize: "clamp(3rem, 13vw, 11rem)" }}
+                    style={{ fontSize: "clamp(4.25rem, 17vw, 11rem)" }}
                 >
                     <span aria-hidden className="word-0 block whitespace-nowrap text-foreground">
                         {chars(HEADLINE[0], "")}
