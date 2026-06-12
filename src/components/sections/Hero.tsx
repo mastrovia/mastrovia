@@ -10,7 +10,7 @@ import Link from "next/link";
 gsap.registerPlugin(useGSAP);
 
 const HEADLINE = ["Digital", "Architects"];
-const ROTATING = ["interfaces", "platforms", "brands", "infrastructure"];
+const ROTATING = ["platforms", "interfaces", "brands", "infrastructure"];
 
 // Deterministic spark positions (no Math.random in render -> no hydration drift)
 const SPARKS = [
@@ -56,25 +56,33 @@ export const Hero: FC = () => {
             // ---- Rotating word: width-morph + soft blurred slide ----
             const words = gsap.utils.toArray<HTMLElement>(".rot-word");
             const measure = (el: HTMLElement) => el.getBoundingClientRect().width + 4;
-            gsap.set(words, { yPercent: 115, opacity: 0, filter: "blur(6px)" });
+            gsap.set(words, { xPercent: 0, yPercent: 100, opacity: 0, filter: "blur(6px)" });
             gsap.set(words[0], { yPercent: 0, opacity: 1, filter: "blur(0px)" });
             const setW = () => gsap.set(rotor.current, { width: measure(words[0]) });
             setW();
             document.fonts?.ready?.then(setW);
             if (!reduce && words.length > 1) {
-                const rot = gsap.timeline({ repeat: -1, delay: 1.6 });
-                words.forEach((_, i) => {
-                    const n = (i + 1) % words.length;
-                    rot.addLabel("s" + i, "+=1.9")
-                        .to(rotor.current, { width: () => measure(words[n]), duration: 0.7, ease: "power3.inOut" }, "s" + i)
-                        .to(words[i], { yPercent: -115, opacity: 0, filter: "blur(6px)", duration: 0.55, ease: "power2.in" }, "s" + i)
+                let i = 0;
+                const swap = () => {
+                    const cur = words[i];
+                    const nxt = words[(i + 1) % words.length];
+                    gsap.timeline({
+                        onComplete: () => {
+                            i = (i + 1) % words.length;
+                            gsap.delayedCall(1.9, swap);
+                        },
+                    })
+                        .to(rotor.current, { width: measure(nxt), duration: 0.6, ease: "power2.inOut" }, 0)
+                        .to(cur, { yPercent: -100, filter: "blur(6px)", duration: 0.6, ease: "power2.inOut" }, 0)
+                        .set(cur, { opacity: 0 })
                         .fromTo(
-                            words[n],
-                            { yPercent: 115, opacity: 0, filter: "blur(6px)" },
-                            { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.65, ease: "power3.out" },
-                            "s" + i + "+=0.14"
+                            nxt,
+                            { yPercent: 100, opacity: 1, filter: "blur(6px)" },
+                            { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.inOut" },
+                            0
                         );
-                });
+                };
+                gsap.delayedCall(3.5, swap);
             }
 
             // ---- Contribution grid: sparks twinkle ----
