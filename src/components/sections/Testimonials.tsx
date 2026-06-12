@@ -135,15 +135,9 @@ export function Testimonials() {
             >
                 {/* Header */}
                 <div className="mb-16">
-                    <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-5 flex items-center gap-3">
-                        <span className="w-7 h-px bg-foreground/40" />
-                        Testimonials
-                    </div>
                     <h2 className="text-4xl md:text-6xl tracking-tight">
                         Words of praise from others <br />
-                        <span className="text-foreground/40 italic font-light">
-                            about our presence.
-                        </span>
+                        <span className="text-primary italic">about our presence.</span>
                     </h2>
                 </div>
 
