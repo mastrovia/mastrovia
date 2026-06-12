@@ -35,8 +35,10 @@ const DURATION = 7; // seconds per testimonial
 export function Testimonials() {
     const [active, setActive] = useState(0);
     const root = useRef<HTMLDivElement>(null);
-    const progressRef = useRef<HTMLSpanElement>(null);
+    const quoteRef = useRef<HTMLParagraphElement>(null);
+    const prevH = useRef(0);
     const tweenRef = useRef<gsap.core.Tween | null>(null);
+    const touchX = useRef(0);
 
     const t = testimonials[active];
     const go = (i: number) =>
@@ -47,6 +49,31 @@ export function Testimonials() {
             const mm = gsap.matchMedia();
 
             mm.add("(prefers-reduced-motion: no-preference)", () => {
+                // Smooth section height: lock previous height, tween to the new one.
+                // useGSAP runs in useLayoutEffect (pre-paint), so there is no snap.
+                const q = quoteRef.current;
+                if (q) {
+                    q.style.height = "auto";
+                    const target = q.offsetHeight;
+                    if (prevH.current && Math.abs(prevH.current - target) > 1) {
+                        q.style.overflow = "hidden";
+                        gsap.fromTo(
+                            q,
+                            { height: prevH.current },
+                            {
+                                height: target,
+                                duration: 0.6,
+                                ease: "power3.inOut",
+                                onComplete: () => {
+                                    q.style.height = "auto";
+                                    q.style.overflow = "";
+                                },
+                            }
+                        );
+                    }
+                    prevH.current = target;
+                }
+
                 const tl = gsap.timeline();
 
                 tl.from(".reveal-mark", {
@@ -73,10 +100,14 @@ export function Testimonials() {
                         "-=0.45"
                     );
 
-                // hairline progress → auto-advance
-                if (progressRef.current) {
-                    gsap.set(progressRef.current, { scaleX: 0, transformOrigin: "left" });
-                    tweenRef.current = gsap.to(progressRef.current, {
+                // hairline progress → auto-advance (drives every active bar: desktop + mobile)
+                const bars = gsap.utils.toArray<HTMLElement>(
+                    ".progress-bar",
+                    root.current
+                );
+                if (bars.length) {
+                    gsap.set(bars, { scaleX: 0, transformOrigin: "left" });
+                    tweenRef.current = gsap.to(bars, {
                         scaleX: 1,
                         duration: DURATION,
                         ease: "none",
@@ -118,8 +149,8 @@ export function Testimonials() {
 
                 {/* Editorial grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0">
-                    {/* Client index */}
-                    <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col">
+                    {/* Client index — desktop only */}
+                    <div className="hidden lg:flex order-2 lg:order-1 lg:col-span-4 flex-col">
                         {testimonials.map((item, i) => {
                             const isActive = i === active;
                             return (
@@ -134,8 +165,7 @@ export function Testimonials() {
                                 >
                                     {isActive && (
                                         <span
-                                            ref={progressRef}
-                                            className="absolute left-0 -top-px h-px w-full bg-foreground"
+                                            className="progress-bar absolute left-0 -top-px h-px w-full bg-foreground"
                                             style={{ transform: "scaleX(0)" }}
                                         />
                                     )}
@@ -159,12 +189,22 @@ export function Testimonials() {
                     </div>
 
                     {/* Featured quote */}
-                    <div className="order-1 lg:order-2 lg:col-span-8 lg:pl-16 flex flex-col justify-between min-h-[360px]">
+                    <div
+                        onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+                        onTouchEnd={(e) => {
+                            const dx = e.changedTouches[0].clientX - touchX.current;
+                            if (Math.abs(dx) > 50) go(active + (dx < 0 ? 1 : -1));
+                        }}
+                        className="order-1 lg:order-2 lg:col-span-8 lg:pl-16 flex flex-col justify-between min-h-[360px]"
+                    >
                         <div>
                             <span className="reveal-mark block font-alumni text-[7rem] leading-[0.5] text-foreground/10 select-none">
                                 &ldquo;
                             </span>
-                            <p className="mt-6 text-2xl md:text-4xl lg:text-[2.7rem] font-light leading-[1.28] tracking-tight">
+                            <p
+                                ref={quoteRef}
+                                className="mt-6 text-2xl md:text-4xl lg:text-[2.7rem] font-light leading-[1.28] tracking-tight"
+                            >
                                 {t.content.split(" ").map((w, i) => (
                                     <span
                                         key={`${active}-${i}`}
@@ -193,6 +233,39 @@ export function Testimonials() {
                             <span className="font-alumni text-5xl text-foreground/10 tabular-nums leading-none">
                                 0{active + 1}
                             </span>
+                        </div>
+
+                        {/* Mobile stepper — numbered tabs + progress (swipe also works) */}
+                        <div className="flex lg:hidden items-stretch gap-3 mt-8">
+                            {testimonials.map((item, i) => {
+                                const isActive = i === active;
+                                return (
+                                    <button
+                                        key={item.name}
+                                        onClick={() => go(i)}
+                                        aria-label={`Show testimonial from ${item.name}`}
+                                        aria-pressed={isActive}
+                                        className="relative flex-1 pt-3"
+                                    >
+                                        <span className="absolute left-0 top-0 h-px w-full bg-border" />
+                                        {isActive && (
+                                            <span
+                                                className="progress-bar absolute left-0 top-0 h-px w-full bg-foreground"
+                                                style={{ transform: "scaleX(0)" }}
+                                            />
+                                        )}
+                                        <span
+                                            className={`font-alumni text-sm tabular-nums transition-colors ${
+                                                isActive
+                                                    ? "text-foreground"
+                                                    : "text-muted-foreground/50"
+                                            }`}
+                                        >
+                                            0{i + 1}
+                                        </span>
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
