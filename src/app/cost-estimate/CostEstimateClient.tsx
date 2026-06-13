@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Card, CardContent } from "@/components/ui/card";
 import AnimatedButton from "@/components/common/animated-button";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -26,6 +25,60 @@ interface FormData {
   details: string;
 }
 
+// Per-step editorial context shown in the left panel.
+const stepMeta = [
+  { kicker: "Tell us where you operate", title: "Industry & service" },
+  { kicker: "Define the shape of the work", title: "Project scope" },
+  { kicker: "Show us your starting line", title: "Current stage" },
+  { kicker: "Set the pace", title: "Timeline" },
+  { kicker: "Almost done", title: "Your details" },
+];
+
+// ---- Reusable option card -----------------------------------------------
+function OptionCard({
+  selected,
+  onClick,
+  label,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={`group relative flex items-center justify-between gap-3 rounded-2xl border px-5 py-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+        selected
+          ? "border-primary bg-primary/[0.06] ring-1 ring-primary/40"
+          : "border-border/70 hover:border-foreground/30 hover:bg-muted/40"
+      }`}
+    >
+      <span
+        className={`text-sm sm:text-base font-medium tracking-tight transition-colors ${
+          selected ? "text-foreground" : "text-foreground/75"
+        }`}
+      >
+        {label}
+      </span>
+      <span
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+          selected
+            ? "border-primary bg-primary text-primary-foreground scale-100"
+            : "border-border/80 scale-90"
+        }`}
+      >
+        <Check
+          className={`h-3 w-3 transition-opacity duration-200 ${
+            selected ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </span>
+    </button>
+  );
+}
+
 export default function CostEstimateClient() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
@@ -44,6 +97,15 @@ export default function CostEstimateClient() {
 
   const totalSteps = 5;
   const progress = (currentStep / totalSteps) * 100;
+
+  // Running "brief" of selections for the left panel.
+  const brief = [
+    { label: "Industry", value: industries.find((i) => i.value === formData.industry)?.label },
+    { label: "Service", value: services.find((s) => s.value === formData.service)?.label },
+    { label: "Scope", value: projectTypes.find((p) => p.value === formData.projectType)?.label },
+    { label: "Stage", value: currentStages.find((s) => s.value === formData.currentStage)?.label },
+    { label: "Timeline", value: timelines.find((t) => t.value === formData.timeline)?.label },
+  ].filter((b) => b.value);
 
   const handleNext = () => {
     if (currentStep === 1 && (!formData.industry || !formData.service)) {
@@ -85,21 +147,17 @@ export default function CostEstimateClient() {
     setIsSubmitting(true);
 
     try {
-      // Prepare form data for Google Apps Script
       const submitFormData = new FormData();
       submitFormData.append("name", formData.name);
       submitFormData.append("email", formData.email.toLowerCase());
       submitFormData.append("phone", formData.phone);
 
-      // Combine all project details into the query field
       const projectDetails = `
 Cost Estimate Request:
 Industry: ${industries.find((i) => i.value === formData.industry)?.label}
 Service: ${services.find((s) => s.value === formData.service)?.label}
-Project Type: ${projectTypes.find((p) => p.value === formData.projectType)?.label
-        }
-Current Stage: ${currentStages.find((s) => s.value === formData.currentStage)?.label
-        }
+Project Type: ${projectTypes.find((p) => p.value === formData.projectType)?.label}
+Current Stage: ${currentStages.find((s) => s.value === formData.currentStage)?.label}
 Timeline: ${timelines.find((t) => t.value === formData.timeline)?.label}
 ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
       `.trim();
@@ -128,342 +186,363 @@ ${formData.details ? `\nAdditional Details: ${formData.details}` : ""}
     }
   };
 
+  const meta = stepMeta[currentStep - 1];
+  const inputClass =
+    "w-full rounded-2xl border border-border/70 bg-background/60 px-4 py-3.5 text-base tracking-tight transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 placeholder:text-muted-foreground/60";
+
   return (
-    <div className="min-h-screen bg-background py-12 px-4">
-      <div className="container mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+    <main className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-background text-foreground">
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-32 right-0 h-[40rem] w-[40rem] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 h-[30rem] w-[30rem] rounded-full bg-primary/5 blur-[120px]" />
+      </div>
+
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-10 sm:mb-16">
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Project Cost Calculator
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground"
-          >
-            Answer a few questions to get your personalized estimate
-          </motion.p>
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Back home
+          </Link>
+          <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">
+            Project Estimate
+          </span>
         </div>
 
-        {/* Main Content - 2 Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Left Column - Placeholder / Results */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="lg:sticky lg:top-24"
-          >
-            <Card className="border-border bg-card overflow-hidden">
-              <CardContent className="p-0">
-                {/* Placeholder Image Area */}
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center border-b border-border">
-                  <div className="text-center p-8">
-                    <div className="text-6xl font-bold text-primary/20 mb-4">
-                      {currentStep < 5 ? "?" : "✓"}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {currentStep < 5
-                        ? "Complete the form to see your estimate"
-                        : "Almost there! Just need your contact details"}
-                    </p>
-                  </div>
-                </div>
+        {/* Mobile compact header */}
+        <div className="lg:hidden mb-8">
+          <div className="flex items-end justify-between mb-3">
+            <span className="font-alumni font-semibold leading-none text-foreground text-6xl">
+              {String(currentStep).padStart(2, "0")}
+              <span className="text-2xl text-muted-foreground align-top">/{String(totalSteps).padStart(2, "0")}</span>
+            </span>
+            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground pb-2">
+              {meta.kicker}
+            </span>
+          </div>
+          <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
+            <motion.div
+              className="h-full bg-primary"
+              initial={false}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+          </div>
+        </div>
 
-                {/* Summary Section */}
-                <div className="p-8">
-                  <h3 className="text-lg font-semibold mb-4">Your Project</h3>
-                  <div className="space-y-3 text-sm">
-                    {formData.industry && (
-                      <div className="flex justify-between py-2 border-b border-border">
-                        <span className="text-muted-foreground">Industry</span>
-                        <span className="font-medium">
-                          {
-                            industries.find(
-                              (i) => i.value === formData.industry
-                            )?.label
-                          }
-                        </span>
-                      </div>
-                    )}
-                    {formData.service && (
-                      <div className="flex justify-between py-2 border-b border-border">
-                        <span className="text-muted-foreground">Service</span>
-                        <span className="font-medium">
-                          {
-                            services.find((s) => s.value === formData.service)
-                              ?.label
-                          }
-                        </span>
-                      </div>
-                    )}
-                    {formData.projectType && (
-                      <div className="flex justify-between py-2 border-b border-border">
-                        <span className="text-muted-foreground">Project Type</span>
-                        <span className="font-medium">
-                          {
-                            projectTypes.find(
-                              (p) => p.value === formData.projectType
-                            )?.label
-                          }
-                        </span>
-                      </div>
-                    )}
-                    {formData.currentStage && (
-                      <div className="flex justify-between py-2 border-b border-border">
-                        <span className="text-muted-foreground">Current Stage</span>
-                        <span className="font-medium">
-                          {
-                            currentStages.find(
-                              (s) => s.value === formData.currentStage
-                            )?.label
-                          }
-                        </span>
-                      </div>
-                    )}
-                    {formData.timeline && (
-                      <div className="flex justify-between py-2 border-b border-border">
-                        <span className="text-muted-foreground">Timeline</span>
-                        <span className="font-medium">
-                          {
-                            timelines.find(
-                              (t) => t.value === formData.timeline
-                            )?.label
-                          }
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  {currentStep === 5 && (
-                    <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                      <p className="text-sm text-muted-foreground">
-                        We'll send you a detailed cost breakdown and project
-                        proposal to your email.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Right Column - Calculator Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Card className="border-border bg-card">
-              <CardContent className="p-8">
-                {/* Progress Bar */}
-                <div className="mb-8">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium">
-                      Step {currentStep} of {totalSteps}
-                    </span>
-                    <span className="text-sm text-muted-foreground">
-                      {Math.round(progress)}% Complete
-                    </span>
-                  </div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-primary"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </div>
-                </div>
-
-                {/* Form Steps */}
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-start">
+          {/* LEFT — editorial panel (desktop) */}
+          <div className="hidden lg:flex lg:sticky lg:top-24 flex-col gap-10">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                {meta.kicker}
+              </p>
+              <div className="overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentStep}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.2 }}
-                    className="min-h-[400px]"
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "-100%" }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-alumni font-semibold leading-[0.78] tracking-tight text-foreground text-[10rem] xl:text-[13rem]"
                   >
-                    {/* Step 1: Industry & Service */}
-                    {currentStep === 1 && (
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">What industry are you in?</h2>
-                          <p className="text-sm text-muted-foreground mb-4">Select your business domain</p>
-                          <div className="grid grid-cols-2 gap-3">
-                            {industries.map((industry) => (
-                              <button
-                                key={industry.value}
-                                type="button"
-                                onClick={() => setFormData({ ...formData, industry: industry.value })}
-                                className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${formData.industry === industry.value ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-                              >
-                                {industry.label}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">What service do you need?</h2>
-                          <p className="text-sm text-muted-foreground mb-4">Choose the type of solution</p>
-                          <div className="grid grid-cols-2 gap-3">
-                            {services.map((service) => (
-                              <button
-                                key={service.value}
-                                type="button"
-                                onClick={() => setFormData({ ...formData, service: service.value })}
-                                className={`px-4 py-3 text-sm font-medium rounded-lg border-2 transition-all text-left ${formData.service === service.value ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-                              >
-                                {service.label}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Step 2: Project Type */}
-                    {currentStep === 2 && (
-                      <div className="space-y-4">
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">What's your project scope?</h2>
-                          <p className="text-sm text-muted-foreground mb-4">Select the type of project</p>
-                        </div>
-                        <div className="space-y-3">
-                          {projectTypes.map((type) => (
-                            <button
-                              key={type.value}
-                              type="button"
-                              onClick={() => setFormData({ ...formData, projectType: type.value })}
-                              className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.projectType === type.value ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-                            >
-                              {type.label}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Step 3: Current Stage */}
-                    {currentStep === 3 && (
-                      <div className="space-y-4">
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">Where are you starting from?</h2>
-                          <p className="text-sm text-muted-foreground mb-4">Tell us your current stage</p>
-                        </div>
-                        <div className="space-y-3">
-                          {currentStages.map((stage) => (
-                            <button
-                              key={stage.value}
-                              type="button"
-                              onClick={() => setFormData({ ...formData, currentStage: stage.value })}
-                              className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.currentStage === stage.value ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-                            >
-                              {stage.label}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Step 4: Timeline */}
-                    {currentStep === 4 && (
-                      <div className="space-y-4">
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">What's your timeline?</h2>
-                          <p className="text-sm text-muted-foreground mb-4">When do you need this completed?</p>
-                        </div>
-                        <div className="space-y-3">
-                          {timelines.map((timeline) => (
-                            <button
-                              key={timeline.value}
-                              type="button"
-                              onClick={() => setFormData({ ...formData, timeline: timeline.value })}
-                              className={`w-full px-6 py-4 text-left font-medium rounded-lg border-2 transition-all ${formData.timeline === timeline.value ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-                            >
-                              {timeline.label}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Step 5: Contact Details */}
-                    {currentStep === 5 && (
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div>
-                          <h2 className="text-xl font-semibold mb-2">Where should we send your estimate?</h2>
-                          <p className="text-sm text-muted-foreground mb-6">Enter your contact details to receive the detailed cost breakdown</p>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium mb-2">Full Name <span className="text-destructive">*</span></label>
-                          <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:outline-none transition-colors" placeholder="John Doe" />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium mb-2">Email Address <span className="text-destructive">*</span></label>
-                          <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:outline-none transition-colors" placeholder="john@example.com" />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium mb-2">Phone Number <span className="text-destructive">*</span></label>
-                          <input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:outline-none transition-colors" placeholder="+1 (555) 000-0000" />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium mb-2">Additional Details (Optional)</label>
-                          <textarea value={formData.details} onChange={(e) => setFormData({ ...formData, details: e.target.value })} rows={3} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:outline-none transition-colors resize-none" placeholder="Any specific requirements..." />
-                        </div>
-
-                        <AnimatedButton type="submit" disabled={isSubmitting} className="w-full py-4 text-sm font-semibold uppercase tracking-wide">
-                          {isSubmitting ? "Submitting..." : "Get My Estimate"}
-                        </AnimatedButton>
-                      </form>
-                    )}
+                    {String(currentStep).padStart(2, "0")}
                   </motion.div>
                 </AnimatePresence>
+              </div>
+              <p className="mt-2 font-alumni text-2xl text-muted-foreground">
+                of {String(totalSteps).padStart(2, "0")} — {meta.title}
+              </p>
+            </div>
 
-                {/* Navigation Buttons */}
-                {currentStep < 5 && (
-                  <div className="flex justify-between mt-8 pt-6 border-t border-border">
-                    <button onClick={handleBack} disabled={currentStep === 1} className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${currentStep === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-muted"}`}>
-                      <ArrowLeft className="w-4 h-4" /> Back
-                    </button>
+            {/* Progress */}
+            <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
+              <motion.div
+                className="h-full bg-primary"
+                initial={false}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+            </div>
 
-                    <AnimatedButton onClick={handleNext} className="flex items-center gap-2 px-8 py-3">
-                      Continue <ArrowRight className="w-4 h-4" />
-                    </AnimatedButton>
+            {/* Running brief */}
+            <div className="min-h-[6rem]">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-foreground/50 mb-4">
+                Your brief
+              </p>
+              {brief.length === 0 ? (
+                <p className="text-sm text-muted-foreground font-sans max-w-xs leading-relaxed">
+                  As you answer, your project brief takes shape here.
+                </p>
+              ) : (
+                <ul className="space-y-2.5">
+                  <AnimatePresence initial={false}>
+                    {brief.map((item) => (
+                      <motion.li
+                        key={item.label}
+                        layout
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-baseline justify-between gap-4 border-b border-border/40 pb-2.5"
+                      >
+                        <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                          {item.label}
+                        </span>
+                        <span className="text-sm font-medium tracking-tight text-right">
+                          {item.value}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </AnimatePresence>
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {/* RIGHT — active step */}
+          <div className="min-h-[28rem]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Step 1: Industry & Service */}
+                {currentStep === 1 && (
+                  <div className="space-y-10">
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                        What industry are you in?
+                      </h2>
+                      <p className="text-muted-foreground font-sans mb-6">
+                        Select your business domain.
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {industries.map((industry) => (
+                          <OptionCard
+                            key={industry.value}
+                            label={industry.label}
+                            selected={formData.industry === industry.value}
+                            onClick={() => setFormData({ ...formData, industry: industry.value })}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                        What service do you need?
+                      </h2>
+                      <p className="text-muted-foreground font-sans mb-6">
+                        Choose the type of solution.
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {services.map((service) => (
+                          <OptionCard
+                            key={service.value}
+                            label={service.label}
+                            selected={formData.service === service.value}
+                            onClick={() => setFormData({ ...formData, service: service.value })}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
 
+                {/* Step 2: Project Type */}
+                {currentStep === 2 && (
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                      What&apos;s your project scope?
+                    </h2>
+                    <p className="text-muted-foreground font-sans mb-6">
+                      Select the type of engagement.
+                    </p>
+                    <div className="grid gap-3">
+                      {projectTypes.map((type) => (
+                        <OptionCard
+                          key={type.value}
+                          label={type.label}
+                          selected={formData.projectType === type.value}
+                          onClick={() => setFormData({ ...formData, projectType: type.value })}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 3: Current Stage */}
+                {currentStep === 3 && (
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                      Where are you starting from?
+                    </h2>
+                    <p className="text-muted-foreground font-sans mb-6">
+                      Tell us your current stage.
+                    </p>
+                    <div className="grid gap-3">
+                      {currentStages.map((stage) => (
+                        <OptionCard
+                          key={stage.value}
+                          label={stage.label}
+                          selected={formData.currentStage === stage.value}
+                          onClick={() => setFormData({ ...formData, currentStage: stage.value })}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 4: Timeline */}
+                {currentStep === 4 && (
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                      What&apos;s your timeline?
+                    </h2>
+                    <p className="text-muted-foreground font-sans mb-6">
+                      When do you need this completed?
+                    </p>
+                    <div className="grid gap-3">
+                      {timelines.map((timeline) => (
+                        <OptionCard
+                          key={timeline.value}
+                          label={timeline.label}
+                          selected={formData.timeline === timeline.value}
+                          onClick={() => setFormData({ ...formData, timeline: timeline.value })}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 5: Contact Details */}
                 {currentStep === 5 && (
-                  <div className="flex justify-start mt-8 pt-6 border-t border-border">
-                    <button onClick={handleBack} className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium hover:bg-muted transition-all">
-                      <ArrowLeft className="w-4 h-4" /> Back
-                    </button>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="mb-2">
+                      <h2 className="text-3xl sm:text-4xl tracking-tight max-w-xl mb-2">
+                        Where should we send it?
+                      </h2>
+                      <p className="text-muted-foreground font-sans">
+                        Enter your details and we&apos;ll send the detailed breakdown within 24 hours.
+                      </p>
+                    </div>
 
-        {/* Back to Home */}
-        <div className="text-center mt-8">
-          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            ← Back to Home
-          </Link>
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Full Name <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className={inputClass}
+                        placeholder="John Doe"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email Address <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className={inputClass}
+                        placeholder="john@example.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                        Phone Number <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        id="phone"
+                        type="tel"
+                        required
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className={inputClass}
+                        placeholder="+1 (555) 000-0000"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="details" className="block text-sm font-medium mb-2">
+                        Additional Details <span className="text-muted-foreground font-normal">(optional)</span>
+                      </label>
+                      <textarea
+                        id="details"
+                        value={formData.details}
+                        onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                        rows={3}
+                        className={`${inputClass} resize-none`}
+                        placeholder="Any specific requirements..."
+                      />
+                    </div>
+
+                    <AnimatedButton
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 text-sm font-semibold uppercase tracking-wide"
+                    >
+                      {isSubmitting ? "Submitting..." : "Get My Estimate"}
+                    </AnimatedButton>
+                  </form>
+                )}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation */}
+            {currentStep < 5 ? (
+              <div className="flex items-center justify-between mt-10 pt-6 border-t border-border/50">
+                <button
+                  onClick={handleBack}
+                  disabled={currentStep === 1}
+                  className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
+                    currentStep === 1
+                      ? "opacity-40 cursor-not-allowed"
+                      : "hover:bg-muted"
+                  }`}
+                >
+                  <ArrowLeft className="h-4 w-4" /> Back
+                </button>
+
+                <AnimatedButton onClick={handleNext} className="inline-flex items-center gap-2 px-8 py-3">
+                  Continue <ArrowRight className="h-4 w-4" />
+                </AnimatedButton>
+              </div>
+            ) : (
+              <div className="flex justify-start mt-10 pt-6 border-t border-border/50">
+                <button
+                  onClick={handleBack}
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium hover:bg-muted transition-all"
+                >
+                  <ArrowLeft className="h-4 w-4" /> Back
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
