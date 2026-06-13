@@ -66,6 +66,13 @@ export const Footer: FC = () => {
                     </p>
                 </div>
             </div>
+
+            {/* Oversized brand wordmark */}
+            <div className="mt-12 w-full overflow-hidden select-none pointer-events-none" aria-hidden="true">
+                <h2 className="text-center font-bold leading-[0.8] tracking-tighter text-[22vw] md:text-[20vw] bg-gradient-to-b from-foreground/[0.07] to-foreground/[0.015] bg-clip-text text-transparent">
+                    Mastrovia
+                </h2>
+            </div>
         </footer>
     );
 };
