@@ -4,7 +4,7 @@ import { TechMarquee } from "@/components/sections/TechMarquee";
 import { Works } from "@/components/sections/Works";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
-import ContactClient from "@/app/contact/ContactClient";
+import { HomeContact } from "@/components/sections/HomeContact";
 
 export default function HomePage() {
   return (
@@ -21,7 +21,7 @@ export default function HomePage() {
       {/* Contact Section */}
       <section className="relative overflow-hidden bg-muted/10">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        <ContactClient />
+        <HomeContact />
       </section>
     </div>
   );
