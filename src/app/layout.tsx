@@ -4,6 +4,7 @@ import TopMarquee from "@/components/sections/TopMarquee";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
+import { PlausibleAnalytics } from "@/components/analytics/PlausibleAnalytics";
 import NextTopLoader from "nextjs-toploader";
 import { Footer } from "@/components/common/Footer";
 import ScrollToTop from "@/components/common/ScrollToTop";
@@ -54,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <PlausibleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="light" storageKey="mastrovia-theme" enableSystem>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} showForHashAnchor={false} />
           <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
